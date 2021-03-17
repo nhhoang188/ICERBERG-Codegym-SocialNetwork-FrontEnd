@@ -12,7 +12,6 @@ import {User} from '../model/User';
 export class LoginComponent implements OnInit {
   user: any;
   createForm: any;
-
   constructor(private usersv: UserService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -21,22 +20,31 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
-      username: new FormControl(''),
+      username: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
+      confirm_password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]),
       birthDay: ['']
     });
   }
 
-  createAcount() {
-    const createForm = this.createForm.value;
 
-    const user1: User = this.createForm.value;
+  createAcount() {
+    const date =this.createForm.value.birthDay;
+    console.log(date);
+    const user1: User = {
+      username: this.createForm.value.username,
+      password: this.createForm.value.password,
+      phone: this.createForm.value.phone,
+      email: this.createForm.value.email,
+      birthDay: this.createForm.value.birthDay
+    };
     console.log(user1);
     this.usersv.createUser(user1).subscribe(() => {
       alert('Create Acount Sucsses!');
-      this.router.navigate(['login']);
+      // this.router.navigate(['login']);
     });
   }
+
 }

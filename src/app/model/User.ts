@@ -4,5 +4,5 @@ export interface User {
   password?: any;
   email?: any;
   phone?: any;
-  birthday?: any;
+  birthDay?: any;
 }

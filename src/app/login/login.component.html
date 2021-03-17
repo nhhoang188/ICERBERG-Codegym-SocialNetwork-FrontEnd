@@ -1,29 +1,4 @@
 <main>
-  <script>
-    function verifyPassword() {
-      var pw = document.getElementById("pswd").value;
-      //check empty password field
-      if(pw == "") {
-        document.getElementById("message").innerHTML = "**Fill the password please!";
-        return false;
-      }
-
-      //minimum password length validation
-      if(pw.length < 6) {
-        document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";
-        return false;
-      }
-
-//maximum length of password validation
-      if(pw.length > 32) {
-        document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
-        return false;
-      } else {
-        alert("Password is correct");
-      }
-    }
-  </script>
-
   <div class="main-wrapper pb-0 mb-0">
     <div class="timeline-wrapper">
       <div class="timeline-header">
@@ -63,7 +38,9 @@
         <div class="container-fluid p-0">
           <div class="row no-gutters">
             <div class="col-lg-6 order-2 order-lg-1">
-              <div class="timeline-bg-content bg-img" style="background-image: url(assets/images/banner/advertise.jpg);">                <h3 class="timeline-bg-title">Let’s see what’s happening to you and your world. Welcome in Adda.</h3>
+              <div class="timeline-bg-content bg-img"
+                   style="background-image: url(assets/images/banner/advertise.jpg);"><h3 class="timeline-bg-title">
+                Let’s see what’s happening to you and your world. Welcome in Adda.</h3>
               </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
@@ -75,21 +52,61 @@
                     <div class="row">
                       <div class="col-12">
                         <input type="text" formControlName="username" class="single-field" placeholder="User Name">
+                        <div
+                          *ngIf="createForm.get('username').invalid && createForm.get('username').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('username').errors.required">
+                            Tên Đăng Nhập Không Được Để Trống!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-12">
                         <input type="email" formControlName="email" class="single-field" placeholder="Email">
+                        <div
+                          *ngIf="createForm.get('email').invalid && createForm.get('email').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('email').errors.minlength">
+                            Hãy Nhập Đúng Định Dạng!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('email').errors.required">
+                            Nhập Vào Email!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-12">
                         <input type="tel" formControlName="phone" class="single-field" placeholder="Phone">
+                        <div *ngIf="createForm.get('phone').invalid && createForm.get('phone').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('phone').errors.minlength">
+                            Số Điện Thoại Chưa Đúng!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('phone').errors.required">
+                            Nhập Số Điện Thoại!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-12">
-                        <input type="date" formControlName="birthday" class="single-field" placeholder="Birth Day">
+                        <input type="date" formControlName="birthDay" class="single-field" placeholder="Birth Day">
                       </div>
                       <div class="col-12">
-                        <input type="password" formControlName="password" class="single-field" placeholder="Password">
+                        <input type="password" formControlName="password" name="password" id="password"
+                               class="single-field" placeholder="Password">
+                        <div *ngIf="createForm.get('password').invalid && createForm.get('password').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('password').errors.minlength">
+                            Mật khẩu từ 6-12 kí tự!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('password').errors.required">
+                            Nhập vào mật khẩu!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-12">
-                        <input type="password" class="single-field" placeholder="Confirm Password">
+                        <input type="password" name="confirm_password" id="confirm_password" class="single-field"
+                               placeholder="Confirm Password">
                       </div>
                       <div class="col-12">
                         <button class="submit-btn">Create Account</button>
