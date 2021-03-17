@@ -1,19 +1,29 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Adda - Social Network HTML Template</title>
-  <meta name="robots" content="noindex, follow" />
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicon -->
-</head>
-
-<body class="bg-transparent">
-
 <main>
+  <script>
+    function verifyPassword() {
+      var pw = document.getElementById("pswd").value;
+      //check empty password field
+      if(pw == "") {
+        document.getElementById("message").innerHTML = "**Fill the password please!";
+        return false;
+      }
+
+      //minimum password length validation
+      if(pw.length < 6) {
+        document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";
+        return false;
+      }
+
+//maximum length of password validation
+      if(pw.length > 32) {
+        document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
+        return false;
+      } else {
+        alert("Password is correct");
+      }
+    }
+  </script>
+
   <div class="main-wrapper pb-0 mb-0">
     <div class="timeline-wrapper">
       <div class="timeline-header">
@@ -23,7 +33,7 @@
               <div class="timeline-logo-area d-flex align-items-center">
                 <div class="timeline-logo">
                   <a href="index.html">
-                    <img src="../../assets/images/logo/logo.png" alt="timeline logo">
+                    <img src="assets/images/logo/logo.png" alt="timeline logo">
                   </a>
                 </div>
                 <div class="timeline-tagline">
@@ -35,14 +45,10 @@
               <div class="login-area">
                 <div class="row align-items-center">
                   <div class="col-12 col-sm">
-                    <label>
-                      <input type="text" placeholder="Email or Userame" class="single-field">
-                    </label>
+                    <input type="text" placeholder="Email or Userame" class="single-field">
                   </div>
                   <div class="col-12 col-sm">
-                    <label>
-                      <input type="password" placeholder="Password" class="single-field">
-                    </label>
+                    <input type="password" placeholder="Password" class="single-field">
                   </div>
                   <div class="col-12 col-sm-auto">
                     <button class="login-btn">Login</button>
@@ -57,65 +63,33 @@
         <div class="container-fluid p-0">
           <div class="row no-gutters">
             <div class="col-lg-6 order-2 order-lg-1">
-              <div class="timeline-bg-content bg-img" style="background-image: url();">
-                <h3 class="timeline-bg-title">Let’s see what’s happening to you and your world. Welcome in Adda.</h3>
+              <div class="timeline-bg-content bg-img" style="background-image: url(assets/images/banner/advertise.jpg);">                <h3 class="timeline-bg-title">Let’s see what’s happening to you and your world. Welcome in Adda.</h3>
               </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
               <div class="signup-form-wrapper">
                 <h1 class="create-acc text-center">Create An Account</h1>
                 <div class="signup-inner text-center">
-                  <h3 class="title">Wellcome to Adda</h3>
-                  <form class="signup-inner--form">
+                  <h3 class="title">Wellcome to IceBerg</h3>
+                  <form class="signup-inner--form" [formGroup]="createForm" (ngSubmit)="createAcount()">
                     <div class="row">
                       <div class="col-12">
-                        <label>
-                          <input type="email" class="single-field" placeholder="Email">
-                        </label>
-                      </div>
-                      <div class="col-md-6">
-                        <label>
-                          <input type="text" class="single-field" placeholder="First Name">
-                        </label>
-                      </div>
-                      <div class="col-md-6">
-                        <label>
-                          <input type="text" class="single-field" placeholder="Last Name">
-                        </label>
+                        <input type="text" formControlName="username" class="single-field" placeholder="User Name">
                       </div>
                       <div class="col-12">
-                        <label>
-                          <input type="password" class="single-field" placeholder="Password">
-                        </label>
-                      </div>
-                      <div class="col-md-6">
-                        <label>
-                          <select class="nice-select" name="sortby">
-                            <option value="trending">Gender</option>
-                            <option value="sales">Male</option>
-                            <option value="sales">Female</option>
-                          </select>
-                        </label>
-                      </div>
-                      <div class="col-md-6">
-                        <label>
-                          <select class="nice-select" name="sortby">
-                            <option value="trending">Age</option>
-                            <option value="sales">18+</option>
-                            <option value="sales">18-</option>
-                          </select>
-                        </label>
+                        <input type="email" formControlName="email" class="single-field" placeholder="Email">
                       </div>
                       <div class="col-12">
-                        <label>
-                          <select class="nice-select" name="sortby">
-                            <option value="trending">Country</option>
-                            <option value="sales">Bangladesh</option>
-                            <option value="sales">Noakhali</option>
-                            <option value="sales">Australia</option>
-                            <option value="sales">China</option>
-                          </select>
-                        </label>
+                        <input type="tel" formControlName="phone" class="single-field" placeholder="Phone">
+                      </div>
+                      <div class="col-12">
+                        <input type="date" formControlName="birthday" class="single-field" placeholder="Birth Day">
+                      </div>
+                      <div class="col-12">
+                        <input type="password" formControlName="password" class="single-field" placeholder="Password">
+                      </div>
+                      <div class="col-12">
+                        <input type="password" class="single-field" placeholder="Confirm Password">
                       </div>
                       <div class="col-12">
                         <button class="submit-btn">Create Account</button>
@@ -132,7 +106,3 @@
     </div>
   </div>
 </main>
-
-</body>
-
-</html>
