@@ -18,17 +18,19 @@
             </div>
             <div class="col-lg-6">
               <div class="login-area">
-                <div class="row align-items-center">
-                  <div class="col-12 col-sm">
-                    <input type="text" placeholder="Email or Userame" class="single-field">
-                  </div>
-                  <div class="col-12 col-sm">
-                    <input type="password" placeholder="Password" class="single-field">
-                  </div>
-                  <div class="col-12 col-sm-auto">
-                    <button class="login-btn">Login</button>
-                  </div>
-                </div>
+               <form class="user" [formGroup]="loginForm" (ngSubmit)="login()">
+                 <div class="row align-items-center">
+                   <div class="col-12 col-sm">
+                     <input type="text" formControlName="username" placeholder="Userame" class="single-field">
+                   </div>
+                   <div class="col-12 col-sm">
+                     <input type="password" formControlName="password" placeholder="Password" class="single-field">
+                   </div>
+                   <div class="col-12 col-sm-auto">
+                     <button class="login-btn">Login</button>
+                   </div>
+                 </div>
+               </form>
               </div>
             </div>
           </div>
