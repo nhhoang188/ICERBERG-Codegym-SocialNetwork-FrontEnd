@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LogoutComponent } from './login/logout/logout.component';
 import {PostComponent} from "./post/post.component";
+import { ProfileComponent } from './profile/profile-user/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {PostComponent} from "./post/post.component";
     LoginComponent,
     HomeComponent,
     LogoutComponent,
-    PostComponent
+    PostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

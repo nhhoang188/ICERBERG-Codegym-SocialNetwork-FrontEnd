@@ -20,4 +20,26 @@ export class UserService {
   login(user: User): Observable<User> {
     return this.httpClient.post<User>(API_URl + `/login`, user);
   }
+
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(API_URl + '/users');
+  }
+
+  getById(id: any): Observable<User> {
+    return this.httpClient.get<User>(API_URl + '/users/' + `${id}`);
+  }
+
+  getByIdAndInfoPublic(id: any): Observable<User> {
+    return this.httpClient.get<User>(API_URl + '/users/info/' + `${id}`);
+  }
+
+  updateUser(id: number, user: User): Observable<User> {
+    return this.httpClient.put<User>(API_URl + '/users/' + `${id}`, user);
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.httpClient.delete<any>(API_URl + '/users' + `/${id}`);
+  }
+
+
 }

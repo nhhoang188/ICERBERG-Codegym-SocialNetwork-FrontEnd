@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
+import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from '../model/User';
-import {JwtService} from '../services/jwt.service';
+import {User} from '../../model/User';
+import {JwtService} from '../../services/jwt.service';
 import {first} from 'rxjs/operators';
 
 @Component({
@@ -73,7 +73,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
-          this.router.navigate(['home'])
+          localStorage.setItem('ID', data.id);
+          localStorage.setItem('infomodifier', data.infomodifier);
+          this.router.navigate(['home']);
         },
         error => {
           alert('Sai Mật Khẩu!');
