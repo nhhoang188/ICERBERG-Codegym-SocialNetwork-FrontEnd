@@ -1,0 +1,127 @@
+<main>
+  <div class="main-wrapper pb-0 mb-0">
+    <div class="timeline-wrapper">
+      <div class="timeline-header">
+        <div class="container-fluid p-0">
+          <div class="row no-gutters align-items-center">
+            <div class="col-lg-6">
+              <div class="timeline-logo-area d-flex align-items-center">
+                <div class="timeline-logo">
+                  <a href="index.html">
+                    <img src="assets/images/logo/logo.png" alt="timeline logo">
+                  </a>
+                </div>
+                <div class="timeline-tagline">
+                  <h6 class="tagline">It’s helps you to connect and share with the people in your life</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="login-area">
+               <form class="user" [formGroup]="loginForm" (ngSubmit)="login()">
+                 <div class="row align-items-center">
+                   <div class="col-12 col-sm">
+                     <input type="text" formControlName="username" placeholder="Userame" class="single-field">
+                   </div>
+                   <div class="col-12 col-sm">
+                     <input type="password" formControlName="password" placeholder="Password" class="single-field">
+                   </div>
+                   <div class="col-12 col-sm-auto">
+                     <button class="login-btn">Login</button>
+                   </div>
+                 </div>
+               </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-page-wrapper">
+        <div class="container-fluid p-0">
+          <div class="row no-gutters">
+            <div class="col-lg-6 order-2 order-lg-1">
+              <div class="timeline-bg-content bg-img"
+                   style="background-image: url(assets/images/banner/advertise.jpg);"><h3 class="timeline-bg-title">
+                Let’s see what’s happening to you and your world. Welcome in Adda.</h3>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
+              <div class="signup-form-wrapper">
+                <h1 class="create-acc text-center">Create An Account</h1>
+                <div class="signup-inner text-center">
+                  <h3 class="title">Wellcome to IceBerg</h3>
+                  <form class="signup-inner--form" [formGroup]="createForm" (ngSubmit)="createAcount()">
+                    <div class="row">
+                      <div class="col-12">
+                        <input type="text" formControlName="username" class="single-field" placeholder="User Name">
+                        <div
+                          *ngIf="createForm.get('username').invalid && createForm.get('username').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('username').errors.required">
+                            Tên Đăng Nhập Không Được Để Trống!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <input type="email" formControlName="email" class="single-field" placeholder="Email">
+                        <div
+                          *ngIf="createForm.get('email').invalid && createForm.get('email').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('email').errors.minlength">
+                            Hãy Nhập Đúng Định Dạng!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('email').errors.required">
+                            Nhập Vào Email!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <input type="tel" formControlName="phone" class="single-field" placeholder="Phone">
+                        <div *ngIf="createForm.get('phone').invalid && createForm.get('phone').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('phone').errors.minlength">
+                            Số Điện Thoại Chưa Đúng!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('phone').errors.required">
+                            Nhập Số Điện Thoại!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <input type="date" formControlName="birthDay" class="single-field" placeholder="Birth Day">
+                      </div>
+                      <div class="col-12">
+                        <input type="password" formControlName="password" name="password" id="password"
+                               class="single-field" placeholder="Password">
+                        <div *ngIf="createForm.get('password').invalid && createForm.get('password').touched">
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('password').errors.minlength">
+                            Mật khẩu từ 6-12 kí tự!
+                          </div>
+                          <div class="alert alert-danger mt-1" role="alert"
+                               *ngIf="createForm.get('password').errors.required">
+                            Nhập vào mật khẩu!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <input type="password" name="confirm_password" id="confirm_password" class="single-field"
+                               placeholder="Confirm Password">
+                      </div>
+                      <div class="col-12">
+                        <button class="submit-btn">Create Account</button>
+                      </div>
+                    </div>
+                    <h6 class="terms-condition">I have read & accepted the <a href="#">terms of use</a></h6>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
