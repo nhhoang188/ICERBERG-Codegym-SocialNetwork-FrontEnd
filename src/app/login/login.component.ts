@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           localStorage.setItem('ROLE', data.roles[0].authority);
           localStorage.setItem('USERNAME', data.username);
-          console.log(data);
+          this.router.navigate(['home'])
         },
         error => {
           alert('Sai Mật Khẩu!');
