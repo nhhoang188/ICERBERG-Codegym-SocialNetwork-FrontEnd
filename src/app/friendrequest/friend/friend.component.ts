@@ -1,35 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {FriendRequest} from '../../model/FriendRequest';
 import {FriendrequestService} from '../../service/friendrequest.service';
 import {Router} from '@angular/router';
-import {FriendRequest, User} from '../../model/FriendRequest';
-import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-friend',
+  templateUrl: './friend.component.html',
+  styleUrls: ['./friend.component.css']
 })
-export class ListComponent implements OnInit {
+export class FriendComponent implements OnInit {
 
   request: any;
   requests: any;
 
+  requess: FriendRequest={};
   users: any;
   user1: any;
   user2: any;
   user: any;
   id = 1;
+  id2= 0;
+  reques_id:any;
   request1: FriendRequest={};
 
-  check1: number=0;
-
+  check1?: number;
   constructor(private myService: FriendrequestService,
-              private router: Router) { }
-
-  ngOnInit(): void {
-    this.getAll()
+              private router: Router) {
+    this.id2=this.id;
   }
+  ngOnInit(): void {
+    this.checkFriends(this.id,this.id2)
 
+  }
 
   getAll(){
     this.myService.getAll().subscribe(value => {
@@ -37,42 +39,44 @@ export class ListComponent implements OnInit {
       console.log(this.requests)
     },val=>console.log(val))
   }
+
   accept(id: number) {
-    this.myService.getById(id).subscribe(value => {
-        this.request = value;
-        this.request.stt = true;
-        this.myService.update(id,this.request).subscribe(()=>{
-          this.getAll();
-        }, error => {
-          console.log(error);
-        })
-      }, val => console.log(val))
-  };
-  unfriend(id: number){
     this.myService.getById(id).subscribe(value => {
       this.request = value;
       this.request.stt = true;
-      this.myService.delete(id).subscribe(()=>{
+      this.myService.update(id,this.request).subscribe(()=>{
         this.getAll();
+        this.check1=1;
       }, error => {
         console.log(error);
       })
     }, val => console.log(val))
   };
 
-  send(id: number){
-    this.myService.getUserById(id).subscribe(value => {
-      this.user2=value;
+  unfriend(id: number){
+    this.myService.getById(id).subscribe(value => {
+      this.request = value;
+      this.request.stt = true;
+      this.myService.delete(id).subscribe(()=>{
+        this.getAll();
+        this.check1=0;
+      }, error => {
+        console.log(error);
+      })
+    }, val => console.log(val))
+  };
+
+  send(){
+    this.myService.getUserById(this.id2).subscribe(value => {
+      this.requess.userReceiver=value;
       this.myService.getUserById(this.id).subscribe(value => {
-        this.user1=value;
-        this.request1.userSender=this.user1;
-        this.request1.stt=false;
-        this.request1.userReceiver=this.user2;
-        console.log(this.request1)
-        this.myService.create(this.request1).subscribe(
+        this.requess.userSender=value;
+        this.requess.stt=false;
+        this.myService.create(this.requess).subscribe(
           ()=> {
+            this.checkFriends(this.id,this.id2)
+            this.check1=2;
             alert("thanh cong")
-            // this.router.navigate(['/list'])
           },() => alert("that bai"));
       },error => {
         console.log(error);
@@ -86,20 +90,18 @@ export class ListComponent implements OnInit {
   checkFriends(id1:number, id2: number){
     this.myService.getFriend(id1,id2).subscribe(value => {
       this.request1=value
+      this.getAll()
       if(this.request1==null){
         this.check1=0;
-        alert(this.check1+ 'nguoi la')
       }else {
+        this.reques_id=this.request1.id;
         if(this.request1.stt){
           this.check1=1;
-          alert(this.check1+ 'ban be')
         }else {
           if(this.request1.userSender?.id==id1){
             this.check1=2;
-            alert(this.check1+ 'dang cho tra loi')
           }else {
             this.check1=3
-            alert(this.check1+ 'dang cho xac nhan')
           }
         }
       }
