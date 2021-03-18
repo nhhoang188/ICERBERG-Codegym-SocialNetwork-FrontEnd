@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
-import {FriendrequestService} from './service/friendrequest.service';
+import { Component, OnInit } from '@angular/core';
+import {FriendrequestService} from '../../service/friendrequest.service';
 import {Router} from '@angular/router';
-import {FriendRequest} from './model/FriendRequest';
+import {FriendRequest, User} from '../../model/FriendRequest';
+import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
-export class AppComponent {
-  title = 'iceberg-socialnetwork-frontend';
+export class ListComponent implements OnInit {
+
+  request: any;
+  requests: any;
+
   users: any;
   user1: any;
   user2: any;
@@ -19,30 +23,42 @@ export class AppComponent {
 
   check1: number=0;
 
-
   constructor(private myService: FriendrequestService,
               private router: Router) { }
 
   ngOnInit(): void {
     this.getAll()
   }
+
+
   getAll(){
-    this.myService.getAllUser().subscribe(value => {
-      this.users= value;
+    this.myService.getAll().subscribe(value => {
+      this.requests= value;
+      console.log(this.requests)
     },val=>console.log(val))
   }
-
-  findById(id:number): any{
-
-    this.myService.getUserById(id).subscribe(value => {
-      this.user=value;
-    },error => {
-      console.log(error);
-      this.user=null
-    })
-  }
-
-
+  accept(id: number) {
+    this.myService.getById(id).subscribe(value => {
+        this.request = value;
+        this.request.stt = true;
+        this.myService.update(id,this.request).subscribe(()=>{
+          this.getAll();
+        }, error => {
+          console.log(error);
+        })
+      }, val => console.log(val))
+  };
+  unfriend(id: number){
+    this.myService.getById(id).subscribe(value => {
+      this.request = value;
+      this.request.stt = true;
+      this.myService.delete(id).subscribe(()=>{
+        this.getAll();
+      }, error => {
+        console.log(error);
+      })
+    }, val => console.log(val))
+  };
 
   send(id: number){
     this.myService.getUserById(id).subscribe(value => {
@@ -91,5 +107,8 @@ export class AppComponent {
       console.log(error)
     })
   }
+
+
+
 
 }
