@@ -7,11 +7,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CreatePostComponent} from "./post/create-post/create-post.component";
 import {EditPostComponent} from './post/edit-post/edit-post.component';
-import {NgbButtonsModule} from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './login/logout/logout.component';
 import { ProfileComponent } from './profile/profile-user/profile.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +26,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgbModule,
-    NgbButtonsModule,
     FormsModule
   ],
   providers: [],
