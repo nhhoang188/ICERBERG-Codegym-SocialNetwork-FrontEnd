@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {FriendrequestService} from './services/friendrequest.service';
+import {Router} from '@angular/router';
+import {FriendRequest} from './model/FriendRequest';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'iceberg-socialnetwork-frontend';
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+
+  }
+
+
+
+
 }
