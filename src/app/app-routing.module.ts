@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'friend', component: FriendComponent},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent, pathMatch: 'full'},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full'},
   {path: 'profile/:id', component: ProfileComponent, pathMatch: 'full'},
   {path: 'love', component: LoveComponent, pathMatch: 'full'},
