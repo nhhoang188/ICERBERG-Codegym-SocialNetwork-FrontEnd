@@ -19,6 +19,7 @@ export class LoveComponent implements OnInit {
   id_post: any;
   checkLike: any;
   love: Love={}
+  // @ts-ignore
   post: Post={}
   user: User={}
   id_love: any;
