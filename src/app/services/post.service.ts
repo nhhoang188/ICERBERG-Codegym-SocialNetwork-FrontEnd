@@ -18,4 +18,10 @@ export class PostService {
   createStatusPost(post: Post): Observable<Post> {
     return this.httpClient.post<Post>(API_URL, post);
   }
+  editStatusPost(id: number, post: Post): Observable<any> {
+    return this.httpClient.put<any>(`${API_URL}/${id}`, post);
+  }
+  findPostById(id: number): Observable<Post> {
+    return this.httpClient.get<Post>(`${API_URL}/${id}`);
+  }
 }

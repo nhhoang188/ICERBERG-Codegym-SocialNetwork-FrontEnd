@@ -1,3 +1,5 @@
+import {User} from './User';
+
 export interface FriendRequest{
   id?: number;
   userSender?: User;
@@ -5,9 +7,9 @@ export interface FriendRequest{
   stt?: boolean
 }
 
-export interface User{
-  id?:number;
-  username?: string;
-  password?: string;
-
-}
+// export interface User{
+//   id?:number;
+//   username?: string;
+//   password?: string;
+//
+// }

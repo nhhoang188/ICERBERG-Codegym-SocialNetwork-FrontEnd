@@ -14,6 +14,8 @@ import { FriendComponent } from './friendrequest/friend/friend.component';
 import { LoveComponent } from './like/love/love.component';
 import { ProfileComponent } from './profile/profile-user/profile.component';
 import {LoginComponent} from './login/login/login.component';
+import {LoveService} from './services/love.service';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {LoginComponent} from './login/login/login.component';
     PostComponent,
     FriendComponent,
     LoveComponent,
-    ProfileComponent
+    ProfileComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import {LoginComponent} from './login/login/login.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [FriendrequestService],
+  providers: [FriendrequestService,LoveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

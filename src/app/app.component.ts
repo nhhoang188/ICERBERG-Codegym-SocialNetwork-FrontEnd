@@ -9,15 +9,13 @@ import {FriendRequest} from './model/FriendRequest';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'iceberg-socialnetwork-frontend';
 
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
-
-
 
 
 }
