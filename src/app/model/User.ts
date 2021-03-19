@@ -5,4 +5,11 @@ export interface User {
   email?: any;
   phone?: any;
   birthDay?: any;
+  avatar?: any;
+  fullname?: any;
+  description?: any;
+  bio?: any;
+  imgcover?: any;
+  infomodifier?: any;
+  listFriend?: []
 }

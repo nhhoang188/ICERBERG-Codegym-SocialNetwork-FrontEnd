@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FriendRequest} from '../../model/FriendRequest';
-import {FriendrequestService} from '../../service/friendrequest.service';
+import {FriendrequestService} from '../../services/friendrequest.service';
 import {Router} from '@angular/router';
 
 @Component({

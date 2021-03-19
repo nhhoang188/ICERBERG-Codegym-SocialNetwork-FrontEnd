@@ -20,8 +20,8 @@ export class LoveService {
     return  this.http.get(API_URL+'/'+id);
   }
 
-  create(love: Love):Observable<FriendRequest>{
-    return this.http.post<FriendRequest>(API_URL,love)
+  create(love: Love):Observable<Love>{
+    return this.http.post<Love>(API_URL,love)
   }
   // update(id: number,friendRequest : FriendRequest) :Observable<any>{
   //   return this.http.put<any>(API_URL+'/'+id,friendRequest)
@@ -33,6 +33,10 @@ export class LoveService {
 
   getLike(id1:number,id2:number):Observable<Love>{
     return this.http.get(API_URL+'/find?id1='+id1+'&id2='+id2)
+  }
+
+  countLike(id : number):Observable<any>{
+    return  this.http.get(API_URL+'/count/'+id);
   }
 
 }

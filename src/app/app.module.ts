@@ -4,15 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {FriendrequestService} from './service/friendrequest.service';
+import {FriendrequestService} from './services/friendrequest.service';
 import {HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LogoutComponent } from './login/logout/logout.component';
 import {PostComponent} from "./post/post.component";
 import { FriendComponent } from './friendrequest/friend/friend.component';
 import { LoveComponent } from './like/love/love.component';
+import { ProfileComponent } from './profile/profile-user/profile.component';
+import {LoginComponent} from './login/login/login.component';
 import {LoveService} from './services/love.service';
 
 @NgModule({
@@ -23,7 +24,8 @@ import {LoveService} from './services/love.service';
     LogoutComponent,
     PostComponent,
     FriendComponent,
-    LoveComponent
+    LoveComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
