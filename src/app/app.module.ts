@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import {PostComponent} from "./post/post.component";
 import { FriendComponent } from './friendrequest/friend/friend.component';
+import { LoveComponent } from './like/love/love.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FriendComponent } from './friendrequest/friend/friend.component';
     HomeComponent,
     LogoutComponent,
     PostComponent,
-    FriendComponent
+    FriendComponent,
+    LoveComponent
   ],
   imports: [
     BrowserModule,
