@@ -10,6 +10,8 @@ import {EditPostComponent} from './post/edit-post/edit-post.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './login/logout/logout.component';
 import { ProfileComponent } from './profile/profile-user/profile.component';
+import {LoveComponent} from './like/love/love.component';
+import {FriendComponent} from './friendrequest/friend/friend.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { ProfileComponent } from './profile/profile-user/profile.component';
     EditPostComponent,
     HomeComponent,
     LogoutComponent,
-    LogoutComponent,
+    LoveComponent,
+    FriendComponent,
     ProfileComponent
   ],
   imports: [
