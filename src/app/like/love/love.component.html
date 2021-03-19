@@ -3,11 +3,28 @@
 <div class="container">
 
   <div>Id_Post : <input  type="text" [(ngModel)]="id_post" (change)="checkLiked(id_post,id_user)" (change)="countLike(id_post)"></div>
-  <div>My ID: <input type="text" [(ngModel)]="id_user" (change)="checkLiked(id_post,id_user)"></div>{{id_user}}
+  <div>My ID: <input type="text" [(ngModel)]="id_user" (change)="checkLiked(id_post,id_user)">
+    <br>
   <button class="like-button">
     <img *ngIf="!checkLike" class="heart" src="assets/images/icons/heart.png" alt="" (click)="like(id_post,id_user)">
     <img *ngIf="checkLike"class="heart-color" src="assets/images/icons/heart-color.png" alt="" (click)="unlike(id_love)">
   </button>
-  <p>{{count_like}}Like</p>
 
+<span>   </span>
+
+
+  <div class="dropdown" >
+    <a (click)="getUserLikePost(id_post)" class="dropbtn">{{count_like}} Like</a>
+    <table class="dropdown-content table ">
+      <tr *ngFor="let love of loves"> {{love.user.fullname}}</tr>
+    </table>
+  </div>
 </div>
+
+
+<!--<div class="dropdown" *ngIf="check1==1">-->
+<!--  <button class="dropbtn">Ban be</button>-->
+<!--  <div class="dropdown-content">-->
+<!--    <a (click)="unfriend(reques_id)">Huy ket ban</a>-->
+<!--  </div>-->
+<!--</div>-->

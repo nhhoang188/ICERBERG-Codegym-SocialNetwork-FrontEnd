@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {Post} from '../model/Post';
 import {Observable} from 'rxjs';
 
-const API_URL = `${environment.apiUrl}/posts`;
+const API_URL = `${environment.apiUrl}`
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,14 @@ export class PostService {
   }
 
   createStatusPost(post: Post): Observable<Post> {
-    return this.httpClient.post<Post>(API_URL, post);
+    return this.httpClient.post<Post>(API_URL + '/posts', post);
   }
 
   editStatusPost(id: number, post: Post): Observable<any> {
-    return this.httpClient.put<any>(`${API_URL}/${id}`, post);
+    return this.httpClient.put<any>(`${API_URL}/posts/${id}`, post);
   }
 
   findPostById(id: number): Observable<Post> {
-    return this.httpClient.get<Post>(`${API_URL}/${id}`);
+    return this.httpClient.get<Post>(`${API_URL}/posts/${id}`);
   }
 }
