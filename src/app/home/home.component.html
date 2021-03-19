@@ -1,1 +1,312 @@
-<p>home works!</p>
+<app-header></app-header>
+<main>
+  <div class="main-wrapper">
+    <div class="profile-banner-large bg-img" style="background-image: url({{user.imgcover}});">
+    </div>
+  </div>
+  <div class="profile-menu-area bg-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-3">
+          <div class="profile-picture-box">
+            <figure class="profile-picture">
+              <a href="/profile/{{user.id}}">
+                <img src="{{user.avatar}}" alt="profile picture">
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 offset-lg-1">
+          <div class="profile-menu-wrapper">
+            <div class="main-menu-inner header-top-navigation">
+              <nav>
+                <ul class="main-menu">
+                  <li class="active"><a href="#">timeline</a></li>
+                  <li><a href="/profile/{{user.id}}">about</a></li>
+                  <li><a href="/friends">friends</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 d-none d-md-block">
+          <div class="profile-edit-panel">
+            <button class="edit-btn"><a style="color: aliceblue" href="/edit-profile"> Edit Profile</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 order-2 order-lg-1">
+        <aside class="widget-area profile-sidebar">
+          <!-- widget single item start -->
+          <div _ngcontent-qtc-c47="" class="card widget-item">
+            <h4 _ngcontent-qtc-c47="" class="widget-title">{{user.fullname}}</h4>
+            <div _ngcontent-qtc-c47="" class="widget-body">
+              <div _ngcontent-qtc-c47="" class="about-author">
+                <p _ngcontent-qtc-c47="">{{user.bio}}</p>
+                <ul _ngcontent-qtc-c47="" class="author-into-list">
+                  <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" href="#">
+                    <i _ngcontent-qtc-c47="" class="bi bi-home"></i>{{user.address}}</a>
+                  </li>
+                  <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="">
+                    <i _ngcontent-qtc-c47="" class="bi bi-heart-beat"></i>{{user.description}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- widget single item end -->
+
+          <!-- widget single item start -->
+          <div class="card widget-item">
+            <h4 class="widget-title">Sweets Memories</h4>
+            <div class="widget-body">
+              <div class="sweet-galley img-gallery">
+                <div class="row row-5">
+                  <a> Đây Là Chỗ Show Ảnh Của USer</a>
+                  <div class="col-4">
+                    <div class="gallery-tem">
+                      <figure class="post-thumb">
+                        <a class="gallery-selector" href="{{user.avatar}}">
+                          <img src="{{user.avatar}}" alt="sweet memory">
+                        </a>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- widget single item end -->
+
+          <!-- widget single item start -->
+          <div class="card widget-item">
+            <h4 class="widget-title">Your Friends</h4>
+            <div class="widget-body">
+              <ul class="like-page-list-wrapper">
+                <li class="unorder-list">
+                  <!-- profile picture end -->
+                  <div class="profile-thumb">
+                    <a href="#">
+                      <figure class="profile-thumb-small">
+                        <img src="images/profile/profile-small-33.jpg" alt="profile picture">
+                      </figure>
+                    </a>
+                  </div>
+                  <!-- profile picture end -->
+
+                  <div class="unorder-list-info">
+                    <h3 class="list-title"><a href="#">Travel The World</a></h3>
+                    <p class="list-subtitle"><a href="#">adventure</a></p>
+                  </div>
+                  <button class="like-button active">
+                    <img class="heart" src="images/icons/heart.png" alt="">
+                    <img class="heart-color" src="images/icons/heart-color.png" alt="">
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- widget single item end -->
+        </aside>
+      </div>
+
+      <div class="col-lg-6 order-1 order-lg-2">
+        <!-- share box start -->
+        <div class="card card-small">
+          <div class="share-box-inner">
+            <!-- profile picture end -->
+            <!-- profile picture end -->
+
+            <!-- share content box start -->
+            <div class="share-content-box w-100">
+              <form class="share-text-box">
+                <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something"
+                          data-toggle="modal" data-target="#textbox" id="email"></textarea>
+                <button class="btn-share" type="submit">share</button>
+              </form>
+            </div>
+            <!-- share content box end -->
+            <!-- Modal start -->
+            <div class="modal fade" id="textbox" aria-labelledby="textbox">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Share Your Mood</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body custom-scroll">
+                    <textarea name="share" class="share-field-big custom-scroll" placeholder="Say Something"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="post-share-btn" data-dismiss="modal">cancel</button>
+                    <button type="button" class="post-share-btn">post</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal end -->
+          </div>
+        </div>
+        <!-- share box end -->
+        <!-- post status start -->
+
+
+        <div class="card">
+          <!-- post title start -->
+          <div class="post-title d-flex align-items-center">
+            <!-- profile picture end -->
+            <div class="profile-thumb">
+              <a href="/profile/id-cua-user">
+                <figure class="profile-thumb-middle">
+                  <img src="ảnh-đại-diện" alt="profile picture">
+                </figure>
+              </a>
+            </div>
+            <!-- profile picture end -->
+
+            <div class="posted-author">
+              <h6 class="author"><a href="/profile/id-cua-user">Tên Người Đăng</a></h6>
+              <span class="post-time">Thời Gian Đăng</span>
+            </div>
+            <div class="post-settings-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="post-settings arrow-shape">
+                <ul>
+                  <li>
+                    <button>edit post</button>
+                  </li>
+                  <li>
+                    <button>do something 1</button>
+                  </li>
+                  <li>
+                    <button>do something 2</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- post title start -->
+          <div class="post-content">
+            <p class="post-desc">
+              Sờ Ta Tút
+            </p>
+            <div class="post-thumb-gallery img-gallery">
+              <div class="row no-gutters">
+                <div class="col-8">
+                  <figure class="post-thumb">
+                    <a class="gallery-selector" href="images/post/post-large-2.jpg">
+                      <img src="images/post/post-2.jpg" alt="post image">
+                    </a>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <!-- form like 1 status -->
+            <form>
+              <div class="post-meta">
+                <button class="like-button active">
+                  <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+                  <a>Số Lượng Love</a>
+                </button>
+                <ul class="comment-share-meta">
+                  <li>
+                    <button class="post-comment">
+                      <i class="bi bi-chat-bubble"></i>
+                      <a href="/comment/id">xem các cmt khác</a>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </form>
+
+          </div>
+
+
+          <!-- form bình luận 1 status -->
+          <form class="share-text-box">
+                <textarea name="share" class="share-text-field" placeholder="leave a comment"
+                          id="cmt"></textarea>
+            <button class="btn-share" type="submit">Comment</button>
+          </form>
+
+
+        </div>
+        <!-- post status end -->
+      </div>
+
+      <div class="col-lg-3 order-3">
+        <aside class="widget-area">
+          <!-- widget single item start -->
+          <div class="card widget-item">
+            <h4 class="widget-title">Recent Notifications</h4>
+            <div class="widget-body">
+              <ul class="like-page-list-wrapper">
+                <li class="unorder-list">
+                  <!-- profile picture end -->
+                  <div class="profile-thumb">
+                    <a href="/notification/id-">
+                      <figure class="profile-thumb-small">
+                        <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
+                      </figure>
+                    </a>
+                  </div>
+                  <!-- profile picture end -->
+                  <div class="unorder-list-info">
+                    <h3 class="list-title"><a href="/notification/id-">Thông Báo</a></h3>
+                    <p class="list-subtitle">Thời Gian</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- widget single item end -->
+
+
+          <!-- widget single item start -->
+          <div class="card widget-item">
+            <h4 class="widget-title">Friends You May Know</h4>
+            <div class="widget-body">
+              <ul class="like-page-list-wrapper">
+                <li class="unorder-list">
+                  <!-- profile picture end -->
+                  <div class="profile-thumb">
+                    <a href="#">
+                      <figure class="profile-thumb-small">
+                        <img src="images/profile/profile-small-10.jpg" alt="profile picture">
+                      </figure>
+                    </a>
+                  </div>
+                  <!-- profile picture end -->
+
+                  <div class="unorder-list-info">
+                    <h3 class="list-title"><a href="#">arfim bolt</a></h3>
+                    <p class="list-subtitle"><a href="#">10 mutual</a></p>
+                  </div>
+                  <button class="like-button">
+                    <img class="heart" src="images/icons/heart.png" alt="">
+                    <img class="heart-color" src="images/icons/heart-color.png" alt="">
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- widget single item end -->
+        </aside>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+
+
+

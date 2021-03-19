@@ -8,8 +8,9 @@ export interface User {
   avatar?: any;
   fullname?: any;
   description?: any;
+  address?: any;
   bio?: any;
   imgcover?: any;
   infomodifier?: any;
-  listFriend?: []
+  listFriend?: [];
 }

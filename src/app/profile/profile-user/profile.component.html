@@ -50,8 +50,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="secondary-menu-wrapper bg-white">
-              <div class="page-title-inner" >
-                <h4 class="page-title">{{user.fullname}}</h4>
+              <div class="page-title-inner">
               </div>
               <div class="main-menu-inner header-top-navigation">
                 <nav>
@@ -96,13 +95,13 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-9" >
+          <div class="col-lg-9">
             <div class="about-description">
               <div class="tab-content">
                 <div class="tab-pane fade active show" id="one">
                   <div class="work-zone">
                     <div class="author-desc-title d-flex">
-                      <h6 class="author"><a href="/newfeeds">{{user.username}}</a></h6>
+                      <h6 class="author"><a href="/newfeeds"></a></h6>
                       <div class="post-settings-bar">
                         <span></span>
                         <span></span>
@@ -116,7 +115,22 @@
                         </div>
                       </div>
                     </div>
-                    {{user.bio}}
+                    <div _ngcontent-qtc-c47="" class="card widget-item">
+                      <h4 _ngcontent-qtc-c47="" class="widget-title">{{user.fullname}}</h4>
+                      <div _ngcontent-qtc-c47="" class="widget-body">
+                        <div _ngcontent-qtc-c47="" class="about-author">
+                          <p _ngcontent-qtc-c47="">{{user.bio}}</p>
+                          <ul _ngcontent-qtc-c47="" class="author-into-list">
+                            <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" href="#">
+                            <i _ngcontent-qtc-c47="" class="bi bi-home"></i>{{user.address}}</a>
+                            </li>
+                            <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" >
+                            <i _ngcontent-qtc-c47="" class="bi bi-heart-beat"></i>{{user.description}}</a>
+                          </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -211,7 +225,6 @@
   </span>
 
 
-
   <span *ngIf="guest != undefined">
   <div class="main-wrapper">
     <!-- profile banner area start -->
@@ -253,7 +266,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="secondary-menu-wrapper bg-white">
-              <div class="page-title-inner" >
+              <div class="page-title-inner">
                 <h4 class="page-title">{{guest.fullname}}</h4>
               </div>
               <div class="main-menu-inner header-top-navigation">
@@ -283,7 +296,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-9" >
+          <div class="col-lg-9">
             <div class="about-description">
               <div class="tab-content">
                 <div class="tab-pane fade active show" id="">
@@ -308,3 +321,4 @@
   </div>
   </span>
 </main>
+
