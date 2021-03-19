@@ -7,6 +7,7 @@ import {FriendComponent} from './friendrequest/friend/friend.component';
 import {LoginComponent} from './login/login/login.component';
 import {LogoutComponent} from './login/logout/logout.component';
 import {LoveComponent} from './like/love/love.component';
+import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent, pathMatch: 'full'},
   {path: 'profile/:id', component: ProfileComponent, pathMatch: 'full'},
   {path: 'love', component: LoveComponent, pathMatch: 'full'},
+  {path: 'listfriend', component: ListfriendComponent, pathMatch: 'full'},
   {
     path: 'post',
     component: PostComponent

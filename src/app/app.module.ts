@@ -15,6 +15,7 @@ import { LoveComponent } from './like/love/love.component';
 import { ProfileComponent } from './profile/profile-user/profile.component';
 import {LoginComponent} from './login/login/login.component';
 import {LoveService} from './services/love.service';
+import { ListfriendComponent } from './friendrequest/listfriend/listfriend.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {LoveService} from './services/love.service';
     PostComponent,
     FriendComponent,
     LoveComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListfriendComponent
   ],
   imports: [
     BrowserModule,

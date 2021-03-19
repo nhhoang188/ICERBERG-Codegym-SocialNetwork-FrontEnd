@@ -32,6 +32,9 @@ export class FriendrequestService {
   delete(id : number):Observable<any>{
     return  this.http.delete(API_URL+'/'+id);
   }
+  showListFriend(id:number):Observable<any>{
+    return this.http.get(API_URL+'/listfriend/'+id)
+  }
 
   getAllUser():Observable<any>{
     return this.http.get<any>(API_URL2);
