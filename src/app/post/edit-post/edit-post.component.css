@@ -1,0 +1,11 @@
+#bt-save{
+  margin-top: 10px;
+  display: flex;
+  width: 75px;
+  height: 50px;
+  background: #3fcc8d;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
