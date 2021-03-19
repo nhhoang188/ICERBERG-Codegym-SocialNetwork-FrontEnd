@@ -4,15 +4,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {FriendrequestService} from './services/friendrequest.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './login/logout/logout.component';
+import {PostComponent} from "./post/post.component";
+import { FriendComponent } from './friendrequest/friend/friend.component';
+import { LoveComponent } from './like/love/love.component';
+import { ProfileComponent } from './profile/profile-user/profile.component';
+import {LoginComponent} from './login/login/login.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    LogoutComponent,
+    PostComponent,
+    FriendComponent,
+    LoveComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [FriendrequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
