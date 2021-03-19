@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-// @ts-ignore
 import {Post} from '../model/Post';
 import {Observable} from "rxjs";
 
-const API_URL = `${environment.apiUrl}`
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class PostService {
   }
 
   createStatusPost(post: Post): Observable<Post> {
-    return this.httpClient.post<Post>(API_URL + '/posts', post);
+    return this.httpClient.post<Post>(`${API_URL}/posts`, post);
   }
 
   editStatusPost(id: number, post: Post): Observable<any> {

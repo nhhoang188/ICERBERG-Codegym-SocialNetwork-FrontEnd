@@ -223,6 +223,15 @@
               <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
                           placeholder="Say Something" id="email"></textarea>
+                <div class="form-group col-12">
+                  <input type="file"
+                         id="file"
+                         #userPhoto
+                         (change)="onFileSelected($event)"
+                         name="image"
+                         autocomplete="off"
+                  />
+                </div>
                 <button class="btn-share" type="submit">share</button>
               </form>
             </div>

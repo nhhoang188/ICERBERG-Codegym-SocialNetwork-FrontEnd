@@ -3,6 +3,9 @@ import {Post} from '../../model/Post';
 import {FormControl, FormGroup} from "@angular/forms";
 import {PostService} from "../../services/post.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {finalize} from "rxjs/operators";
+import {Observable} from "rxjs";
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-post',
@@ -20,7 +23,8 @@ export class CreatePostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private storage: AngularFireStorage) {
   }
 
   ngOnInit(): void {
@@ -54,9 +58,42 @@ export class CreatePostComponent implements OnInit {
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
     post.privacy = this.privacy;
+    post.image = this.fb;
+
 
     console.log('Date' + post.createDate);
 
     return post;
+  }
+
+  product?: any;
+  selectedFile?: File;
+  fb?:any;
+  downloadURL?: Observable<string>;
+
+  onFileSelected(event?:any) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
   }
 }
