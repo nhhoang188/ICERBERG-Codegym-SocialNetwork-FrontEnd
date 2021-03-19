@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent, pathMatch: 'full'},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full'},
   {path: 'profile/:id', component: ProfileComponent, pathMatch: 'full'},
   {
