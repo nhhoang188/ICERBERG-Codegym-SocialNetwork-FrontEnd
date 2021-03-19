@@ -13,11 +13,11 @@ import { LogoutComponent } from './logout/logout.component';
 import {PostComponent} from "./post/post.component";
 import { FriendComponent } from './friendrequest/friend/friend.component';
 import { LoveComponent } from './like/love/love.component';
+import {LoveService} from './services/love.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent,
     HomeComponent,
     LogoutComponent,
@@ -33,7 +33,7 @@ import { LoveComponent } from './like/love/love.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [FriendrequestService],
+  providers: [FriendrequestService,LoveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

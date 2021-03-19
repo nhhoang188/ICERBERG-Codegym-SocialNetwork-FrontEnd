@@ -2,6 +2,7 @@
   <div>My ID: <input type="text" [(ngModel)]="id" (change)="checkFriends(id,id2)"></div>
   <div>Friend : <input  type="text" [(ngModel)]="id2" (change)="checkFriends(id,id2)" ></div>
 
+  {{check1}}
   <button *ngIf="id==id2" class="dropbtn"> My Self</button>
   <button *ngIf="check1==0 && id!=id2" class="dropbtn" (click)="send()"> + Add Friend</button>
 

@@ -6,6 +6,7 @@ import {PostComponent} from "./post/post.component";
 import {HomeComponent} from './home/home.component';
 import {LogoutComponent} from './logout/logout.component';
 import {FriendComponent} from './friendrequest/friend/friend.component';
+import {LoveComponent} from './like/love/love.component';
 
 const routes: Routes = [
   {path: 'friend' , component: FriendComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full'},
+  {path: 'love', component: LoveComponent, pathMatch: 'full'},
   {
     path: 'post',
     component: PostComponent

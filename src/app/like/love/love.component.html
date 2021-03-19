@@ -1,7 +1,11 @@
 <p>love works!</p>
 
-<div>
-  <div>My ID: <input type="text" [(ngModel)]="id" ></div>
-  <div>Friend : <input  type="text" [(ngModel)]="id2"  ></div>
+<div class="container">
+  <div>My ID: <input type="text" [(ngModel)]="id_user" (change)="checkLiked(id_post,id_user)"></div>
+  <div>Id_Post : <input  type="text" [(ngModel)]="id_post" (change)="checkLiked(id_post,id_user)" ></div>
+  <button class="like-button">
+    <img *ngIf="!checkLike" class="heart" src="assets/images/icons/heart.png" alt="">
+    <img *ngIf="checkLike"class="heart-color" src="assets/images/icons/heart-color.png" alt="">
+  </button>
 
 </div>
