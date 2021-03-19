@@ -19,8 +19,10 @@ export class LoveComponent implements OnInit {
   id_post: any;
   checkLike: any;
   love: Love={}
+  loves: any;
   post: Post={}
   user: User={}
+  users: any;
   id_love: any;
   count_like: any=0;
   constructor(private myService: LoveService, private userService: UserService, private postService: PostService) { }
@@ -32,6 +34,7 @@ export class LoveComponent implements OnInit {
   checkLiked(id_post: number,id_user:number){
     this.myService.getLike(id_post,id_user).subscribe(value => {
       this.countLike(id_post)
+      this.getUserLikePost(id_post)
       if(value==null){
         this.checkLike=false;
       }else {
@@ -66,6 +69,12 @@ export class LoveComponent implements OnInit {
   countLike(id_post: number){
     this.myService.countLike(id_post).subscribe(value => {
       this.count_like=value;
+    },error => console.log(error))
+  }
+  getUserLikePost(id_post: number){
+    this.myService.getAllByPost(id_post).subscribe(value => {
+      this.loves=value;
+      console.log(value);
     },error => console.log(error))
   }
 

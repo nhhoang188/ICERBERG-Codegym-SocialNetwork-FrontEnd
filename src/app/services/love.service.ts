@@ -38,5 +38,8 @@ export class LoveService {
   countLike(id : number):Observable<any>{
     return  this.http.get(API_URL+'/count/'+id);
   }
+  getAllByPost(id: number):Observable<any>{
+    return this.http.get(API_URL+'/list/'+id);
+  }
 
 }
