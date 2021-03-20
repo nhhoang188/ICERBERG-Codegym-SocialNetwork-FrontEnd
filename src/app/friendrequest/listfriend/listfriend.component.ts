@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {FriendRequest} from '../../model/FriendRequest';
 import {FriendrequestService} from '../../services/friendrequest.service';
+import {FriendRequest} from '../../model/FriendRequest';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-friend',
-  templateUrl: './friend.component.html',
-  styleUrls: ['./friend.component.css']
+  selector: 'app-listfriend',
+  templateUrl: './listfriend.component.html',
+  styleUrls: ['./listfriend.component.css']
 })
-export class FriendComponent implements OnInit {
+export class ListfriendComponent implements OnInit {
+  users: any;
+  // id_user: any;
 
   request: any;
   requests: any;
-  users: any;
+  // users: any;
   user1: any;
   user: any;
   id = 1;
@@ -21,14 +23,7 @@ export class FriendComponent implements OnInit {
   request1: FriendRequest={};
 
   check1?: number;
-  constructor(private myService: FriendrequestService,
-              private router: Router) {
-    this.id2=this.id;
-  }
-  ngOnInit(): void {
-    this.checkFriends(this.id,this.id2)
 
-  }
 
   getAll(){
     this.myService.getAll().subscribe(value => {
@@ -109,5 +104,29 @@ export class FriendComponent implements OnInit {
 
 
 
+
+
+  //
+  // constructor(private myService: FriendrequestService,
+  //             private router: Router) {
+  //   this.id2=this.id;
+  // }
+  // ngOnInit(): void {
+  //   this.checkFriends(this.id,this.id2)
+  //
+  // }
+
+  constructor(private myService: FriendrequestService,private friendService: FriendrequestService) { }
+
+  ngOnInit(): void {
+    this.getAllFriend(this.id)
+    this.checkFriends(this.id,this.id2)
+  }
+  getAllFriend(id_user : number){
+    this.friendService.showListFriend(id_user).subscribe(value => {
+      this.users=value
+      console.log(value)
+    },error => console.log(error))
+  }
 
 }
