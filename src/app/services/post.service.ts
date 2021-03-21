@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {Post} from '../model/Post';
 import {Observable} from 'rxjs';
 
-const API_URL = `${environment.apiUrl}`
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,9 @@ export class PostService {
 
   findPostById(id: number): Observable<Post> {
     return this.httpClient.get<Post>(`${API_URL}/posts/${id}`);
+  }
+
+  findPostByUserId(id: number): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(`${API_URL}/posts/user/${id}`);
   }
 }

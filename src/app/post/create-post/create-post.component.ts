@@ -37,7 +37,7 @@ export class CreatePostComponent implements OnInit {
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
       this.postStatusForm.reset
-      this.router.navigate(['/home']);
+      window.location.reload();
     }, error => {
       console.log(error);
     });
