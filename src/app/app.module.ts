@@ -17,6 +17,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FriendrequestService} from './services/friendrequest.service';
 import {LoveService} from './services/love.service';
 import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
+import { MyWallComponent } from './profile/my-wall/my-wall.component';
+import { MenuTimelineComponent } from './layout/menu-timeline/menu-timeline.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {ListfriendComponent} from './friendrequest/listfriend/listfriend.compone
     FriendComponent,
     LoveComponent,
     ProfileComponent,
-    ListfriendComponent
+    ListfriendComponent,
+    MyWallComponent,
+    MenuTimelineComponent
   ],
   imports: [
     BrowserModule,
