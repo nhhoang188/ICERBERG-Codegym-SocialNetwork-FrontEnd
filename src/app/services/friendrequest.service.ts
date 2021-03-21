@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FriendRequest} from '../model/FriendRequest';
+import {User} from '../model/User';
 
 const API_URL=`${environment.apiUrl}/friendrequests`
 
@@ -42,7 +43,7 @@ export class FriendrequestService {
   getFriend(id1:number,id2:number):Observable<FriendRequest>{
     return this.http.get(API_URL+'/check?id='+id1+'&id2='+id2)
   }
-  getUserById(id : number):Observable<any>{
+  getUserById(id : number):Observable<User>{
     return  this.http.get(API_URL2+'/'+id);
   }
 }

@@ -21,6 +21,7 @@ export class CreatePostComponent implements OnInit {
   constructor(private postService: PostService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
+    this.userId= localStorage.getItem("ID");
   }
 
   ngOnInit(): void {
@@ -34,9 +35,9 @@ export class CreatePostComponent implements OnInit {
     let status = this.createPost();
 
     this.postService.createStatusPost(status).subscribe(result => {
-      alert('success!!!');
+      alert('Create Post Succsess');
       this.postStatusForm.reset
-      this.router.navigate(['/create-post']);
+      this.router.navigate(['/home']);
     }, error => {
       console.log(error);
     });
@@ -50,7 +51,7 @@ export class CreatePostComponent implements OnInit {
 
   createPost(): Post {
     let post: Post = <Post>{};
-    post.userId = this.userId = 1;
+    post.userId = this.userId;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
     post.privacy = this.privacy;
