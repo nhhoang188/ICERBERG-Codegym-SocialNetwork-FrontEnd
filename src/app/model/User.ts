@@ -12,5 +12,8 @@ export interface User {
   bio?: any;
   imgcover?: any;
   infomodifier?: any;
+  accessmodifier?: any;
+  roles?: any;
+  userStatus?: any;
   listFriend?: [];
 }

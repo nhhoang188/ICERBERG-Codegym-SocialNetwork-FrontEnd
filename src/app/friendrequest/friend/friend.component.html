@@ -1,19 +1,13 @@
 <div class="container">
-  <div>My ID: <input type="text" [(ngModel)]="id" (ngModelChange)="checkFriends(id,id2)"></div>
-  <div>Friend : <input  type="text" [(ngModel)]="id2" (ngModelChange)="checkFriends(id,id2)" ></div>
-
-  {{check1}}
-  <button *ngIf="id==id2" class="dropbtn"> My Self</button>
-  <button *ngIf="check1==0 && id!=id2" class="dropbtn" (click)="send()"> + Add Friend</button>
+  <button *ngIf="check1==0 && id!=id2" class="dropbtn" (click)="send()"> +Add Friend</button>
 
   <div class="dropdown" *ngIf="check1==1">
-    <button class="dropbtn">Ban be</button>
+    <button class="dropbtn">Friends</button>
     <div class="dropdown-content">
-      <a (click)="unfriend(reques_id)">Huy ket ban</a>
+      <a (click)="unfriend(reques_id)">Unfriend</a>
     </div>
   </div>
-  <button *ngIf="check1==2" class="dropbtn">Cho tra loi</button>
-  <button *ngIf="check1==3" class="dropbtn" (click)="accept(reques_id)">Chap nhan loi moi ket ban</button>
-  <button *ngIf="check1==3" class="decline dropbtn" (click)="unfriend(reques_id)">Tu choi</button>
-
+  <button *ngIf="check1==2" class="dropbtn">Cancel Request</button>
+  <button *ngIf="check1==3" class="dropbtn" (click)="accept(reques_id)">Confirm</button>
+  <button *ngIf="check1==3" class="decline dropbtn" (click)="unfriend(reques_id)">Delete Request</button>
 </div>
