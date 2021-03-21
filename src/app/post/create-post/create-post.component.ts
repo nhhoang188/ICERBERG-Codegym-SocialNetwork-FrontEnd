@@ -60,13 +60,11 @@ export class CreatePostComponent implements OnInit {
     post.privacy = this.privacy;
     post.image = this.fb;
 
-
     console.log('Date' + post.createDate);
 
     return post;
   }
 
-  product?: any;
   selectedFile?: File;
   fb?:any;
   downloadURL?: Observable<string>;

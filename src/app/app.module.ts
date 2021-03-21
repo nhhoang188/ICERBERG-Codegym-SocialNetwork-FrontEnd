@@ -13,6 +13,9 @@ import { ProfileComponent } from './profile/profile-user/profile.component';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
+import { ListUserAdminComponent } from './admin/list-user-admin/list-user-admin.component';
+import {FriendComponent} from "./friendrequest/friend/friend.component";
+import { ListPostUserComponent } from './list-post-user/list-post-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {environment} from "../environments/environment";
     HomeComponent,
     LogoutComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    ListUserAdminComponent,
+    FriendComponent,
+    ListPostUserComponent
   ],
   imports: [
     BrowserModule,

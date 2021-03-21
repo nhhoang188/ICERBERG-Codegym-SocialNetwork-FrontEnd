@@ -6,6 +6,7 @@ import {LoginComponent} from './login/login/login.component';
 import {HomeComponent} from './home/home.component';
 import {LogoutComponent} from './login/logout/logout.component';
 import {ProfileComponent} from './profile/profile-user/profile.component';
+import {ListUserAdminComponent} from "./admin/list-user-admin/list-user-admin.component";
 
 const routes: Routes = [
   {
@@ -24,7 +25,12 @@ const routes: Routes = [
   {
     path: 'edit-post/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'admin/users',
+    component: ListUserAdminComponent
   }
+
 ];
 
 @NgModule({

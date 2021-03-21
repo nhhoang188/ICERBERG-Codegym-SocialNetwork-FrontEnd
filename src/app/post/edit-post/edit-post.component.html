@@ -308,6 +308,15 @@
                   </a>
                 </figure>
               </div>
+              <div class="form-group col-12">
+                <input type="file"
+                       id="file"
+                       #userPhoto
+                       (change)="onFileSelected($event)"
+                       name="image"
+                       autocomplete="off"
+                />
+              </div>
               <div id="place-save">
                 <button type="submit" id="bt-save">Save</button>
               </div>
