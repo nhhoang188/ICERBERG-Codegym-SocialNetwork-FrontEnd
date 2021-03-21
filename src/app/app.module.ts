@@ -19,6 +19,7 @@ import {LoveService} from './services/love.service';
 import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
 import { MyWallComponent } from './profile/my-wall/my-wall.component';
 import { MenuTimelineComponent } from './layout/menu-timeline/menu-timeline.component';
+import { MyPostComponent } from './post/my-post/my-post.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MenuTimelineComponent } from './layout/menu-timeline/menu-timeline.comp
     ProfileComponent,
     ListfriendComponent,
     MyWallComponent,
-    MenuTimelineComponent
+    MenuTimelineComponent,
+    MyPostComponent
   ],
   imports: [
     BrowserModule,

@@ -10,9 +10,11 @@ import {ListfriendComponent} from './friendrequest/listfriend/listfriend.compone
 import {CreatePostComponent} from './post/create-post/create-post.component';
 import {EditPostComponent} from './post/edit-post/edit-post.component';
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
+import {MyPostComponent} from './post/my-post/my-post.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
+  {path: 'mypost', component: MyPostComponent},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent, pathMatch: 'full'},
   {path: '', component: HomeComponent, pathMatch: 'full'},
