@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../model/User';
 import {UserService} from '../../services/user.service';
 import {PostService} from '../../services/post.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-post',
@@ -14,7 +15,8 @@ export class MyPostComponent implements OnInit {
   userId: any;
 
   constructor(private userSv: UserService,
-              private postSv: PostService) {
+              private postSv: PostService,
+              private route: Router) {
     this.userId =localStorage.getItem('ID');
     this.userSv.getById(this.userId).subscribe(value => {
       this.user = value;
@@ -27,5 +29,11 @@ export class MyPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ deletePost(id?: any){
+     this.postSv.deletePostById(id).subscribe(() => {
+       alert('Delete Ok!');
+       window.location.reload();
+     });
+ }
 
 }

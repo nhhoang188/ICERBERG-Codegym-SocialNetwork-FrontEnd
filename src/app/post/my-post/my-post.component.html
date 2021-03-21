@@ -22,10 +22,10 @@
       <div class="post-settings arrow-shape">
         <ul>
           <li>
-            <button>edit post</button>
+            <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>
           </li>
           <li>
-            <button>do something 1</button>
+            <button (click)="deletePost(p.postId)" >delete post</button>
           </li>
           <li>
             <button>do something 2</button>
@@ -42,7 +42,7 @@
     <div class="post-thumb-gallery img-gallery">
       <div class="row no-gutters">
         <div class="col-8">
-          <figure class="post-thumb">
+          <figure class="post-thumb" *ngIf="p.image !== null">
             <a class="gallery-selector" href="{{p.image}}">
               <img src="{{p.image}}" alt="post image">
             </a>

@@ -30,4 +30,8 @@ export class PostService {
   findPostByUserId(id: number): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`${API_URL}/posts/user/${id}`);
   }
+
+  deletePostById(id: number): Observable<Post> {
+    return this.httpClient.delete<Post>(`${API_URL}/posts/${id}`);
+  }
 }

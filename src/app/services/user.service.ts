@@ -21,8 +21,8 @@ export class UserService {
     return this.httpClient.post<User>(API_URl + `/login`, user);
   }
 
-  getAll(): Observable<any> {
-    return this.httpClient.get<any>(API_URl + '/users');
+  getAll(): Observable<User> {
+    return this.httpClient.get<User>(API_URl + '/admin/users');
   }
 
   getById(id: any): Observable<User> {

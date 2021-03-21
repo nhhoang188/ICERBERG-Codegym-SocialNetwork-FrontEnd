@@ -2,5 +2,14 @@
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
                           placeholder="Say Something" id="email"></textarea>
   <button class="btn-share" type="submit">share</button>
-</form>
 
+  <div class="form-group col-12">
+    <input type="file"
+           id="file"
+           #userPhoto
+           (change)="onFileSelected($event)"
+           name="image"
+           autocomplete="off"
+    />
+  </div>
+</form>
