@@ -13,7 +13,7 @@
     />
   </div>
 
-  <div>
+  <div *ngIf="fb==null">
     <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
       <div class="progress" [ngStyle]="{
   backgroundColor: progressColor,

@@ -21,7 +21,7 @@ import {LoveService} from './services/love.service';
 import {environment} from '../environments/environment';
 import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
-import { DeletePostComponent } from './post/delete-post/delete-post.component';
+import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { DeletePostComponent } from './post/delete-post/delete-post.component';
     MyWallComponent,
     MenuTimelineComponent,
     MyPostComponent,
-    DeletePostComponent,
     FriendSimilarComponent
   ],
   imports: [
