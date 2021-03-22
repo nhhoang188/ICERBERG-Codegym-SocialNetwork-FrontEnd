@@ -17,23 +17,27 @@ export class MyPostComponent implements OnInit {
   constructor(private userSv: UserService,
               private postSv: PostService,
               private route: Router) {
-    this.userId =localStorage.getItem('ID');
+    this.userId = localStorage.getItem('ID');
     this.userSv.getById(this.userId).subscribe(value => {
       this.user = value;
     });
-    this.postSv.findPostByUserId(this.userId).subscribe(value => {
-      this.listPost = value;
-    });
+    this.getPostByUserId();
   }
 
   ngOnInit(): void {
   }
 
- deletePost(id?: any){
-     this.postSv.deletePostById(id).subscribe(() => {
-       alert('Delete Ok!');
-       window.location.reload();
-     });
- }
+
+  getPostByUserId(){
+    this.postSv.findPostByUserId(this.userId).subscribe(value => {
+      this.listPost = value;
+    });
+  }
+  deletePost(id?: any) {
+    this.postSv.deletePostById(id).subscribe(() => {
+      alert('Delete Ok!');
+     this.getPostByUserId();
+    });
+  }
 
 }

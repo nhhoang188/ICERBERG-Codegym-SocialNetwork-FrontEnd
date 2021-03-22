@@ -37,7 +37,6 @@ export class EditPostComponent implements OnInit {
     this.idUserCurrent = localStorage.getItem('ID');
     this.userSv.getById(this.idUserCurrent).subscribe(value => {
       this.userCurrent = value;
-      console.log("user hiện tại= " +value)
     });
 
   }
