@@ -50,10 +50,13 @@ export class LoginComponent implements OnInit {
       email: this.createForm.value.email,
       birthDay: this.createForm.value.birthDay
     };
-    console.log(user1);
     this.usersv.createUser(user1).subscribe(() => {
       alert('Create Acount Sucsses!');
       this.router.navigate(['login']);
+    }, error1 => {
+      alert(`Please fill in the correct information!!!`)
+      console.log(error1);
+      this.loading = false;
     });
   }
 
@@ -78,7 +81,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']);
         },
         error => {
-          alert('Sai Mật Khẩu!');
+          alert(`you haven't created an account or your password is wrong!`);
           console.log(error);
           this.loading = false;
         });
