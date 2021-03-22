@@ -13,6 +13,7 @@ import { LoveComponent } from './like/love/love.component';
 import { ProfileComponent } from './profile/profile-user/profile.component';
 import {LoginComponent} from './login/login/login.component';
 import { ListfriendComponent } from './friendrequest/listfriend/listfriend.component';
+import { MyListPostComponent } from './my-list-post/my-list-post.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListfriendComponent } from './friendrequest/listfriend/listfriend.compo
     FriendComponent,
     LoveComponent,
     ProfileComponent,
-    ListfriendComponent
+    ListfriendComponent,
+    MyListPostComponent
   ],
   imports: [
     BrowserModule,
