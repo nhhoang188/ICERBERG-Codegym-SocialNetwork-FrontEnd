@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ID', data.id);
           localStorage.setItem('infomodifier', data.infomodifier);
           this.router.navigate(['home']);
+          console.log(data.username);
         },
         error => {
           alert(`you haven't created an account or your password is wrong!`);

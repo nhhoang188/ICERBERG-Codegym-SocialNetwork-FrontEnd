@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../../model/Post';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PostService} from '../../services/post.service';
@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-post',
@@ -18,8 +20,14 @@ export class CreatePostComponent implements OnInit {
   date: any;
   privacy = 'public';
 
+  @Input() backgroundColor = '#D9D9D9';
+  @Input() progressColor = '#4CAF50';
+  @Input() width: number = 0;
+
   // fake userId
   userId: any;
+
+
 
   constructor(private postService: PostService,
               private router: Router,
@@ -33,7 +41,6 @@ export class CreatePostComponent implements OnInit {
     this.postStatusForm = new FormGroup({
       content: new FormControl('')
     });
-
   }
 
   onPost() {
@@ -46,6 +53,17 @@ export class CreatePostComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  async setIntervalProgress() {
+    this.timeOut = true;
+    var loading = setInterval(() => {
+      this.width = +this.width + 5;
+      console.log(this.width);
+      if (this.width > 75) {
+        clearInterval(loading);
+      }
+    }, 100);
   }
 
   // @ts-ignore
@@ -67,6 +85,7 @@ export class CreatePostComponent implements OnInit {
   selectedFile?: File;
   fb?: any;
   downloadURL?: Observable<string>;
+  timeOut?: boolean = false;
 
   onFileSelected(event?: any) {
     var n = Date.now();
@@ -90,7 +109,13 @@ export class CreatePostComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
+          this.setIntervalProgress();
         }
       });
+
   }
+
+
+
+
 }

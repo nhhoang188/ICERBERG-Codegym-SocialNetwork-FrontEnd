@@ -1,7 +1,7 @@
 <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
                           placeholder="Say Something" id="email"></textarea>
-  <button class="btn-share" type="submit">share</button>
+  <button class="btn-share" type="submit" [disabled]="timeOut">share</button>
 
   <div class="form-group col-12">
     <input type="file"
@@ -12,4 +12,17 @@
            autocomplete="off"
     />
   </div>
+
+  <div>
+    <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
+      <div class="progress" [ngStyle]="{
+  backgroundColor: progressColor,
+  width: width + '%'
+  }">
+      </div>
+    </div>
+  </div>
+
+
+
 </form>

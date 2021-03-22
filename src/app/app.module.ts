@@ -38,7 +38,7 @@ import { DeletePostComponent } from './post/delete-post/delete-post.component';
     MyWallComponent,
     MenuTimelineComponent,
     MyPostComponent,
-    DeletePostComponent
+    DeletePostComponent,
   ],
   imports: [
     BrowserModule,
