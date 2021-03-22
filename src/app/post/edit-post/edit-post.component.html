@@ -23,6 +23,23 @@
 
 
             </div>
+
+            <div class="post-settings-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="post-settings arrow-shape">
+                <ul>
+                  <li>
+                    <button>delete picture</button>
+                  </li>
+                  <li>
+                    <button>change privacy</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             <!-- post title start -->
             <div *ngIf="user.id !== userCurrent.id">
               <div class="post-content" >
@@ -34,7 +51,7 @@
                     <div class="col-8">
                       <figure class="post-thumb" *ngIf="post.image !== null">
                         <a class="gallery-selector" href="{{post.image}}">
-                          <img src="{{post.image}}" alt="post image">
+                          <img src="{{post.image}}" alt="post image" width="300px" height="300px">
                         </a>
                       </figure>
                     </div>

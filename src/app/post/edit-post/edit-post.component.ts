@@ -81,6 +81,19 @@ export class EditPostComponent implements OnInit {
     this.editForm.get('contents')?.setValue(post.content);
   }
 
+  deleteImage(){
+    this.post.content = this.editForm.get('contents')?.value;
+    console.log(this.post);
+    this.postService.editImagePostStatus(this.idPost, this.post).subscribe(
+      result => {
+        console.log('success!');
+        this.route.navigate([`/profile/${this.idUserCurrent}`]);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   onSave() {
     this.post.content = this.editForm.get('contents')?.value;
     this.post.image = this.fb;
