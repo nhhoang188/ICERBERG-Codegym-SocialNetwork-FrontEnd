@@ -1,0 +1,36 @@
+
+<!--test-->
+<h1> LIST DANH Ban chung</h1>
+<div>My ID: <input type="text" [(ngModel)]="id_myUser" (ngModelChange)="getAll(id_myUser,id_myFriend)"></div>
+<div>MyFriend ID: <input type="text" [(ngModel)]="id_myFriend" (ngModelChange)="getAll(id_myUser,id_myFriend)"></div>
+
+
+<!--code list friend-->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="content-box friends-zone" >
+        <div class="row " style="position: relative">
+
+          <div class="col-lg-3 col-sm-6 relative" *ngFor="let user of users">
+            {{user.id}}
+            <div class="friend-list-view">
+              <div class="profile-thumb">
+                <a href="#">
+                  <figure class="profile-thumb-middle">
+                    <img [src]="user.imgcover" alt="profile picture">
+                  </figure>
+                </a>
+              </div>
+              <div class="posted-author">
+                <h6 class="author"><a href="assets/profile.html">{{user.fullname}}</a></h6>
+                <p class="add-frnd">My Friend</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end code-->

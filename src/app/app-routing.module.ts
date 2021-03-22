@@ -11,6 +11,7 @@ import {FriendComponent} from './friendrequest/friend/friend.component';
 import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
+import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'profile/:id', component: MyWallComponent, pathMatch: 'full'},
   {path: 'love', component: LoveComponent, pathMatch: 'full'},
   {path: 'listfriend', component: ListfriendComponent, pathMatch: 'full'},
+  {path: 'similar', component: FriendSimilarComponent, pathMatch: 'full'},
   {
     path: 'create-post',
     component: CreatePostComponent
