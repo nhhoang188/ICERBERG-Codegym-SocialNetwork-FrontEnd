@@ -1,19 +1,19 @@
-<div class="card">
+<div class="card" *ngFor="let p of listPost">
   <div class="post-title d-flex align-items-center">
 
     <!-- profile picture end -->
     <div class="profile-thumb">
-      <a href="/profile/id-cua-user">
+      <a href="/profile/{{user.id}}">
         <figure class="profile-thumb-middle">
-          <img src="ảnh-đại-diện" alt="profile picture">
+          <img src="{{user.avatar}}" alt="profile picture">
         </figure>
       </a>
     </div>
     <!-- profile picture end -->
 
     <div class="posted-author">
-      <h6 class="author"><a href="/profile/id-cua-user">Tên Người Đăng</a></h6>
-      <span class="post-time">Thời Gian Đăng</span>
+      <h6 class="author"><a href="/profile/{{user.id}}"> {{user.fullname}}</a></h6>
+      <span class="post-time">{{p.createDate}}</span>
     </div>
     <div class="post-settings-bar">
       <span></span>
@@ -22,10 +22,10 @@
       <div class="post-settings arrow-shape">
         <ul>
           <li>
-            <button>edit post</button>
+            <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>
           </li>
           <li>
-            <button>do something 1</button>
+            <button (click)="deletePost(p.postId)" >delete post</button>
           </li>
           <li>
             <button>do something 2</button>
@@ -37,14 +37,14 @@
   <!-- post title start -->
   <div class="post-content">
     <p class="post-desc">
-      Sờ Ta Tút
+      {{p.content}}
     </p>
     <div class="post-thumb-gallery img-gallery">
       <div class="row no-gutters">
         <div class="col-8">
-          <figure class="post-thumb">
-            <a class="gallery-selector" href="images/post/post-large-2.jpg">
-              <img src="images/post/post-2.jpg" alt="post image">
+          <figure class="post-thumb" *ngIf="p.image !== null">
+            <a class="gallery-selector" href="{{p.image}}">
+              <img src="{{p.image}}" alt="post image">
             </a>
           </figure>
         </div>

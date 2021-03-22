@@ -3,5 +3,6 @@ export interface Post {
   userId?: number,
   createDate?: Date,
   privacy?: string,
-  content?: string
+  content?: string,
+  image?: string
 }

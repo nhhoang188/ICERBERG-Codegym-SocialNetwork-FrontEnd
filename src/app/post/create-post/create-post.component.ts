@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../../model/Post';
-import {FormControl, FormGroup} from "@angular/forms";
-import {PostService} from "../../services/post.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup} from '@angular/forms';
+import {PostService} from '../../services/post.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {Observable} from 'rxjs';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-post',
@@ -20,24 +23,26 @@ export class CreatePostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
-    this.userId= localStorage.getItem("ID");
+              private activatedRoute: ActivatedRoute,
+              private storage: AngularFireStorage) {
+    this.userId = localStorage.getItem('ID');
   }
+
 
   ngOnInit(): void {
     this.postStatusForm = new FormGroup({
       content: new FormControl('')
-    })
+    });
 
   }
 
   onPost() {
     let status = this.createPost();
-
+     console.log("bai Post"  + "" + status)
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
-      this.postStatusForm.reset
-      this.router.navigate(['/home']);
+      this.postStatusForm.reset;
+      window.location.reload();
     }, error => {
       console.log(error);
     });
@@ -50,14 +55,42 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post>{};
+    let post: Post = <Post> {};
     post.userId = this.userId;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
     post.privacy = this.privacy;
-
-    console.log('Date' + post.createDate);
-
+    post.image = this.fb;
     return post;
+  }
+
+  selectedFile?: File;
+  fb?: any;
+  downloadURL?: Observable<string>;
+
+  onFileSelected(event?: any) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
   }
 }
