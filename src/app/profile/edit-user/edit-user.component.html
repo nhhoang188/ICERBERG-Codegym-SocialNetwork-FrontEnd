@@ -1,0 +1,173 @@
+<main>
+  <span>
+    <div class="main-wrapper">
+    <!-- profile banner area start -->
+    <div *ngIf="fb == null" class="profile-banner-large bg-img"
+         style="background-image: url({{user.imgcover}});">
+      <label style="color: red" for="inputGroupFile02">Change Cover</label>
+       <div class="form-group col-12">
+                      <input type="file"
+                             (change)="onFileSelected($event)"
+                             name="image"
+                             autocomplete="off" class="custom-file-input" id="inputGroupFile02"
+                      />
+       </div>
+
+    </div>
+      <!-- profile menu area start -->
+
+
+      <!-- profile menu area end -->
+        <div class="profile-menu-area bg-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-3">
+          <div class="profile-picture-box">
+            <figure class="profile-picture">
+                <img src="{{user.avatar}}" alt="profile picture">
+                 <div class="form-group col-12">
+                      <input type="file"
+                             (change)="onFileSelectedAvatar($event)"
+                             name="image"
+                             autocomplete="off" class="custom-file-input" id="inputGroupFile01"
+                      />
+                    <label for="inputGroupFile01"> Change Avatar</label>
+                  </div>
+            </figure>
+            <div class="center">
+              <h4 class="posted-author"><a>{{user.fullname}}</a></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 offset-lg-1">
+          <div class="profile-menu-wrapper">
+            <div class="main-menu-inner header-top-navigation">
+              <nav>
+                <ul class="main-menu">
+                  <li class="active"><a routerLink="/home">timeline</a></li>
+                  <li><a routerLink="/profile/{{user.id}}/about">about</a></li>
+                  <li><a routerLink="/friend/{{user.id}}">friends</a></li>
+                  <li><app-friend></app-friend></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 d-none d-md-block">
+          <div class="profile-edit-panel">
+            <div class="post-settings-bar">
+              <a style="color: whitesmoke" class="edit-btn">Acount</a>
+              <div class="post-settings arrow-shape">
+                <ul>
+                  <li>
+                    <button>edit profile</button>
+                  </li>
+                  <li>
+                    <button routerLink="/logout">logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="about-author-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card widget-item">
+              <div class="about-me">
+               Chỗ Này Để Notification
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="about-description">
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="one">
+                  <div class="work-zone">
+                   <form class="signup-inner--form" [formGroup]="updateForm" (ngSubmit)="updateAcount()">
+  <div class="row">
+
+    <div class="col-12">
+      Full Name
+      <input type="text" formControlName="fullname" class="single-field" placeholder="Full Name">
+      <div
+        *ngIf="updateForm.get('fullname').invalid && updateForm.get('fullname').touched">
+        <div class="alert alert-danger mt-1" role="alert"
+             *ngIf="updateForm.get('fullname').errors.required">
+          Tên Không Được Để Trống!
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      Phone
+      <input type="tel" formControlName="phone" class="single-field" placeholder="Phone">
+      <div *ngIf="updateForm.get('phone').invalid && updateForm.get('phone').touched">
+        <div class="alert alert-danger mt-1" role="alert"
+             *ngIf="updateForm.get('phone').errors.minlength">
+          Số Điện Thoại Chưa Đúng!
+        </div>
+        <div class="alert alert-danger mt-1" role="alert"
+             *ngIf="updateForm.get('phone').errors.required">
+          Nhập Số Điện Thoại!
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      birthDay
+      <input type="date" formControlName="birthDay" class="single-field" placeholder="Birth Day">
+    </div>
+    <div class="col-12">
+      Description
+      <input type="text" formControlName="description" name="description" id="description" class="single-field"
+             placeholder="Description">
+    </div>
+    <div class="col-12">
+      Hobby
+      <input type="text" formControlName="bio" name="bio" id="bio" class="single-field"
+             placeholder="Hobby">
+    </div>
+    <div class="col-12">
+       Password
+      <input type="password" formControlName="password" name="password" id="password"
+             class="single-field" placeholder="Password">
+      <div *ngIf="updateForm.get('password').invalid && updateForm.get('password').touched">
+        <div class="alert alert-danger mt-1" role="alert"
+             *ngIf="updateForm.get('password').errors.minlength">
+          Mật khẩu từ 6-12 kí tự!
+        </div>
+        <div class="alert alert-danger mt-1" role="alert"
+             *ngIf="updateForm.get('password').errors.required">
+          Nhập vào mật khẩu!
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      Confirm Password
+      <input type="password" name="confirm_password" id="confirm_password" class="single-field"
+             placeholder="Confirm Password">
+    </div>
+
+    <div class="col-12">
+      <button class="submit-btn">Update Info</button>
+    </div>
+  </div>
+</form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </span>
+
+
+</main>
+
