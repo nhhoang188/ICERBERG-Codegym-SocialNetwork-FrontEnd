@@ -22,6 +22,7 @@ import {environment} from '../environments/environment';
 import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import { DeletePostComponent } from './post/delete-post/delete-post.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DeletePostComponent } from './post/delete-post/delete-post.component';
     MyWallComponent,
     MenuTimelineComponent,
     MyPostComponent,
-    DeletePostComponent
+    DeletePostComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
