@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommentService} from "../services/comment.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -13,18 +13,28 @@ export class CommentComponent implements OnInit {
   formComment = new FormGroup(
     {content: new FormControl('')}
   )
+  postId = 2;
   unknownId: number = 0;
   content: string = '';
   // @ts-ignore
   comments: any
+  data: any = {
+    messeger: "no"
+  }
+  status = "";
+  check: boolean = true;
+  count = 0;
+
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private commentService: CommentService) {
+    this.displayAllComment(this.postId);
   }
 
   ngOnInit(): void {
     this.creatCommentForm();
+
   }
 
 
@@ -50,6 +60,17 @@ export class CommentComponent implements OnInit {
     }
     this.commentService.createComment(comment).subscribe(
       result => {
+        this.displayAllComment(this.postId);
+        console.log('result', result)
+        if (JSON.stringify(result) == JSON.stringify(this.data)) {
+
+          this.status = 'KO CHO COMMENT';
+          this.check = false;
+          console.log('check', this.check)
+        } else {
+          this.check = true;
+          console.log('checkduoi', this.check)
+        }
       }, error => {
         console.log(error);
       }
@@ -60,7 +81,9 @@ export class CommentComponent implements OnInit {
   displayAllComment(postId: number) {
     this.commentService.findAllCommentByPostId(postId).subscribe(
       result => {
+        this.count = result.length;
         this.comments = result;
+
         console.log(this.comments);
       }, error => {
         console.log(error);
