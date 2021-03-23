@@ -25,7 +25,7 @@
             <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>
           </li>
           <li>
-            <button (click)="deletePost(p.postId)" >delete post</button>
+            <button (click)="deletePost(p.postId)">delete post</button>
           </li>
           <li>
             <button>do something 2</button>
@@ -50,23 +50,11 @@
         </div>
       </div>
     </div>
+
+
     <!-- form like 1 status -->
-    <form>
-      <div class="post-meta">
-        <button class="like-button active">
-          <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-          <a>Số Lượng Love</a>
-        </button>
-        <ul class="comment-share-meta">
-          <li>
-            <button class="post-comment">
-              <i class="bi bi-chat-bubble"></i>
-              <a routerLink="/comment/id">xem các cmt khác</a>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </form>
+    <app-love [id_post]="p.postId" ></app-love>
+
 
   </div>
 

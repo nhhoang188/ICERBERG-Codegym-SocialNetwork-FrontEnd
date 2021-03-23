@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FriendSimilarService} from '../services/friend-similar.service';
 
 @Component({
@@ -8,20 +8,23 @@ import {FriendSimilarService} from '../services/friend-similar.service';
 })
 export class FriendSimilarComponent implements OnInit {
 
-  id_myUser: number=1;
-  id_myFriend: number=2;
+  id_myUser: any;
+  @Input() id_myFriend: any;
   users: any;
-  constructor(private myService: FriendSimilarService) { }
 
-  ngOnInit(): void {
-    this.getAll(this.id_myUser,this.id_myFriend)
+  constructor(private myService: FriendSimilarService) {
+    this.id_myUser = localStorage.getItem("ID");
   }
 
-  getAll(id_myUser: number,id_myFriend: number){
-    this.myService.getAllFriendSimilar(id_myUser,id_myFriend).subscribe(value => {
-      console.log(value)
-      this.users=value;
-    },error => console.log(error))
+  ngOnInit(): void {
+    this.getAll(this.id_myUser, this.id_myFriend);
+  }
+
+  getAll(id_myUser: number, id_myFriend: number) {
+    this.myService.getAllFriendSimilar(id_myUser, id_myFriend).subscribe(value => {
+      console.log(value);
+      this.users = value;
+    }, error => console.log(error));
   }
 
 }

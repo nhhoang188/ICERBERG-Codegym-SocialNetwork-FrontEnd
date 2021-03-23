@@ -1,17 +1,14 @@
-<p>love works!</p>
-
 <div class="container">
-  <div>Id_Post : <input  type="text" [(ngModel)]="id_post" (ngModelChange)="checkLiked(id_post,id_user)" (ngModelChange)="countLike(id_post)"></div>
-  <div>My ID: <input type="text" [(ngModel)]="id_user" (ngModelChange)="checkLiked(id_post,id_user)">
-    <br>
-
-    <!--   code button like-->
+  <div><input type="hidden" [(ngModel)]="id_post" (ngModelChange)="checkLiked(id_post,id_user)"
+              (ngModelChange)="countLike(id_post)"></div>
+  <div><input type="hidden" [(ngModel)]="id_user" (ngModelChange)="checkLiked(id_post,id_user)">
     <button class="like-button">
       <img *ngIf="!checkLike" class="heart" src="assets/images/icons/heart.png" alt="" (click)="like(id_post,id_user)">
-      <img *ngIf="checkLike"class="heart-color" src="assets/images/icons/heart-color.png" alt="" (click)="unlike(id_love)">
+      <img *ngIf="checkLike" class="heart-color" src="assets/images/icons/heart-color.png" alt=""
+           (click)="unlike(id_love)">
     </button>
 
-    <div class="dropdown" >
+    <div class="dropdown">
       <a (click)="getUserLikePost(id_post)" class="dropbtn">{{count_like}} Like</a>
       <table class="dropdown-content table ">
         <tr *ngFor="let love of loves"> {{love.user.fullname}}</tr>

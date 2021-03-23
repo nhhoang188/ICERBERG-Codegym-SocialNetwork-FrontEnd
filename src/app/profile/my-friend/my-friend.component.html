@@ -1,0 +1,137 @@
+<main>
+  <span *ngIf="user != undefined">
+    <div class="main-wrapper">
+    <!-- profile banner area start -->
+    <div class="profile-banner-large bg-img"
+         style="background-image: url({{user.imgcover}});">
+    </div>
+      <div class="profile-menu-area secondary-navigation-style bg-white">
+        <app-menu-timeline></app-menu-timeline>
+      </div>
+
+
+      <!-- about author details start -->
+    <div class="about-author-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card widget-item">
+              <div class="about-me">
+                <ul class="nav flex-column about-author-menu">
+                  <li><a  routerLink="/profile/{{user.id}}/about" data-toggle="tab" class="active">Something About Me</a></li>
+                  <li><a href="#two" data-toggle="tab">Photo</a></li>
+                  <li><a routerLink="/profile/{{user.id}}/friends" data-toggle="tab">Friend</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+              <div class="friends-section">
+      <app-listfriend [id]="user.id"></app-listfriend>
+    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  </span>
+
+
+  <span *ngIf="guest != undefined">
+  <div class="main-wrapper">
+    <!-- profile banner area start -->
+    <div class="profile-banner-large bg-img"
+         style="background-image: url({{guest.imgcover}});">
+    </div>
+    <!-- profile menu area start -->
+    <div class="profile-menu-area secondary-navigation-style bg-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-3 col-md-3">
+            <div class="profile-picture-box">
+              <figure class="profile-picture">
+                <a href="/profile/{{guest.id}}">
+                  <img src="{{guest.avatar}}" alt="profile picture">
+                </a>
+              </figure>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 offset-lg-1">
+            <div class="profile-menu-wrapper">
+              <div class="main-menu-inner header-top-navigation">
+                <nav>
+                  <ul class="main-menu">
+                    <li class="active"><a href="#">timeline</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- profile menu area end -->
+
+    <!-- sendary menu start -->
+    <div class="menu-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="secondary-menu-wrapper bg-white">
+              <div class="page-title-inner">
+                <h4 class="page-title">{{guest.fullname}}</h4>
+              </div>
+              <div class="main-menu-inner header-top-navigation">
+              </div>
+              <div class="post-settings-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- sendary menu end -->
+
+    <!-- about author details start -->
+    <div class="about-author-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card widget-item">
+              <div class="about-me">
+                <ul class="nav flex-column about-author-menu">
+                  <li><a href="#one" data-toggle="tab" class="active">Something About Me</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="about-description">
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="">
+                  <div class="work-zone">
+                    <div class="author-desc-title d-flex">
+                      <h6 class="author"><a href="/newfeeds">{{guest.username}}</a></h6>
+                      <div class="post-settings-bar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                    {{guest.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </span>
+</main>

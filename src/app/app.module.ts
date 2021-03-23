@@ -23,6 +23,8 @@ import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
+import { MyFriendComponent } from './profile/my-friend/my-friend.component';
+import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { EditUserComponent } from './profile/edit-user/edit-user.component';
     MenuTimelineComponent,
     MyPostComponent,
     FriendSimilarComponent,
-    EditUserComponent
+    EditUserComponent,
+    MyFriendComponent,
+    SweetMemoryComponent
   ],
   imports: [
     BrowserModule,

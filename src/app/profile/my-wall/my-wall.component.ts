@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -13,14 +13,18 @@ export class MyWallComponent implements OnInit {
   love: any;
 
   constructor(private router: Router,
-              private userSv: UserService) {
+              private userSv: UserService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('USERNAME') != null) {
-      this.userSv.getById(localStorage.getItem('ID')).subscribe(value1 => {
-        this.user = value1;
-      });
+     this.activatedRoute.paramMap.subscribe(value => {
+       const id = value.get('id');
+       this.userSv.getById(id).subscribe(value1 => {
+         this.user = value1;
+       });
+     })
     } else {
       this.router.navigate(['login']);
     }
