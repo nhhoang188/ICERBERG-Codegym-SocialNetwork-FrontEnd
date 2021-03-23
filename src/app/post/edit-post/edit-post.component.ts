@@ -50,7 +50,6 @@ export class EditPostComponent implements OnInit {
           this.idUser = this.post.userId;
           this.userSv.getById(this.idUser).subscribe(value => {
             this.user = value;
-            console.log("user bài post= " +this.user)
           })
           this.createEditForm(this.post);
         }, error => {
@@ -82,7 +81,6 @@ export class EditPostComponent implements OnInit {
 
   deleteImage(){
     this.post.content = this.editForm.get('contents')?.value;
-    console.log(this.post);
     this.postService.editImagePostStatus(this.idPost, this.post).subscribe(
       result => {
         console.log('success!');
@@ -96,7 +94,6 @@ export class EditPostComponent implements OnInit {
   onSave() {
     this.post.content = this.editForm.get('contents')?.value;
     this.post.image = this.fb;
-    console.log(this.post);
     this.postService.editStatusPost(this.idPost, this.post).subscribe(
       result => {
         console.log('success!');

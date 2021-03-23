@@ -45,7 +45,6 @@ export class CreatePostComponent implements OnInit {
 
   onPost() {
     let status = this.createPost();
-     console.log("bai Post"  + "" + status)
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
       this.postStatusForm.reset;
@@ -55,7 +54,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   async setIntervalProgress() {
-    this.timeOut = true;
+    // this.timeOut = true;
     var loading = setInterval(() => {
       this.width = +this.width + 5;
       console.log(this.width);
@@ -87,6 +86,7 @@ export class CreatePostComponent implements OnInit {
   timeOut?: boolean = false;
 
   onFileSelected(event?: any) {
+    this.setIntervalProgress();
     var n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -108,7 +108,6 @@ export class CreatePostComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
-          this.setIntervalProgress();
         }
       });
 

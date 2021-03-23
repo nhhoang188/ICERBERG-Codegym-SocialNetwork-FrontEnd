@@ -2,8 +2,20 @@
   <span>
     <div class="main-wrapper">
     <!-- profile banner area start -->
-    <div *ngIf="fb == null" class="profile-banner-large bg-img"
+    <div *ngIf="fb == undefined" class="profile-banner-large bg-img"
          style="background-image: url({{user.imgcover}});">
+      <label style="color: red" for="inputGroupFile023">Change Cover</label>
+       <div class="form-group col-12">
+                      <input type="file"
+                             (change)="onFileSelected($event)"
+                             name="image"
+                             autocomplete="off" class="custom-file-input" id="inputGroupFile023"
+                      />
+       </div>
+
+    </div>
+    <div *ngIf="fb !== undefined" class="profile-banner-large bg-img"
+         style="background-image: url({{fb}});">
       <label style="color: red" for="inputGroupFile02">Change Cover</label>
        <div class="form-group col-12">
                       <input type="file"
@@ -24,7 +36,9 @@
         <div class="col-lg-3 col-md-3">
           <div class="profile-picture-box">
             <figure class="profile-picture">
-                <img src="{{user.avatar}}" alt="profile picture">
+                <img *ngIf="fbava == undefined" src="{{user.avatar}}" alt="profile picture">
+                <img *ngIf="fbava !== undefined" src="{{fbava}}" alt="profile picture">
+
                  <div class="form-group col-12">
                       <input type="file"
                              (change)="onFileSelectedAvatar($event)"
@@ -77,11 +91,6 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
-            <div class="card widget-item">
-              <div class="about-me">
-               Chỗ Này Để Notification
-              </div>
-            </div>
           </div>
           <div class="col-lg-9">
             <div class="about-description">
@@ -133,7 +142,7 @@
     <div class="col-12">
        Password
       <input type="password" formControlName="password" name="password" id="password"
-             class="single-field" placeholder="Password">
+             class="single-field" placeholder="Password" >
       <div *ngIf="updateForm.get('password').invalid && updateForm.get('password').touched">
         <div class="alert alert-danger mt-1" role="alert"
              *ngIf="updateForm.get('password').errors.minlength">

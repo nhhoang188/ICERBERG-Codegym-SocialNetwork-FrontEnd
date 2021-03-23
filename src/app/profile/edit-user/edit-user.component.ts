@@ -58,18 +58,15 @@ export class EditUserComponent implements OnInit {
     this.user.description = this.updateForm.get('description')?.value;
     this.user.bio = this.updateForm.get('bio')?.value;
     this.user.password = this.updateForm.get('password')?.value;
-    console.log("cover:  :" +this.fb);
-    console.log("ava:  " +this.fbava);
-    if (this.fbava !== null) {
+    if (this.fbava !== undefined) {
       this.user.avatar = this.fbava;
     }
-    if (this.fb !== null) {
+    if (this.fb !== undefined) {
       this.user.imgcover = this.fb;
     }
     console.log(this.user);
     this.usersv.updateUser(this.user.id, this.user).subscribe(value => {
-      console.log(value);
-      alert('OK');
+      alert('Success');
     }, error => {
       console.log(error);
     });
@@ -97,7 +94,6 @@ export class EditUserComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            console.log(this.fb);
           });
         })
       )
@@ -128,7 +124,6 @@ export class EditUserComponent implements OnInit {
             if (url) {
               this.fbava = url;
             }
-            console.log("avartar:   :" +this.fbava);
           });
         })
       )

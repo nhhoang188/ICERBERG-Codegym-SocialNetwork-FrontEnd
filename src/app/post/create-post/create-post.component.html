@@ -1,7 +1,10 @@
 <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
-                          placeholder="Say Something" id="email"></textarea>
-  <button class="btn-share" type="submit" [disabled]="timeOut">share</button>
+                          placeholder="Say Something" id="email">
+                </textarea>
+  <div *ngIf="fb!== null">
+    <img src="{{fb}}">
+  </div>
 
   <div class="form-group col-12">
     <input type="file"
@@ -12,7 +15,7 @@
            autocomplete="off"
     />
   </div>
-
+  <button class="btn-share" type="submit" [disabled]="timeOut">share</button>
   <div *ngIf="fb==null">
     <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
       <div class="progress" [ngStyle]="{
@@ -22,7 +25,6 @@
       </div>
     </div>
   </div>
-
 
 
 </form>
