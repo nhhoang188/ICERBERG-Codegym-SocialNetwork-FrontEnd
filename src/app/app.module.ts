@@ -23,6 +23,7 @@ import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import { DeletePostComponent } from './post/delete-post/delete-post.component';
 import { CommentComponent } from './comment/comment.component';
+import {CommentService} from "./services/comment.service";
 
 @NgModule({
   declarations: [

@@ -1,0 +1,36 @@
+#display-comment-privacy  {
+  width: fit-content;
+  height: fit-content;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#avatar  {
+  display: flex;
+  width: 250px;
+}
+
+#content  {
+  margin-top: 10px;
+  border: 1px #f1f1f1;
+  border-radius: 20px;
+  background: #f1f1f1;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+}
+
+.author {
+  padding-right: 5px;
+  border: 1px #f1f1f1;
+  border-radius: 5px;
+  background: #f1f1f1;
+  padding-left: 5px;
+}

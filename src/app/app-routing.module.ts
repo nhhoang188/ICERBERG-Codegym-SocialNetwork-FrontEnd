@@ -11,6 +11,7 @@ import {FriendComponent} from './friendrequest/friend/friend.component';
 import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
+import {CommentComponent} from "./comment/comment.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'edit-post/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'comment',
+    component: CommentComponent
   }
 ];
 
