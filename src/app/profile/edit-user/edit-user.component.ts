@@ -30,14 +30,14 @@ export class EditUserComponent implements OnInit {
               private router: Router,
               private formBuilder: FormBuilder,
               private storage: AngularFireStorage) {
-    this.idUser = localStorage.getItem('ID');
-    this.usersv.getById(this.idUser).subscribe(value => {
-      this.user = value;
-      this.updateForm.patchValue(this.user);
-    });
+    this.checkLogin();
   }
 
   ngOnInit(): void {
+    this.editForm();
+  }
+
+  editForm() {
     this.updateForm = this.formBuilder.group({
       fullname: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
@@ -47,9 +47,19 @@ export class EditUserComponent implements OnInit {
       description: [''],
       bio: [''],
     });
-
   }
 
+  checkLogin() {
+    if (localStorage.getItem('USERNAME') == null) {
+      this.router.navigate(['login']);
+    } else {
+      this.idUser = localStorage.getItem('ID');
+      this.usersv.getById(this.idUser).subscribe(value => {
+        this.user = value;
+        this.updateForm.patchValue(this.user);
+      });
+    }
+  }
 
   updateAcount() {
     this.user.fullname = this.updateForm.get('fullname')?.value;
@@ -66,6 +76,7 @@ export class EditUserComponent implements OnInit {
     }
     console.log(this.user);
     this.usersv.updateUser(this.user.id, this.user).subscribe(value => {
+      this.updateForm.patchValue(this.user);
       alert('Success');
     }, error => {
       console.log(error);
