@@ -23,10 +23,13 @@ export class EditPostComponent implements OnInit {
   user: User = {};
   //endregion
   contents: any;
+  privacy?: string;
+  privacies: any;
   post: Post = {};
   editForm = new FormGroup({
     contents: new FormControl(''),
     imagee: new FormControl(''),
+    privacy: new FormControl('')
   });
 
   constructor(private postService: PostService,
@@ -37,8 +40,14 @@ export class EditPostComponent implements OnInit {
     this.idUserCurrent = localStorage.getItem('ID');
     this.userSv.getById(this.idUserCurrent).subscribe(value => {
       this.userCurrent = value;
-      console.log("user hiện tại= " +value)
+      console.log("user hiện tại= " + value)
     });
+
+    this.privacies = [
+      {model : "Public"},
+      {model : "Private"},
+      {model : "Friend only"}
+    ];
 
   }
 
@@ -51,7 +60,7 @@ export class EditPostComponent implements OnInit {
           this.idUser = this.post.userId;
           this.userSv.getById(this.idUser).subscribe(value => {
             this.user = value;
-            console.log("user bài post= " +this.user)
+            console.log("user bài post= " + this.user)
           })
           this.createEditForm(this.post);
         }, error => {
@@ -66,22 +75,26 @@ export class EditPostComponent implements OnInit {
 
   }
 
-  private getPostById(idPost: number) {
-    this.postService.findPostById(idPost).subscribe(
-      result => {
-        this.post = result;
-        this.createEditForm(this.post);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
+  // private getPostById(idPost: number) {
+  //   this.postService.findPostById(idPost).subscribe(
+  //     result => {
+  //       this.post = result;
+  //       this.createEditForm(this.post);
+  //     }, error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   private createEditForm(post: any) {
     this.editForm.get('contents')?.setValue(post.content);
+    this.editForm.get('privacy')?.setValue(post.privacy);
   }
 
-  deleteImage(){
+  cloneButton() {
+  }
+
+  deleteImage() {
     this.post.content = this.editForm.get('contents')?.value;
     console.log(this.post);
     this.postService.editImagePostStatus(this.idPost, this.post).subscribe(
@@ -96,7 +109,9 @@ export class EditPostComponent implements OnInit {
 
   onSave() {
     this.post.content = this.editForm.get('contents')?.value;
+    // if (this.post.image !== null)
     this.post.image = this.fb;
+    this.post.privacy = this.editForm.get('privacy')?.value;
     console.log(this.post);
     this.postService.editStatusPost(this.idPost, this.post).subscribe(
       result => {

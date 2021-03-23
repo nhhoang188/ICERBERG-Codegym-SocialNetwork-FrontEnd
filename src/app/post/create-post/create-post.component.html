@@ -1,7 +1,13 @@
 <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <select  ng-model="selectedPrivacy" formControlName="privacy">
+      <option *ngFor="let privacy of privacies" [value]="privacy.model">{{privacy.model}}</option>
+    </select>
+  </div>
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
                           placeholder="Say Something" id="email"></textarea>
   <button class="btn-share" type="submit" [disabled]="timeOut">share</button>
+
 
   <div class="form-group col-12">
     <input type="file"
@@ -13,16 +19,8 @@
     />
   </div>
 
+
   <div>
-    <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
-      <div class="progress" [ngStyle]="{
-  backgroundColor: progressColor,
-  width: width + '%'
-  }">
-      </div>
-    </div>
   </div>
-
-
 
 </form>

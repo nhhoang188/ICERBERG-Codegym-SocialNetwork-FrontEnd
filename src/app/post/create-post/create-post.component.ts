@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
 
-
 @Component({
   selector: 'app-post',
   templateUrl: './create-post.component.html',
@@ -19,7 +18,7 @@ export class CreatePostComponent implements OnInit {
   content: any;
   date: any;
   privacy = 'public';
-
+  privacies: any;
   @Input() backgroundColor = '#D9D9D9';
   @Input() progressColor = '#4CAF50';
   @Input() width: number = 0;
@@ -28,24 +27,29 @@ export class CreatePostComponent implements OnInit {
   userId: any;
 
 
-
   constructor(private postService: PostService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
+    this.privacies = [
+      {model: "Public"},
+      {model: "Private"},
+      {model: "Friend only"}
+    ];
     this.userId = localStorage.getItem('ID');
   }
 
 
   ngOnInit(): void {
     this.postStatusForm = new FormGroup({
-      content: new FormControl('')
+      content: new FormControl(''),
+      privacy: new FormControl('')
     });
   }
 
   onPost() {
     let status = this.createPost();
-     console.log("bai Post"  + "" + status)
+    console.log("bai Post" + "" + status)
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
       this.postStatusForm.reset;
@@ -55,7 +59,7 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  async setIntervalProgress() {
+    setIntervalProgress() {
     this.timeOut = true;
     var loading = setInterval(() => {
       this.width = +this.width + 5;
@@ -73,12 +77,18 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post> {};
+    let post: Post = <Post>{};
     post.userId = this.userId;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
-    post.privacy = this.privacy;
+    let pr = this.postStatusForm.get('privacy').value;
+    if (pr == "") {
+      post.privacy = 'Public';
+    } else {
+      post.privacy = pr;
+    }
     post.image = this.fb;
+    console.log(post);
     return post;
   }
 
@@ -109,13 +119,10 @@ export class CreatePostComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
-          this.setIntervalProgress();
+          // this.setIntervalProgress();
         }
       });
-
   }
-
-
 
 
 }
