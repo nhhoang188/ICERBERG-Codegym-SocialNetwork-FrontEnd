@@ -22,6 +22,7 @@ import {environment} from '../environments/environment';
 import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
+import { LoveCommentComponent } from './like/love-comment/love-comment.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {FriendSimilarComponent} from './friend-similar/friend-similar.component'
     MyWallComponent,
     MenuTimelineComponent,
     MyPostComponent,
-    FriendSimilarComponent
+    FriendSimilarComponent,
+    LoveCommentComponent
   ],
   imports: [
     BrowserModule,
