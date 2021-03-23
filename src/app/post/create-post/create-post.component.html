@@ -1,10 +1,16 @@
 <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <select  ng-model="selectedPrivacy" formControlName="privacy">
+      <option *ngFor="let privacy of privacies" [value]="privacy.model">{{privacy.model}}</option>
+    </select>
+  </div>
                 <textarea formControlName="content" class="share-text-field" aria-disabled="true"
                           placeholder="Say Something" id="email">
                 </textarea>
   <div *ngIf="fb!== null">
     <img src="{{fb}}">
   </div>
+
 
   <div class="form-group col-12">
     <input type="file"

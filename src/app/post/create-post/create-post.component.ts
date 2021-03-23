@@ -19,7 +19,7 @@ export class CreatePostComponent implements OnInit {
   content: any;
   date: any;
   privacy = 'public';
-
+  privacies: any;
   @Input() backgroundColor = '#D9D9D9';
   @Input() progressColor = '#4CAF50';
   @Input() width: number = 0;
@@ -39,7 +39,8 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.postStatusForm = new FormGroup({
-      content: new FormControl('')
+      content: new FormControl(''),
+      privacy: new FormControl('')
     });
   }
 
@@ -71,11 +72,16 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post> {};
+    let post: Post = <Post>{};
     post.userId = this.userId;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
-    post.privacy = this.privacy;
+    let pr = this.postStatusForm.get('privacy').value;
+    if (pr == "") {
+      post.privacy = 'Public';
+    } else {
+      post.privacy = pr;
+    }
     post.image = this.fb;
     return post;
   }

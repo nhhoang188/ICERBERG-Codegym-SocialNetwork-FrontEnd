@@ -23,10 +23,13 @@ export class EditPostComponent implements OnInit {
   user: User = {};
   //endregion
   contents: any;
+  privacy?: string;
+  privacies: any;
   post: Post = {};
   editForm = new FormGroup({
     contents: new FormControl(''),
     imagee: new FormControl(''),
+    privacy: new FormControl('')
   });
 
   constructor(private postService: PostService,
@@ -38,6 +41,12 @@ export class EditPostComponent implements OnInit {
     this.userSv.getById(this.idUserCurrent).subscribe(value => {
       this.userCurrent = value;
     });
+
+    this.privacies = [
+      {model : "Public"},
+      {model : "Private"},
+      {model : "Friend only"}
+    ];
 
   }
 
@@ -77,6 +86,10 @@ export class EditPostComponent implements OnInit {
 
   private createEditForm(post: any) {
     this.editForm.get('contents')?.setValue(post.content);
+    this.editForm.get('privacy')?.setValue(post.privacy);
+  }
+
+  cloneButton() {
   }
 
   deleteImage(){
@@ -93,7 +106,10 @@ export class EditPostComponent implements OnInit {
 
   onSave() {
     this.post.content = this.editForm.get('contents')?.value;
+    // if (this.post.image !== null)
     this.post.image = this.fb;
+    this.post.privacy = this.editForm.get('privacy')?.value;
+    console.log(this.post);
     this.postService.editStatusPost(this.idPost, this.post).subscribe(
       result => {
         console.log('success!');
