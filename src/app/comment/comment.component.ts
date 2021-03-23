@@ -71,6 +71,7 @@ export class CommentComponent implements OnInit {
           this.check = true;
           console.log('checkduoi', this.check)
         }
+        this.formComment.reset();
       }, error => {
         console.log(error);
       }
