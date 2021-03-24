@@ -1,0 +1,68 @@
+<p>comment works!</p>
+
+<div class="card">
+  <div class="post-meta">
+    <button class="post-meta-like">
+      <i class="bi bi-heart-beat"></i>
+      <span>You and 112 people like this</span>
+      <strong>112</strong>
+    </button>
+    <ul class="comment-share-meta">
+      <li>
+        <!--        fake data postId = 2-->
+        <button class="post-comment" (click)="displayAllComment(postId)">
+          <i class="bi bi-chat-bubble"></i>
+          <span > {{count}} Comment</span>
+        </button>
+      </li>
+      <li>
+        <button class="post-share">
+          <i class="bi bi-share"></i>
+          <span>08</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <!-- form bình luận 1 status -->
+  <form class="share-text-box" [formGroup]="formComment" (ngSubmit)="createComment()">
+                <textarea class="share-text-field" placeholder="leave a comment"
+                          id="cmt" formControlName="content"></textarea>
+
+    <button class="btn-share" type="submit">Comment</button>
+  </form>
+  <p *ngIf="!check">{{status}}</p>
+  <!--    list comment all -->
+  <div id="list-comment">
+    <div id="display-comment-all" *ngFor="let cm of comments">
+      <div id="avatar-all">
+        <div class="profile-thumb">
+          <a href="#">
+            <figure class="profile-thumb-middle">
+              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
+            </figure>
+          </a>
+        </div>
+        <div class="posted-author">
+          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>
+          <div id="content-all"><p>{{cm.content}}</p></div>
+        </div>
+      </div>
+    </div>
+    <!--    list comment privacy -->
+<!--    <div id="display-comment-privacy" *ngIf='content'>-->
+<!--      <div id="avatar">-->
+<!--        <div class="profile-thumb">-->
+<!--          <a href="#">-->
+<!--            <figure class="profile-thumb-middle">-->
+<!--              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">-->
+<!--            </figure>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--        <div class="posted-author">-->
+<!--          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>-->
+<!--          <div id="content"><p>{{content}}</p></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</div>

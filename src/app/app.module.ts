@@ -45,6 +45,8 @@ import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.compon
     EditUserComponent,
     MyFriendComponent,
     SweetMemoryComponent
+    DeletePostComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

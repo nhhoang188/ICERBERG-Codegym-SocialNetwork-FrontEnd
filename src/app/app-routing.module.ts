@@ -14,6 +14,7 @@ import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
+import {CommentComponent} from "./comment/comment.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'edit-post/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'comment',
+    component: CommentComponent
   }
 ];
 
