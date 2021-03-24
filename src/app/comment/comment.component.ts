@@ -75,8 +75,6 @@ export class CommentComponent implements OnInit {
           this.status = 'KO CHO COMMENT';
           this.check = false;
         }
-
-
         this.formComment.reset();
       }, error => {
         console.log(error);
