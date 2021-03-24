@@ -25,7 +25,7 @@ export class CreatePostComponent implements OnInit {
   @Input() width: number = 0;
 
   // fake userId
-  userId: any;
+  userId?: any;
 
 
 
@@ -34,6 +34,11 @@ export class CreatePostComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
     this.userId = localStorage.getItem('ID');
+    this.privacies = [
+      {model : "Public"},
+      {model : "Private"},
+      {model : "Friend only"}
+    ];
   }
 
 
@@ -42,6 +47,7 @@ export class CreatePostComponent implements OnInit {
       content: new FormControl(''),
       privacy: new FormControl('')
     });
+    console.log(this.userId);
   }
 
   onPost() {
@@ -49,6 +55,7 @@ export class CreatePostComponent implements OnInit {
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
       this.postStatusForm.reset;
+      this.router.navigate(['/']);
     }, error => {
       console.log(error);
     });
