@@ -14,10 +14,10 @@ import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
-import {CommentComponent} from "./comment/comment.component";
+import {CommentComponent} from './comment/comment.component';
 import {NotificationComponent} from './notification/notification.component';
-import {GuestPostComponent} from "./post/guest-post/guest-post.component";
-import {FriendPostComponent} from "./post/friend-post/friend-post.component";
+import {GuestPostComponent} from './post/guest-post/guest-post.component';
+import {FriendPostComponent} from './post/friend-post/friend-post.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
