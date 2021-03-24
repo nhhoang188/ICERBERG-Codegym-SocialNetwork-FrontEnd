@@ -15,9 +15,11 @@ import {FriendSimilarComponent} from './friend-similar/friend-similar.component'
 import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
 import {CommentComponent} from "./comment/comment.component";
+import {NotificationComponent} from './notification/notification.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
+  {path: 'noti', component: NotificationComponent},
   {path: 'mypost', component: MyPostComponent},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'home', component: HomeComponent, pathMatch: 'full'},

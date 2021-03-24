@@ -27,6 +27,7 @@ import { MyFriendComponent } from './profile/my-friend/my-friend.component';
 import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.component';
 import {CommentComponent} from './comment/comment.component';
 import { UserInfoComponent } from './comment/user-info/user-info.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { UserInfoComponent } from './comment/user-info/user-info.component';
     MyFriendComponent,
     SweetMemoryComponent,
     CommentComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
