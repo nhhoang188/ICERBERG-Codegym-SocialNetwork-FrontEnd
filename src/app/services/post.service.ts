@@ -38,4 +38,11 @@ export class PostService {
   deletePostById(id: number): Observable<Post> {
     return this.httpClient.delete<Post>(`${API_URL}/posts/${id}`);
   }
+
+  findPublicPostByUserId(userId: number): Observable<Post> {
+    return this.httpClient.get<Post>(`${API_URL}/posts/public/${userId}`);
+  }
+  findPublicAndFriendOnlyPostByUserId(userId: number): Observable<Post> {
+    return this.httpClient.get<Post>(`${API_URL}/posts/friend/${userId}`);
+  }
 }

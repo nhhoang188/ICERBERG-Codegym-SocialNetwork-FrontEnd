@@ -16,6 +16,8 @@ import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
 import {CommentComponent} from "./comment/comment.component";
 import {NotificationComponent} from './notification/notification.component';
+import {GuestPostComponent} from "./post/guest-post/guest-post.component";
+import {FriendPostComponent} from "./post/friend-post/friend-post.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path: 'edit-post/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'posts/public/:userId',
+    component: GuestPostComponent
+  },
+  {
+    path: 'posts/friend/:userId',
+    component: FriendPostComponent
   },
   {
     path: 'comment',

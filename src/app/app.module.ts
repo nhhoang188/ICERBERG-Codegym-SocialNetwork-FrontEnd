@@ -28,6 +28,8 @@ import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.compon
 import {CommentComponent} from './comment/comment.component';
 import { UserInfoComponent } from './comment/user-info/user-info.component';
 import { NotificationComponent } from './notification/notification.component';
+import { FriendPostComponent } from './post/friend-post/friend-post.component';
+import { GuestPostComponent } from './post/guest-post/guest-post.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { NotificationComponent } from './notification/notification.component';
     SweetMemoryComponent,
     CommentComponent,
     UserInfoComponent,
-    NotificationComponent
+    NotificationComponent,
+    FriendPostComponent,
+    GuestPostComponent
   ],
   imports: [
     BrowserModule,
