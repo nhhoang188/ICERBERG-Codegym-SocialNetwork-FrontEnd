@@ -19,6 +19,10 @@ export class PostService {
     return this.httpClient.post<Post>(API_URL + '/posts', post);
   }
 
+  editImagePostStatus(id: number, post: Post): Observable<any> {
+    return this.httpClient.put<any>(`${API_URL}/posts/image/${id}`, post)
+  }
+
   editStatusPost(id: number, post: Post): Observable<any> {
     return this.httpClient.put<any>(`${API_URL}/posts/${id}`, post);
   }

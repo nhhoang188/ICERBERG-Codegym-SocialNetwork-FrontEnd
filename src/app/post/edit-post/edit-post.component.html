@@ -23,6 +23,29 @@
 
 
             </div>
+            <div ng-app="myApp" ng-controller="myCtrl">
+              <select ng-model="selectedPrivacy" formControlName="privacy">
+                <option  *ngFor="let privacy of privacies" [value]="privacy.model">{{privacy.model}}</option>
+              </select>
+            </div>
+
+
+            <div class="post-settings-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="post-settings arrow-shape">
+                <ul>
+                  <li>
+                    <a (click)="deleteImage()">delete picture</a>
+                  </li>
+                  <li>
+                    <a (click)="cloneButton()">change privacy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             <!-- post title start -->
             <div *ngIf="user.id !== userCurrent.id">
               <div class="post-content" >
@@ -33,31 +56,11 @@
                   <div class="row no-gutters">
                     <div class="col-8">
                       <figure class="post-thumb" *ngIf="post.image !== null">
-                        <a class="gallery-selector" href="{{post.image}}">
-                          <img src="{{post.image}}" alt="post image">
-                        </a>
+                          <img src="{{post.image}}" alt="post image" width="300px" height="300px">
                       </figure>
                     </div>
                   </div>
                 </div>
-                <!-- form like 1 status -->
-                <form>
-                  <div class="post-meta">
-                    <button class="like-button active">
-                      <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-                      <a>Số Lượng Love</a>
-                    </button>
-                    <ul class="comment-share-meta">
-                      <li>
-                        <button class="post-comment">
-                          <i class="bi bi-chat-bubble"></i>
-                          <a href="/comment/id">xem các cmt khác</a>
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </form>
-
               </div>
               <form class="share-text-box">
                 <textarea name="share" class="share-text-field" placeholder="leave a comment"
@@ -66,16 +69,22 @@
               </form>
             </div>
 
+
+
+
+            <!-- check Quyen Sua-->
             <div class="post-content" *ngIf="user.id == userCurrent.id">
               <label>
                 <textarea type="text" formControlName="contents" value="{{post.content}}" ></textarea>
               </label>
               <div class="post-thumb-gallery">
                 <figure class="post-thumb img-popup">
-                  <a href="{{post.image}}">
-                    <img src="{{post.image}}" alt="post image">
+                  <a href="{{post.image}}" *ngIf="post.image !==null ">
+                    <img *ngIf="fb == undefined" src="{{post.image}}" alt="post image" width="300px" height="300px">
                   </a>
+                  <img *ngIf="fb !== undefined" src="{{fb}}" alt="post image" width="300px" height="300px">
                 </figure>
+
               </div>
               <div class="form-group col-12">
                 <input type="file"

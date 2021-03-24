@@ -21,9 +21,12 @@ import {LoveService} from './services/love.service';
 import {environment} from '../environments/environment';
 import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
-import { DeletePostComponent } from './post/delete-post/delete-post.component';
-import { CommentComponent } from './comment/comment.component';
-import {CommentService} from "./services/comment.service";
+import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
+import { EditUserComponent } from './profile/edit-user/edit-user.component';
+import { MyFriendComponent } from './profile/my-friend/my-friend.component';
+import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.component';
+import {CommentComponent} from './comment/comment.component';
+import { UserInfoComponent } from './comment/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +43,12 @@ import {CommentService} from "./services/comment.service";
     MyWallComponent,
     MenuTimelineComponent,
     MyPostComponent,
-    DeletePostComponent,
-    CommentComponent
+    FriendSimilarComponent,
+    EditUserComponent,
+    MyFriendComponent,
+    SweetMemoryComponent,
+    CommentComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

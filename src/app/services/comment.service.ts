@@ -24,7 +24,7 @@ export class CommentService {
     return this.httpClient.get<Comment>(this.API_URL + '/' + id);
   }
 
-  findAllCommentByPostId(postId: number): Observable<Comment[]>{
-    return this.httpClient.get<Comment[]>(`${this.API_URL}/${postId}`);
+  findAllCommentByPostId(postId: number): Observable<any>{
+    return this.httpClient.get<any>(`${this.API_URL}/${postId}`);
   }
 }

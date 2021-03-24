@@ -41,5 +41,4 @@ export class UserService {
     return this.httpClient.delete<any>(API_URl + '/users' + `/${id}`);
   }
 
-
 }

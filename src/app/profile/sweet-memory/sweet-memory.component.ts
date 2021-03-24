@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../../model/User';
 import {UserService} from '../../services/user.service';
 import {PostService} from '../../services/post.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-my-post',
-  templateUrl: './my-post.component.html',
-  styleUrls: ['./my-post.component.css']
+  selector: 'app-sweet-memory',
+  templateUrl: './sweet-memory.component.html',
+  styleUrls: ['./sweet-memory.component.css']
 })
-export class MyPostComponent implements OnInit {
+export class SweetMemoryComponent implements OnInit {
+
   user: User = {};
   listPost: any;
   userId: any;
@@ -41,13 +42,6 @@ export class MyPostComponent implements OnInit {
   getPostByUserId() {
     this.postSv.findPostByUserId(this.user.id).subscribe(value => {
       this.listPost = value;
-    });
-  }
-
-  deletePost(id?: any) {
-    this.postSv.deletePostById(id).subscribe(() => {
-      alert('Delete Ok!');
-      this.getPostByUserId();
     });
   }
 

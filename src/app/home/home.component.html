@@ -10,10 +10,13 @@
         <div class="col-lg-3 col-md-3">
           <div class="profile-picture-box">
             <figure class="profile-picture">
-              <a href="/profile/{{user.id}}">
+              <a routerLink="/profile/{{user.id}}">
                 <img src="{{user.avatar}}" alt="profile picture">
               </a>
             </figure>
+            <div class="center">
+              <h4  class="posted-author"><a>{{user.fullname}}</a></h4>
+            </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 offset-lg-1">
@@ -21,9 +24,9 @@
             <div class="main-menu-inner header-top-navigation">
               <nav>
                 <ul class="main-menu">
-                  <li class="active"><a href="/home">timeline</a></li>
-                  <li><a href="/profile/{{user.id}}/about">about</a></li>
-                  <li><a href="/friend/{{user.id}}">friends</a></li>
+                  <li class="active"><a routerLink="/home">timeline</a></li>
+                  <li><a routerLink="/profile/{{user.id}}/about">about</a></li>
+                  <li><a routerLink="/profile/{{user.id}}/friends">friends</a></li>
                   <li><app-friend></app-friend></li>
                 </ul>
               </nav>
@@ -32,7 +35,19 @@
         </div>
         <div class="col-lg-2 col-md-3 d-none d-md-block">
           <div class="profile-edit-panel">
-            <button class="edit-btn">edit profile</button>
+            <div class="post-settings-bar">
+              <a style="color: whitesmoke" class="edit-btn">Acount</a>
+              <div class="post-settings arrow-shape">
+                <ul>
+                  <li>
+                    <button routerLink="/edit-profile">edit profile</button>
+                  </li>
+                  <li>
+                    <button routerLink="/logout">logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,7 +68,7 @@
                 <li class="unorder-list">
                   <!-- profile picture end -->
                   <div class="profile-thumb">
-                    <a href="/notification/id-">
+                    <a routerLink="/notification/id-">
                       <figure class="profile-thumb-small">
                         <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
                       </figure>
@@ -61,7 +76,7 @@
                   </div>
                   <!-- profile picture end -->
                   <div class="unorder-list-info">
-                    <h3 class="list-title"><a href="/notification/id-">Thông Báo</a></h3>
+                    <h3 class="list-title"><a routerLink="/notification/id-">Thông Báo</a></h3>
                     <p class="list-subtitle">Thời Gian</p>
                   </div>
                 </li>
@@ -97,7 +112,7 @@
           <div class="post-title d-flex align-items-center">
             <!-- profile picture end -->
             <div class="profile-thumb">
-              <a href="/profile/id-cua-user">
+              <a routerLink="/profile/id-cua-user">
                 <figure class="profile-thumb-middle">
                   <img src="ảnh-đại-diện" alt="profile picture">
                 </figure>
@@ -106,7 +121,7 @@
             <!-- profile picture end -->
 
             <div class="posted-author">
-              <h6 class="author"><a href="/profile/id-cua-user">Tên Người Đăng</a></h6>
+              <h6 class="author"><a routerLink="/profile/id-cua-user">Tên Người Đăng</a></h6>
               <span class="post-time">Thời Gian Đăng</span>
             </div>
             <div class="post-settings-bar">
@@ -137,7 +152,7 @@
               <div class="row no-gutters">
                 <div class="col-8">
                   <figure class="post-thumb">
-                    <a class="gallery-selector" href="images/post/post-large-2.jpg">
+                    <a class="gallery-selector" routerLink="images/post/post-large-2.jpg">
                       <img src="images/post/post-2.jpg" alt="post image">
                     </a>
                   </figure>
@@ -155,7 +170,7 @@
                   <li>
                     <button class="post-comment">
                       <i class="bi bi-chat-bubble"></i>
-                      <a href="/comment/id">xem các cmt khác</a>
+                      <a routerLink="/comment/id">xem các cmt khác</a>
                     </button>
                   </li>
                 </ul>
@@ -190,7 +205,7 @@
                 <li class="unorder-list">
                   <!-- profile picture end -->
                   <div class="profile-thumb">
-                    <a href="#">
+                    <a routerLink="#">
                       <figure class="profile-thumb-small">
                         <img src="images/profile/profile-small-10.jpg" alt="profile picture">
                       </figure>
@@ -199,8 +214,8 @@
                   <!-- profile picture end -->
 
                   <div class="unorder-list-info">
-                    <h3 class="list-title"><a href="#">arfim bolt</a></h3>
-                    <p class="list-subtitle"><a href="#">10 mutual</a></p>
+                    <h3 class="list-title"><a routerLink="#">arfim bolt</a></h3>
+                    <p class="list-subtitle"><a routerLink="#">10 mutual</a></p>
                   </div>
                   <button class="like-button">
                     <img class="heart" src="images/icons/heart.png" alt="">

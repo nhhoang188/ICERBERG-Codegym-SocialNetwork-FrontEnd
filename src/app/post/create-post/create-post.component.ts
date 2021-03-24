@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../../model/Post';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PostService} from '../../services/post.service';
@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-post',
@@ -17,9 +19,15 @@ export class CreatePostComponent implements OnInit {
   content: any;
   date: any;
   privacy = 'public';
+  privacies: any;
+  @Input() backgroundColor = '#D9D9D9';
+  @Input() progressColor = '#4CAF50';
+  @Input() width: number = 0;
 
   // fake userId
   userId: any;
+
+
 
   constructor(private postService: PostService,
               private router: Router,
@@ -31,21 +39,30 @@ export class CreatePostComponent implements OnInit {
 
   ngOnInit(): void {
     this.postStatusForm = new FormGroup({
-      content: new FormControl('')
+      content: new FormControl(''),
+      privacy: new FormControl('')
     });
-
   }
 
   onPost() {
     let status = this.createPost();
-     console.log("bai Post"  + "" + status)
     this.postService.createStatusPost(status).subscribe(result => {
       alert('Create Post Succsess');
       this.postStatusForm.reset;
-      window.location.reload();
     }, error => {
       console.log(error);
     });
+  }
+
+  async setIntervalProgress() {
+    // this.timeOut = true;
+    var loading = setInterval(() => {
+      this.width = +this.width + 5;
+      console.log(this.width);
+      if (this.width > 75) {
+        clearInterval(loading);
+      }
+    }, 100);
   }
 
   // @ts-ignore
@@ -55,11 +72,16 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post> {};
+    let post: Post = <Post>{};
     post.userId = this.userId;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
-    post.privacy = this.privacy;
+    let pr = this.postStatusForm.get('privacy').value;
+    if (pr == "") {
+      post.privacy = 'Public';
+    } else {
+      post.privacy = pr;
+    }
     post.image = this.fb;
     return post;
   }
@@ -67,8 +89,10 @@ export class CreatePostComponent implements OnInit {
   selectedFile?: File;
   fb?: any;
   downloadURL?: Observable<string>;
+  timeOut?: boolean = false;
 
   onFileSelected(event?: any) {
+    this.setIntervalProgress();
     var n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -92,5 +116,10 @@ export class CreatePostComponent implements OnInit {
           console.log(url);
         }
       });
+
   }
+
+
+
+
 }

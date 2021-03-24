@@ -2,23 +2,11 @@
 
 <div class="card">
   <div class="post-meta">
-    <button class="post-meta-like">
-      <i class="bi bi-heart-beat"></i>
-      <span>You and 112 people like this</span>
-      <strong>112</strong>
-    </button>
+    <app-love [id_post]="postId"></app-love>
     <ul class="comment-share-meta">
-      <li>
-        <!--        fake data postId = 2-->
+      <li> <span> {{count}} comment</span>
         <button class="post-comment" (click)="displayAllComment(postId)">
           <i class="bi bi-chat-bubble"></i>
-          <span> {{count}} Comment</span>
-        </button>
-      </li>
-      <li>
-        <button class="post-share">
-          <i class="bi bi-share"></i>
-          <span>08</span>
         </button>
       </li>
     </ul>
@@ -30,39 +18,15 @@
 
     <button class="btn-share" type="submit">Comment</button>
   </form>
+
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
   <div id="list-comment">
     <div id="display-comment-all" *ngFor="let cm of comments">
-      <div id="avatar-all">
-        <div class="profile-thumb">
-          <a href="#">
-            <figure class="profile-thumb-middle">
-              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">
-            </figure>
-          </a>
-        </div>
-        <div class="posted-author">
-          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>
-          <div id="content-all"><p>{{cm.content}}</p></div>
-        </div>
+        <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate" ></app-user-info>
+      <div class="content" id="content-all">
+        <p>{{cm.content}}</p>
       </div>
     </div>
-    <!--    list comment privacy -->
-    <!--    <div id="display-comment-privacy" *ngIf='content'>-->
-    <!--      <div id="avatar">-->
-    <!--        <div class="profile-thumb">-->
-    <!--          <a href="#">-->
-    <!--            <figure class="profile-thumb-middle">-->
-    <!--              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">-->
-    <!--            </figure>-->
-    <!--          </a>-->
-    <!--        </div>-->
-    <!--        <div class="posted-author">-->
-    <!--          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>-->
-    <!--          <div id="content"><p>{{content}}</p></div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </div>

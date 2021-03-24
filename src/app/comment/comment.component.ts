@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {CommentService} from "../services/comment.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CommentService} from '../services/comment.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -12,18 +12,17 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class CommentComponent implements OnInit {
   formComment = new FormGroup(
     {content: new FormControl('')}
-  )
-  postId = 2;
-  unknownId: number = 0;
+  );
+  @Input() postId: any;
+  unknownId: any;
   content: string = '';
   // @ts-ignore
-  comments: any
+  comments: any;
   data: any = {
-    messeger: "no"
-  }
-  status = "";
+    messeger: 'no'
+  };
+  status = '';
   check: boolean = true;
-
   count = 0;
 
 
@@ -31,6 +30,7 @@ export class CommentComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private commentService: CommentService) {
     this.displayAllComment(this.postId);
+    this.unknownId = localStorage.getItem('ID');
   }
 
   ngOnInit(): void {
@@ -48,17 +48,17 @@ export class CommentComponent implements OnInit {
   createComment() {
     //fake data comment object
     let currentDate = new Date();
-    this.unknownId = 4;
+    this.unknownId = 3;
     this.content = this.formComment.get('content')?.value;
 
     let comment: Comment = {
       // @ts-ignore
       userId: this.unknownId,
       //fake data postId
-      postId: 2,
+      postId: this.postId,
       content: this.content,
       createDate: currentDate
-    }
+    };
     this.commentService.createComment(comment).subscribe(
       result => {
 
@@ -87,10 +87,8 @@ export class CommentComponent implements OnInit {
   displayAllComment(postId: number) {
     this.commentService.findAllCommentByPostId(postId).subscribe(
       result => {
-        this.count = result.length;
         this.comments = result;
-
-        console.log(this.comments);
+        this.count = this.comments.length;
       }, error => {
         console.log(error);
       }
