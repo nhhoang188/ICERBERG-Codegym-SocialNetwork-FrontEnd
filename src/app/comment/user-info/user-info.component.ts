@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {User} from '../../model/User';
 
 @Component({
   selector: 'app-user-info',
@@ -6,10 +8,20 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent implements OnInit {
-  @Input() userCmt: any;
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input() IdUserCmt: any;
+  @Input() createDateCmt: any;
+  user: User = {};
+  constructor(private userSv: UserService) {
   }
 
+  ngOnInit(): void {
+    this.findUserInforByCmtId();
+  }
+
+  findUserInforByCmtId() {
+    this.userSv.getById(this.IdUserCmt).subscribe(value => {
+      this.user = value;
+      console.log(value);
+    });
+  }
 }

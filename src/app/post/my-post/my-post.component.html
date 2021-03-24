@@ -1,6 +1,74 @@
-<div class="card" *ngFor="let p of listPost">
-  <div class="post-title d-flex align-items-center">
+<!--<div class="card" *ngFor="let p of listPost">-->
+<!--  <div class="post-title d-flex align-items-center">-->
 
+<!--    &lt;!&ndash; profile picture end &ndash;&gt;-->
+<!--    <div class="profile-thumb">-->
+<!--      <a routerLink="/profile/{{user.id}}">-->
+<!--        <figure class="profile-thumb-middle">-->
+<!--          <img src="{{user.avatar}}" alt="profile picture">-->
+<!--        </figure>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; profile picture end &ndash;&gt;-->
+
+<!--    <div class="posted-author">-->
+<!--      <h6 class="author"><a routerLink="/profile/{{user.id}}"> {{user.fullname}}</a></h6>-->
+<!--      <span class="post-time">{{p.createDate}}</span>-->
+<!--    </div>-->
+<!--    <div class="post-settings-bar">-->
+<!--      <span></span>-->
+<!--      <span></span>-->
+<!--      <span></span>-->
+<!--      <div class="post-settings arrow-shape">-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <button (click)="deletePost(p.postId)">delete post</button>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <button>do something 2</button>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; post title start &ndash;&gt;-->
+<!--  <div class="post-content">-->
+<!--    <p class="post-desc">-->
+<!--      {{p.content}}-->
+<!--    </p>-->
+<!--    <div class="post-thumb-gallery img-gallery">-->
+<!--      <div class="row no-gutters">-->
+<!--        <div class="col-8">-->
+<!--          <figure class="post-thumb" *ngIf="p.image !== null">-->
+<!--            <a class="gallery-selector" routerLink="{{p.image}}">-->
+<!--              <img src="{{p.image}}" alt="post image">-->
+<!--            </a>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; form like 1 status &ndash;&gt;-->
+<!--    <app-love [id_post]="p.postId"></app-love>-->
+
+
+<!--  </div>-->
+
+
+<!--  &lt;!&ndash; form bình luận 1 status &ndash;&gt;-->
+<!--  <app-comment [postId]="p.postId"></app-comment>-->
+
+
+<!--</div>-->
+
+
+<div class="card" *ngFor="let p of listPost">
+  <!-- post title start -->
+  <div class="post-title d-flex align-items-center">
     <!-- profile picture end -->
     <div class="profile-thumb">
       <a routerLink="/profile/{{user.id}}">
@@ -12,9 +80,10 @@
     <!-- profile picture end -->
 
     <div class="posted-author">
-      <h6 class="author"><a routerLink="/profile/{{user.id}}"> {{user.fullname}}</a></h6>
+      <h6 class="author"><a routerLink="/profile/{{user.id}}">{{user.fullname}}</a></h6>
       <span class="post-time">{{p.createDate}}</span>
     </div>
+
     <div class="post-settings-bar">
       <span></span>
       <span></span>
@@ -22,13 +91,13 @@
       <div class="post-settings arrow-shape">
         <ul>
           <li>
-            <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>
+            <button routerLink="/edit-post/{{p.postId}}">edit post</button>
           </li>
           <li>
             <button (click)="deletePost(p.postId)">delete post</button>
           </li>
           <li>
-            <button>do something 2</button>
+            <button>embed adda</button>
           </li>
         </ul>
       </div>
@@ -39,32 +108,13 @@
     <p class="post-desc">
       {{p.content}}
     </p>
-    <div class="post-thumb-gallery img-gallery">
-      <div class="row no-gutters">
-        <div class="col-8">
-          <figure class="post-thumb" *ngIf="p.image !== null">
-            <a class="gallery-selector" routerLink="{{p.image}}">
-              <img src="{{p.image}}" alt="post image">
-            </a>
-          </figure>
-        </div>
-      </div>
+    <div class="post-thumb-gallery" *ngIf="p.image !== null">
+      <figure class="post-thumb img-popup">
+        <a href="{{p.image}}">
+          <img src="{{p.image}}" alt="post image">
+        </a>
+      </figure>
     </div>
-
-
-    <!-- form like 1 status -->
-    <app-love [id_post]="p.postId" ></app-love>
-
-
+      <app-comment [postId]="p.postId" ></app-comment>
   </div>
-
-
-  <!-- form bình luận 1 status -->
-  <form class="share-text-box">
-                <textarea name="share" class="share-text-field" placeholder="leave a comment"
-                          id="cmt"></textarea>
-    <button class="btn-share" type="submit">Comment</button>
-  </form>
-
-
 </div>
