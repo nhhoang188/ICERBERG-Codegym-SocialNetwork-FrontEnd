@@ -12,7 +12,7 @@
         <!--        fake data postId = 2-->
         <button class="post-comment" (click)="displayAllComment(postId)">
           <i class="bi bi-chat-bubble"></i>
-          <span > {{count}} Comment</span>
+          <span> {{count}} Comment</span>
         </button>
       </li>
       <li>
@@ -30,6 +30,7 @@
 
     <button class="btn-share" type="submit">Comment</button>
   </form>
+
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
   <div id="list-comment">
@@ -43,26 +44,26 @@
           </a>
         </div>
         <div class="posted-author">
-          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>
+          <h6 class="author">{{cm.userId.fullname}}</h6>
           <div id="content-all"><p>{{cm.content}}</p></div>
         </div>
       </div>
     </div>
     <!--    list comment privacy -->
-<!--    <div id="display-comment-privacy" *ngIf='content'>-->
-<!--      <div id="avatar">-->
-<!--        <div class="profile-thumb">-->
-<!--          <a href="#">-->
-<!--            <figure class="profile-thumb-middle">-->
-<!--              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">-->
-<!--            </figure>-->
-<!--          </a>-->
-<!--        </div>-->
-<!--        <div class="posted-author">-->
-<!--          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>-->
-<!--          <div id="content"><p>{{content}}</p></div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div id="display-comment-privacy" *ngIf='content'>-->
+    <!--      <div id="avatar">-->
+    <!--        <div class="profile-thumb">-->
+    <!--          <a href="#">-->
+    <!--            <figure class="profile-thumb-middle">-->
+    <!--              <img src="assets/images/profile/profile-small-9.jpg" alt="profile picture">-->
+    <!--            </figure>-->
+    <!--          </a>-->
+    <!--        </div>-->
+    <!--        <div class="posted-author">-->
+    <!--          <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>-->
+    <!--          <div id="content"><p>{{content}}</p></div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </div>
 </div>

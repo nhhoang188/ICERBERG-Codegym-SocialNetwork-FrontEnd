@@ -25,6 +25,8 @@ import {FriendSimilarComponent} from './friend-similar/friend-similar.component'
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import { MyFriendComponent } from './profile/my-friend/my-friend.component';
 import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.component';
+import {CommentComponent} from './comment/comment.component';
+import { UserInfoComponent } from './comment/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,9 @@ import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.compon
     FriendSimilarComponent,
     EditUserComponent,
     MyFriendComponent,
-    SweetMemoryComponent
-    DeletePostComponent,
-    CommentComponent
+    SweetMemoryComponent,
+    CommentComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
