@@ -60,17 +60,23 @@ export class CommentComponent implements OnInit {
     }
     this.commentService.createComment(comment).subscribe(
       result => {
-        this.displayAllComment(this.postId);
-        console.log('result', result)
-        if (JSON.stringify(result) == JSON.stringify(this.data)) {
 
+        console.log('result', result)
+        if (result != null) {
+          this.displayAllComment(this.postId);
+          if (JSON.stringify(result) == JSON.stringify(this.data)) {
+
+            this.status = 'KO CHO COMMENT';
+            this.check = false;
+          } else {
+            this.check = true;
+          }
+        } else {
           this.status = 'KO CHO COMMENT';
           this.check = false;
-          console.log('check', this.check)
-        } else {
-          this.check = true;
-          console.log('checkduoi', this.check)
         }
+
+
         this.formComment.reset();
       }, error => {
         console.log(error);
