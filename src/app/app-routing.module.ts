@@ -11,10 +11,11 @@ import {FriendComponent} from './friendrequest/friend/friend.component';
 import {ListfriendComponent} from './friendrequest/listfriend/listfriend.component';
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
-import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
-import {EditUserComponent} from './profile/edit-user/edit-user.component';
-import {MyFriendComponent} from './profile/my-friend/my-friend.component';
 import {CommentComponent} from "./comment/comment.component";
+import {DeleteCommentComponent} from "./comment/delete-comment/delete-comment.component";
+import {FriendSimilarComponent} from "./friend-similar/friend-similar.component";
+import {EditUserComponent} from "./profile/edit-user/edit-user.component";
+import {MyFriendComponent} from "./profile/my-friend/my-friend.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'comment',
     component: CommentComponent
+  },
+  {
+    path: 'delete-comment',
+    component: DeleteCommentComponent
   }
 ];
 

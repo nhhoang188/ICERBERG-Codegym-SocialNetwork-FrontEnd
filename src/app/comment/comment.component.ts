@@ -48,7 +48,7 @@ export class CommentComponent implements OnInit {
   createComment() {
     //fake data comment object
     let currentDate = new Date();
-    this.unknownId = 3;
+    // this.unknownId = 3;
     this.content = this.formComment.get('content')?.value;
 
     let comment: Comment = {

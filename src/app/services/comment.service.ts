@@ -24,7 +24,11 @@ export class CommentService {
     return this.httpClient.get<Comment>(this.API_URL + '/' + id);
   }
 
-  findAllCommentByPostId(postId: number): Observable<any>{
+  findAllCommentByPostId(postId: number): Observable<any> {
     return this.httpClient.get<any>(`${this.API_URL}/${postId}`);
+  }
+
+  deleteComment(postId: number, comment: Comment): Observable<any> {
+    return this.httpClient.delete<any>(`${this.API_URL}/${postId}`);
   }
 }
