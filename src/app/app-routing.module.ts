@@ -12,6 +12,8 @@ import {ListfriendComponent} from './friendrequest/listfriend/listfriend.compone
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
+import {GuestPostComponent} from "./post/guest-post/guest-post.component";
+import {FriendPostComponent} from "./post/friend-post/friend-post.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'edit-post/:id',
     component: EditPostComponent
+  },
+  {
+    path: 'posts/public/:userId',
+    component: GuestPostComponent
+  },
+  {
+    path: 'posts/friend/:userId',
+    component: FriendPostComponent
   }
 ];
 

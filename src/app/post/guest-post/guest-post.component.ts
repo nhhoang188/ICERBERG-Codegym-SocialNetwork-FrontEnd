@@ -21,22 +21,16 @@ export class GuestPostComponent implements OnInit {
     this.userSv.getById(this.userId).subscribe(value => {
       this.user = value;
     });
-    this.getPostByUserId();
+    this.getPublicPostByUserId();
   }
 
   ngOnInit(): void {
   }
 
 
-  getPostByUserId(){
-    this.postSv.findPostByUserId(this.userId).subscribe(value => {
+  getPublicPostByUserId(){
+    this.postSv.findPublicPostByUserId(this.userId).subscribe(value => {
       this.listPost = value;
-    });
-  }
-  deletePost(id?: any) {
-    this.postSv.deletePostById(id).subscribe(() => {
-      alert('Delete Ok!');
-      this.getPostByUserId();
     });
   }
 

@@ -15,24 +15,6 @@
       <h6 class="author"><a routerLink="/profile/{{user.id}}"> {{user.fullname}}</a></h6>
       <span class="post-time">{{p.createDate}}</span>
     </div>
-    <div class="post-settings-bar">
-      <span></span>
-      <span></span>
-      <span></span>
-      <div class="post-settings arrow-shape">
-        <ul>
-          <li>
-            <button><a routerLink="/edit-post/{{p.postId}}">edit post</a></button>
-          </li>
-          <li>
-            <button (click)="deletePost(p.postId)" >delete post</button>
-          </li>
-          <li>
-            <button>do something 2</button>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
   <!-- post title start -->
   <div class="post-content">
