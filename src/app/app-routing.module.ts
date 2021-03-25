@@ -12,6 +12,7 @@ import {ListfriendComponent} from './friendrequest/listfriend/listfriend.compone
 import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
+import {LoveCommentComponent} from './like/love-comment/love-comment.component';
 import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
 import {CommentComponent} from './comment/comment.component';
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path: 'listfriend', component: ListfriendComponent, pathMatch: 'full'},
   {path: 'similar', component: FriendSimilarComponent, pathMatch: 'full'},
   {path: 'search', component: HeaderComponent, pathMatch: 'full'},
+  {path: 'lovecomment', component: LoveCommentComponent, pathMatch: 'full'},
+
   {
     path: 'create-post',
     component: CreatePostComponent

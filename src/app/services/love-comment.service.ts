@@ -1,21 +1,18 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {FriendRequest} from '../model/FriendRequest';
 import {Love} from '../model/Love';
+import {LoveComment} from '../model/LoveComment';
 
-const API_URL = `${environment.apiUrl}/loves`;
+const API_URL = `${environment.apiUrl}/lovecomments`;
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoveService {
+export class LoveCommentService {
 
-
-  constructor(private http: HttpClient) {
-  }
-
+  constructor(private http: HttpClient) { }
   getAll(): Observable<any> {
     return this.http.get<any>(API_URL);
   }
@@ -24,7 +21,7 @@ export class LoveService {
     return this.http.get(API_URL + '/' + id);
   }
 
-  create(love: Love): Observable<Love> {
+  create(love: LoveComment): Observable<any> {
     return this.http.post<Love>(API_URL, love);
   }
 
@@ -34,7 +31,7 @@ export class LoveService {
   }
 
 
-  getLike(id1: number, id2: number): Observable<Love> {
+  getLike(id1: number, id2: number): Observable<any> {
     return this.http.get(API_URL + '/find?id1=' + id1 + '&id2=' + id2);
   }
 
@@ -42,8 +39,7 @@ export class LoveService {
     return this.http.get(API_URL + '/count/' + id);
   }
 
-  getAllByPost(id: number): Observable<any> {
+  getAllByComment(id: number): Observable<any> {
     return this.http.get(API_URL + '/list/' + id);
   }
-
 }

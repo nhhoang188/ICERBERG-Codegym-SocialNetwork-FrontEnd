@@ -22,6 +22,7 @@ import {environment} from '../environments/environment';
 import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
+import { LoveCommentComponent } from './like/love-comment/love-comment.component';
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import { MyFriendComponent } from './profile/my-friend/my-friend.component';
 import { SweetMemoryComponent } from './profile/sweet-memory/sweet-memory.component';
@@ -70,7 +71,8 @@ import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/sim
     FriendYouknowComponent,
     SimilarFriendComponent,
     UserInfoComponentNoti,
-    HeaderComponent
+    HeaderComponent,
+    LoveCommentComponent
   ],
   imports: [
     BrowserModule,
