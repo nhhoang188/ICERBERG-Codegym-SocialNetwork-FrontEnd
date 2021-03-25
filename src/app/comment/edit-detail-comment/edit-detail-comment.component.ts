@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommentService} from "../../services/comment.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
+import {Comments} from "../../model/Comments";
 
 @Component({
   selector: 'app-delete-comment',
@@ -9,9 +11,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class EditDetailCommentComponent implements OnInit {
 
-  comments: Comment[] = [];
-  // fake postId
-  postId = 2;
+  // @ts-ignore
+  comment: Comments;
+  commentId: any;
+  postId: any;
+  content: string = "";
+  formEditComment: FormGroup = new FormGroup({
+    content: new FormControl('')
+  });
 
   constructor(private commentService: CommentService,
               private router: Router,
@@ -19,14 +26,33 @@ export class EditDetailCommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDataComment();
+    this.activatedRoute.paramMap.subscribe(
+      async result => {
+        this.postId = result.get('postId');
+        this.commentId = result.get('commentId');
+        this.comment = await this.getDataComment(this.postId, this.commentId);
+        this.formEditComment.get('content')?.setValue(this.comment.content);
+      }
+    );
+
   }
 
-  getDataComment() {
-    this.commentService.findAllCommentByPostId(this.postId).subscribe(
+  getDataComment(postId: any, commentId: any) {
+    return this.commentService.findCommentByCommentId(postId, commentId).toPromise()
+  }
+
+  editComment() {
+    this.content = this.formEditComment.get('content')?.value;
+    let comment: Comments = {
+      commentId: this.comment.commentId,
+      userId: this.comment.userId,
+      postId: this.comment.postId,
+      content: this.content,
+      createDate: this.comment.createDate
+    }
+    this.commentService.updateComment(this.commentId, comment).subscribe(
       result => {
-        this.comments = result;
-        console.log(this.comments);
+        this.router.navigate([`profile/${localStorage.getItem("ID")}`])
       }, error => {
         console.log(error);
       }

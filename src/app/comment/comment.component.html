@@ -16,7 +16,7 @@
                 <textarea class="share-text-field" placeholder="leave a comment"
                           id="cmt" formControlName="content"></textarea>
 
-    <button class="btn-share" type="submit">Comment</button>
+    <button class="btn-share" type="submit">Comments</button>
   </form>
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
@@ -33,7 +33,7 @@
           <div class="post-settings arrow-shape">
             <ul>
               <li>
-                <a routerLink="../../edit-detail-comment/{{cm.commentId}}">edit</a>
+                <a routerLink="../../{{cm.postId}}/edit-detail-comment/{{cm.commentId}}">edit</a>
               </li>
               <li>
                 <button type="button" (click)="deleteComment(cm.commentId)">delete</button>

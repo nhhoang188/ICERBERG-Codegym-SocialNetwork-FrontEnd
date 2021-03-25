@@ -44,7 +44,7 @@ const routes: Routes = [
     component: CommentComponent
   },
   {
-    path: 'edit-detail-comment/:id',
+    path: ':postId/edit-detail-comment/:commentId',
     component: EditDetailCommentComponent
   }
 ];

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommentService} from '../services/comment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Comments} from "../model/Comments";
 
 
 @Component({
@@ -51,7 +52,7 @@ export class CommentComponent implements OnInit {
     // this.unknownId = 3;
     this.content = this.formComment.get('content')?.value;
 
-    let comment: Comment = {
+    let comment: Comments = {
       // @ts-ignore
       userId: this.unknownId,
       //fake data postId
