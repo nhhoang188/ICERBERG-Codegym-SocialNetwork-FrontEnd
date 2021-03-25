@@ -1,0 +1,19 @@
+<div class="card widget-item" >
+  <h4 class="widget-title">Sweets Memories</h4>
+  <div class="widget-body"  >
+    <div class="sweet-galley img-gallery" >
+      <div class="row row-5" >
+        <div class="col-4" *ngFor="let l of listPost">
+          <div class="gallery-tem">
+            <figure class="post-thumb">
+              <a class="gallery-selector" routerLink="/post/">
+                <img src="{{l.image}}" alt="sweet memory">
+              </a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

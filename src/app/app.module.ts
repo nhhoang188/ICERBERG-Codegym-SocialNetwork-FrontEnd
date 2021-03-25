@@ -23,6 +23,8 @@ import {LoveComponent} from './like/love/love.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 import { LoveCommentComponent } from './like/love-comment/love-comment.component';
+import {ListUserComponent} from './admin/list-user/list-user.component';
+import { SocketComponent } from './socket/socket.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { LoveCommentComponent } from './like/love-comment/love-comment.component
     MenuTimelineComponent,
     MyPostComponent,
     FriendSimilarComponent,
-    LoveCommentComponent
+    LoveCommentComponent,
+    ListUserComponent,
+    SocketComponent,
   ],
   imports: [
     BrowserModule,
