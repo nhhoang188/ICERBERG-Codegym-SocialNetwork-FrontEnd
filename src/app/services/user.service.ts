@@ -41,5 +41,10 @@ export class UserService {
     return this.httpClient.delete<any>(API_URl + '/users' + `/${id}`);
   }
 
-
+  getAllFriends(username: any): Observable<any> {
+    return this.httpClient.get(API_URl+'/'+username+'/friend')
+  }
+  getUser(username: any): Observable<any> {
+    return this.httpClient.get(API_URl+'/name/'+username)
+  }
 }
