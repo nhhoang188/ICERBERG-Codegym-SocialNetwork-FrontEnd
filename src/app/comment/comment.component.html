@@ -4,7 +4,7 @@
   <div class="post-meta">
     <app-love [id_post]="postId"></app-love>
     <ul class="comment-share-meta">
-      <li> <span> {{count}} comment</span>
+      <li><span> {{count}} comment</span>
         <button class="post-comment" (click)="displayAllComment(postId)">
           <i class="bi bi-chat-bubble"></i>
         </button>
@@ -22,24 +22,29 @@
   <!--    list comment all -->
   <div id="list-comment">
     <div id="display-comment-all" *ngFor="let cm of comments">
-        <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate" ></app-user-info>
+      <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate"></app-user-info>
       <div class="content" id="content-all">
         <p>{{cm.content}}</p>
-<!--        dropdown-menu-->
-        <div class="post-settings-bar">
-          <span></span>
-          <span></span>
-          <span></span>
-          <div class="post-settings arrow-shape">
-            <ul>
-              <li>
-                <a routerLink="../../{{cm.postId}}/edit-detail-comment/{{cm.commentId}}">edit</a>
-              </li>
-              <li>
-                <button type="button" (click)="deleteComment(cm.commentId)">delete</button>
-              </li>
-            </ul>
+        <!--        dropdown-menu-->
+
+        <div *ngIf="result">
+          <div class="post-settings-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="post-settings arrow-shape">
+              <ul>
+                <li>
+                  <a routerLink="../../{{cm.postId}}/edit-detail-comment/{{cm.commentId}}">edit</a>
+                </li>
+                <li>
+                  <button type="button" (click)="deleteComment(cm.commentId)">delete</button>
+                </li>
+              </ul>
+            </div>
           </div>
+
+
         </div>
       </div>
     </div>

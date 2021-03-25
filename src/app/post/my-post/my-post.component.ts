@@ -13,6 +13,8 @@ export class MyPostComponent implements OnInit {
   user: User = {};
   listPost: any;
   userId: any;
+  // @ts-ignore
+  result: boolean;
 
   constructor(private userSv: UserService,
               private postSv: PostService,
@@ -22,6 +24,13 @@ export class MyPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(result=>{
+      // @ts-ignore
+      let currentId: any = result.params.id;
+      this.result = this.checkId(localStorage.getItem('ID'), currentId);
+    }, error => {
+      console.log(error);
+    });
   }
 
   getUser() {
@@ -50,5 +59,9 @@ export class MyPostComponent implements OnInit {
       this.getPostByUserId();
     });
   }
-
+  checkId(userCurrentId: any, userId: any): boolean {
+    if (userCurrentId != userId)
+      return false;
+    return true;
+  }
 }

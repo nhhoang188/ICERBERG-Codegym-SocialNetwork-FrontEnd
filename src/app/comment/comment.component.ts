@@ -25,7 +25,8 @@ export class CommentComponent implements OnInit {
   status = '';
   check: boolean = true;
   count = 0;
-
+  // @ts-ignore
+  result: boolean;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -36,7 +37,17 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.creatCommentForm();
+    this.activatedRoute.paramMap.subscribe(result => {
+      // @ts-ignore
+      let currentId: any = result.params.id;
+      this.result = this.checkId(this.unknownId, currentId);
 
+      console.log(currentId);
+      console.log(this.unknownId);
+      console.log(this.result);
+    }, error => {
+      console.log(error);
+    });
   }
 
 
@@ -108,5 +119,11 @@ export class CommentComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  checkId(userCurrentId: any, userId: any): boolean {
+    if (userCurrentId != userId)
+      return false;
+    return true;
   }
 }

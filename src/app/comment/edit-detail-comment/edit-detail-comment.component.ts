@@ -16,6 +16,7 @@ export class EditDetailCommentComponent implements OnInit {
   commentId: any;
   postId: any;
   content: string = "";
+  userIdCurrent = localStorage.getItem('ID');
   formEditComment: FormGroup = new FormGroup({
     content: new FormControl('')
   });
@@ -32,8 +33,10 @@ export class EditDetailCommentComponent implements OnInit {
         this.commentId = result.get('commentId');
         this.comment = await this.getDataComment(this.postId, this.commentId);
         this.formEditComment.get('content')?.setValue(this.comment.content);
+
       }
     );
+
 
   }
 
@@ -52,10 +55,12 @@ export class EditDetailCommentComponent implements OnInit {
     }
     this.commentService.updateComment(this.commentId, comment).subscribe(
       result => {
-        this.router.navigate([`profile/${localStorage.getItem("ID")}`])
+        this.router.navigate([`profile/${this.userIdCurrent}`])
       }, error => {
         console.log(error);
       }
     );
   }
+
+
 }
