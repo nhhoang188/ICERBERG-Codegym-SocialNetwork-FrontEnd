@@ -35,6 +35,7 @@ import {HeaderComponent} from './layout/header/header.component';
 import { TimeLinePostComponent } from './home/time-line-post/time-line-post.component';
 import { UserAvatarComponent } from './home/time-line-post/user-avatar/user-avatar.component';
 import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-fullname.component';
+import { FriendYouknowComponent } from './home/time-line-post/friend-youknow/friend-youknow.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-
     HeaderComponent,
     TimeLinePostComponent,
     UserAvatarComponent,
-    UserFullnameComponent
+    UserFullnameComponent,
+    FriendYouknowComponent
   ],
   imports: [
     BrowserModule,

@@ -77,7 +77,6 @@ export class TimeLinePostComponent implements OnInit {
     // this.timeOut = true;
     var loading = setInterval(() => {
       this.width = +this.width + 5;
-      console.log(this.width);
       if (this.width > 75) {
         clearInterval(loading);
       }
@@ -126,13 +125,11 @@ export class TimeLinePostComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            console.log(this.fb);
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
         }
       });
 

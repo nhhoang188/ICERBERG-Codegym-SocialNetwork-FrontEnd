@@ -41,4 +41,7 @@ export class UserService {
     return this.httpClient.delete<any>(API_URl + '/users' + `/${id}`);
   }
 
+  getUserYouKnow(id: any): Observable<User[]> {
+    return this.httpClient.get<User[]>(API_URl + '/user/know/' + `${id}`);
+  }
 }
