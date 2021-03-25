@@ -8,8 +8,7 @@ import {UserService} from '../services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  user: any;
-  love: any;
+  userCurrent: any;
 
   constructor(private router: Router,
               private userSv: UserService) {
@@ -17,8 +16,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('USERNAME') != null) {
-      this.userSv.getById(localStorage.getItem('ID')).subscribe(value1 => {
-        this.user = value1;
+      const id = localStorage.getItem('ID');
+      this.userSv.getById(id).subscribe(value1 => {
+        this.userCurrent = value1;
       });
     } else {
       this.router.navigate(['login']);

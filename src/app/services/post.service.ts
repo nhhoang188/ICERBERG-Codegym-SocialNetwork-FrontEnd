@@ -20,7 +20,7 @@ export class PostService {
   }
 
   editImagePostStatus(id: number, post: Post): Observable<any> {
-    return this.httpClient.put<any>(`${API_URL}/posts/image/${id}`, post)
+    return this.httpClient.put<any>(`${API_URL}/posts/image/${id}`, post);
   }
 
   editStatusPost(id: number, post: Post): Observable<any> {
@@ -42,7 +42,13 @@ export class PostService {
   findPublicPostByUserId(userId: number): Observable<Post> {
     return this.httpClient.get<Post>(`${API_URL}/posts/public/${userId}`);
   }
+
   findPublicAndFriendOnlyPostByUserId(userId: number): Observable<Post> {
     return this.httpClient.get<Post>(`${API_URL}/posts/friend/${userId}`);
   }
+
+  getAllPostIntimeLine(id: number): Observable<Post[]>{
+    return this.httpClient.get<Post[]>(`${API_URL}/posts/timeline/${id}`);
+  }
+
 }

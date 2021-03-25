@@ -31,6 +31,10 @@ import { NotificationComponent } from './notification/notification.component';
 import { FriendPostComponent } from './post/friend-post/friend-post.component';
 import { GuestPostComponent } from './post/guest-post/guest-post.component';
 import {UserInfoComponentNoti} from './notification/user-info/user-info.component';
+import {HeaderComponent} from './layout/header/header.component';
+import { TimeLinePostComponent } from './home/time-line-post/time-line-post.component';
+import { UserAvatarComponent } from './home/time-line-post/user-avatar/user-avatar.component';
+import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-fullname.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,11 @@ import {UserInfoComponentNoti} from './notification/user-info/user-info.componen
     NotificationComponent,
     FriendPostComponent,
     GuestPostComponent,
-    UserInfoComponentNoti
+    UserInfoComponentNoti,
+    HeaderComponent,
+    TimeLinePostComponent,
+    UserAvatarComponent,
+    UserFullnameComponent
   ],
   imports: [
     BrowserModule,

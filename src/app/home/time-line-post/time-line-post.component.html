@@ -1,0 +1,107 @@
+<div class="card card-small">
+  <div class="share-box-inner">
+    <!-- profile picture end -->
+    <div class="profile-thumb">
+    </div>
+    <!-- profile picture end -->
+    <!-- share content box start -->
+    <div class="share-content-box w-100">
+      <form class="share-text-box">
+        <textarea name="share" class="share-text-field" aria-disabled="true" placeholder="Say Something"
+                  data-toggle="modal" data-target="#textbox" id="email"></textarea>
+      </form>
+    </div>
+    <!-- share content box end -->
+    <!-- Modal start -->
+    <div class="modal fade" id="textbox" aria-labelledby="textbox">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form class="share-text-box" (ngSubmit)="onPost()" [formGroup]="postStatusForm">
+            <div class="modal-header">
+              <h5 class="modal-title">Share Your Mood</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body custom-scroll">
+
+              <div ng-app="myApp" ng-controller="myCtrl" class="row">
+                <select ng-model="selectedPrivacy" formControlName="privacy"
+                        class="col-3 form-select form-select-sm mb-2 ml-3">
+                  <option value="" disabled selected hidden>Public</option>
+                  <option *ngFor="let privacy of privacies" [value]="privacy.model">{{privacy.model}}</option>
+                </select>
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control" formControlName="content" placeholder="Leave a comment here"
+                          id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+              </div>
+              <div *ngIf="fb!== null" class="mt-3 mb-3">
+                <img src="{{fb}}" style="border-radius: 15px">
+              </div>
+              <div class="form-group col-12">
+                <input type="file"
+                       id="file"
+                       #userPhoto
+                       (change)="onFileSelected($event)"
+                       name="image"
+                       autocomplete="off" class="form-control"
+                />
+              </div>
+              <div *ngIf="fb==null">
+                <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
+                  <div class="progress" [ngStyle]="{backgroundColor: progressColor,width: width + '%'}">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <!--              <button class="btn-share" type="submit" [disabled]="timeOut">share</button>-->
+              <div class="modal-footer">
+                <button type="button" class="post-share-btn" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="post-share-btn" [disabled]="timeOut">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal end -->
+  </div>
+</div>
+<div class="card" *ngFor="let p of listPost">
+  <!-- post title start -->
+  <div class="post-title d-flex align-items-center">
+    <!-- profile picture end -->
+    <div class="profile-thumb">
+      <a routerLink="/profile/{{p.userId}}">
+        <figure class="profile-thumb-middle">
+          <app-user-avatar [userId]="p.userId"></app-user-avatar>
+        </figure>
+      </a>
+    </div>
+    <!-- profile picture end -->
+
+    <div class="posted-author">
+      <h6 class="author">
+      <app-user-fullname [userId]="p.userId"></app-user-fullname>
+      </h6>
+      <span class="post-time">{{p.createDate}}</span>
+    </div>
+  </div>
+  <!-- post title start -->
+  <div class="post-content">
+    <p class="post-desc">
+      {{p.content}}
+    </p>
+    <div class="post-thumb-gallery" *ngIf="p.image !== null">
+      <figure class="post-thumb img-popup">
+        <a href="{{p.image}}">
+          <img src="{{p.image}}" alt="post image">
+        </a>
+      </figure>
+    </div>
+    <app-comment [postId]="p.postId"></app-comment>
+  </div>
+</div>
+

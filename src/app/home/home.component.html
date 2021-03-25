@@ -1,218 +1,89 @@
+<app-header></app-header>
+
 <main>
-  <div class="main-wrapper">
-    <div class="profile-banner-large bg-img" style="background-image: url({{user.imgcover}});">
-    </div>
-  </div>
 
-  <div class="profile-menu-area bg-white">
+  <div class="main-wrapper pt-80">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-3 col-md-3">
-          <div class="profile-picture-box">
-            <figure class="profile-picture">
-              <a routerLink="/profile/{{user.id}}">
-                <img src="{{user.avatar}}" alt="profile picture">
-              </a>
-            </figure>
-            <div class="center">
-              <h4  class="posted-author"><a>{{user.fullname}}</a></h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 offset-lg-1">
-          <div class="profile-menu-wrapper">
-            <div class="main-menu-inner header-top-navigation">
-              <nav>
-                <ul class="main-menu">
-                  <li class="active"><a routerLink="/home">timeline</a></li>
-                  <li><a routerLink="/profile/{{user.id}}/about">about</a></li>
-                  <li><a routerLink="/profile/{{user.id}}/friends">friends</a></li>
-                  <li><app-friend></app-friend></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 d-none d-md-block">
-          <div class="profile-edit-panel">
-            <div class="post-settings-bar">
-              <a style="color: whitesmoke" class="edit-btn">Acount</a>
-              <div class="post-settings arrow-shape">
-                <ul>
-                  <li>
-                    <button routerLink="/edit-profile">edit profile</button>
-                  </li>
-                  <li>
-                    <button routerLink="/logout">logout</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class="row">
-
-      <!-- CHỗ này để show thông báo -->
-      <div class="col-lg-3 order-2 order-lg-1">
-        <aside class="widget-area profile-sidebar">
-          <app-notification></app-notification>
-        </aside>
-      </div>
-
-
-
-
-      <!-- chỗ này show tất cả status của bạn bè và mình gần nhất -->
-      <div class="col-lg-6 order-1 order-lg-2">
-        <!-- share status start -->
-        <div class="card card-small">
-          <div class="share-box-inner">
-
-            <div class="share-content-box w-100">
-              <app-post></app-post>
-            </div>
-            <!-- share content box end -->
-            <!-- Modal start -->
-            <!-- Modal end -->
-          </div>
-        </div>
-        <!-- share box end -->
-        <!-- post status start -->
-
-
-        <div class="card">
-          <!-- post title start -->
-          <div class="post-title d-flex align-items-center">
-            <!-- profile picture end -->
-            <div class="profile-thumb">
-              <a routerLink="/profile/id-cua-user">
-                <figure class="profile-thumb-middle">
-                  <img src="ảnh-đại-diện" alt="profile picture">
+      <div class="row">
+        <div class="col-lg-3 order-2 order-lg-1">
+          <aside class="widget-area">
+            <!-- widget single item start -->
+            <div class="card card-profile widget-item p-0">
+              <div class="profile-banner">
+                <figure class="profile-banner-small">
+                  <a routerLink="/profile/{{userCurrent.id}}">
+                    <img src="{{userCurrent.imgcover}}}" alt="">
+                  </a>
+                  <a routerLink="/profile/{{userCurrent.id}}" class="profile-thumb-2">
+                    <img src="{{userCurrent.avatar}}}" alt="">
+                  </a>
                 </figure>
-              </a>
-            </div>
-            <!-- profile picture end -->
-
-            <div class="posted-author">
-              <h6 class="author"><a routerLink="/profile/id-cua-user">Tên Người Đăng</a></h6>
-              <span class="post-time">Thời Gian Đăng</span>
-            </div>
-            <div class="post-settings-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-              <div class="post-settings arrow-shape">
-                <ul>
-                  <li>
-                    <button>edit post</button>
-                  </li>
-                  <li>
-                    <button>do something 1</button>
-                  </li>
-                  <li>
-                    <button>do something 2</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- post title start -->
-          <div class="post-content">
-            <p class="post-desc">
-              Sờ Ta Tút
-            </p>
-            <div class="post-thumb-gallery img-gallery">
-              <div class="row no-gutters">
-                <div class="col-8">
-                  <figure class="post-thumb">
-                    <a class="gallery-selector" routerLink="images/post/post-large-2.jpg">
-                      <img src="images/post/post-2.jpg" alt="post image">
-                    </a>
-                  </figure>
+                <div class="profile-desc text-center">
+                  <h6 class="author"><a>{{userCurrent.fullname}}</a></h6>
+                  <p>{{userCurrent.description}}</p>
                 </div>
               </div>
             </div>
-            <!-- form like 1 status -->
-            <form>
-              <div class="post-meta">
-                <button class="like-button active">
-                  <img class="heart-color" src="assets/images/icons/heart-color.png" alt="">
-                  <a>Số Lượng Love</a>
-                </button>
-                <ul class="comment-share-meta">
-                  <li>
-                    <button class="post-comment">
-                      <i class="bi bi-chat-bubble"></i>
-                      <a routerLink="/comment/id">xem các cmt khác</a>
+            <!-- widget single item start -->
+          </aside>
+        </div>
+
+        <div class="col-lg-6 order-1 order-lg-2">
+
+           <app-time-line-post></app-time-line-post>
+
+        </div>
+
+        <div class="col-lg-3 order-3">
+          <aside class="widget-area">
+
+
+            <!--- Hiển Thị Thông Báo -->
+            <app-notification></app-notification>
+            <!-- widget single item end -->
+
+
+            <!-- widget single item start -->
+            <div class="card widget-item">
+              <h4 class="widget-title">Friends You May Know</h4>
+              <div class="widget-body">
+                <ul class="like-page-list-wrapper">
+                  <li class="unorder-list">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb">
+                      <a routerLink="#">
+                        <figure class="profile-thumb-small">
+                          <img src="images/profile/profile-small-10.jpg" alt="profile picture">
+                        </figure>
+                      </a>
+                    </div>
+                    <!-- profile picture end -->
+
+                    <div class="unorder-list-info">
+                      <h3 class="list-title"><a routerLink="#">arfim bolt</a></h3>
+                      <p class="list-subtitle"><a routerLink="#">10 mutual</a></p>
+                    </div>
+                    <button class="like-button">
+                      <img class="heart" src="images/icons/heart.png" alt="">
+                      <img class="heart-color" src="images/icons/heart-color.png" alt="">
                     </button>
                   </li>
                 </ul>
               </div>
-            </form>
-
-          </div>
-
-
-          <!-- form bình luận 1 status -->
-          <form class="share-text-box">
-                <textarea name="share" class="share-text-field" placeholder="leave a comment"
-                          id="cmt"></textarea>
-            <button class="btn-share" type="submit">Comment</button>
-          </form>
-
-
-        </div>
-        <!-- post status end -->
-      </div>
-
-
-
-
-      <!-- chỗ này để show đề xuất kết bạn-->
-      <div class="col-lg-3 order-3">
-        <aside class="widget-area">
-          <div class="card widget-item">
-            <h4 class="widget-title">Friends You May Know</h4>
-            <div class="widget-body">
-              <ul class="like-page-list-wrapper">
-                <li class="unorder-list">
-                  <!-- profile picture end -->
-                  <div class="profile-thumb">
-                    <a routerLink="#">
-                      <figure class="profile-thumb-small">
-                        <img src="images/profile/profile-small-10.jpg" alt="profile picture">
-                      </figure>
-                    </a>
-                  </div>
-                  <!-- profile picture end -->
-
-                  <div class="unorder-list-info">
-                    <h3 class="list-title"><a routerLink="#">arfim bolt</a></h3>
-                    <p class="list-subtitle"><a routerLink="#">10 mutual</a></p>
-                  </div>
-                  <button class="like-button">
-                    <img class="heart" src="images/icons/heart.png" alt="">
-                    <img class="heart-color" src="images/icons/heart-color.png" alt="">
-                  </button>
-                </li>
-              </ul>
             </div>
-          </div>
-        </aside>
+            <!-- widget single item end -->
+          </aside>
+        </div>
       </div>
-
-
-
     </div>
   </div>
 
 </main>
+
+<!-- Scroll to top start -->
+<div class="scroll-top not-visible">
+  <i class="bi bi-finger-index"></i>
+</div>
 
 
 
