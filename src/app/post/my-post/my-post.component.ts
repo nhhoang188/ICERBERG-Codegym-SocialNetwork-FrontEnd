@@ -16,8 +16,18 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MyPostComponent implements OnInit {
   user: User = {};
+  userCurrent: User = {};
   listPost: any;
   userId: any;
+  idUser: any;
+  post: Post = {};
+  idPost: any;
+  idUserCurrent: any;
+  editForm = new FormGroup({
+    contents: new FormControl(''),
+    imagee: new FormControl(''),
+    privacy: new FormControl('')
+  });
 
   constructor(private userSv: UserService,
               private postSv: PostService,
@@ -27,6 +37,10 @@ export class MyPostComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
     this.userId = localStorage.getItem('ID');
+    this.idUserCurrent = localStorage.getItem('ID');
+    this.userSv.getById(this.idUserCurrent).subscribe(value => {
+      this.userCurrent = value;
+    });
     this.privacies = [
       {model: 'Public'},
       {model: 'Private'},
@@ -40,6 +54,29 @@ export class MyPostComponent implements OnInit {
       content: new FormControl(''),
       privacy: new FormControl('')
     });
+    this.activatedRoute.paramMap.subscribe(result => {
+      this.idPost = result.get('id');
+      this.postService.findPostById(this.idPost).subscribe(
+        result => {
+          this.post = result;
+          this.idUser = this.post.userId;
+          this.userSv.getById(this.idUser).subscribe(value => {
+            this.user = value;
+          })
+          this.createEditForm(this.post);
+        }, error => {
+          console.log(error);
+        }
+      );
+
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  private createEditForm(post: any) {
+    this.editForm.get('contents')?.setValue(post.content);
+    this.editForm.get('privacy')?.setValue(post.privacy);
   }
 
   getUser() {
@@ -69,6 +106,18 @@ export class MyPostComponent implements OnInit {
     });
   }
 
+  deleteImage(){
+    this.post.content = this.editForm.get('contents')?.value;
+    this.postService.editImagePostStatus(this.idPost, this.post).subscribe(
+      result => {
+        console.log('success!');
+        this.route.navigate([`/profile/${this.idUserCurrent}`]);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
 
   postStatusForm: any;
   content: any;
@@ -91,6 +140,23 @@ export class MyPostComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  onSave() {
+    console.log("alo");
+    this.post.content = this.editForm.get('contents')?.value;
+    // if (this.post.image !== null)
+    this.post.image = this.fb;
+    this.post.privacy = this.editForm.get('privacy')?.value;
+    console.log(this.post);
+    this.postService.editStatusPost(this.idPost, this.post).subscribe(
+      result => {
+        console.log('success!');
+        this.route.navigate([`/profile/${this.idUserCurrent}`]);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   async setIntervalProgress() {

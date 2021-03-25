@@ -73,17 +73,6 @@ export class EditPostComponent implements OnInit {
 
   }
 
-  private getPostById(idPost: number) {
-    this.postService.findPostById(idPost).subscribe(
-      result => {
-        this.post = result;
-        this.createEditForm(this.post);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
-
   private createEditForm(post: any) {
     this.editForm.get('contents')?.setValue(post.content);
     this.editForm.get('privacy')?.setValue(post.privacy);
