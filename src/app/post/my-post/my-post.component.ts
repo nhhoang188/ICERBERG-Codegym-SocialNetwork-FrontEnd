@@ -18,6 +18,8 @@ export class MyPostComponent implements OnInit {
   user: User = {};
   listPost: any;
   userId: any;
+  // @ts-ignore
+  result: boolean;
 
   constructor(private userSv: UserService,
               private postSv: PostService,
@@ -39,6 +41,13 @@ export class MyPostComponent implements OnInit {
     this.postStatusForm = new FormGroup({
       content: new FormControl(''),
       privacy: new FormControl('')
+    });
+    this.activatedRoute.paramMap.subscribe(result=>{
+      // @ts-ignore
+      let currentId: any = result.params.id;
+      this.result = this.checkId(localStorage.getItem('ID'), currentId);
+    }, error => {
+      console.log(error);
     });
   }
 
@@ -67,6 +76,11 @@ export class MyPostComponent implements OnInit {
       alert('Delete Ok!');
       this.getPostByUserId();
     });
+  }
+  checkId(userCurrentId: any, userId: any): boolean {
+    if (userCurrentId != userId)
+      return false;
+    return true;
   }
 
 

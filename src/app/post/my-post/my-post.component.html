@@ -85,24 +85,28 @@
       <span class="post-time">{{p.createDate}}</span>
     </div>
 
-    <div class="post-settings-bar">
-      <span></span>
-      <span></span>
-      <span></span>
-      <div class="post-settings arrow-shape">
-        <ul>
-          <li>
-            <button routerLink="/edit-post/{{p.postId}}">edit post</button>
-          </li>
-          <li>
-            <button (click)="deletePost(p.postId)">delete post</button>
-          </li>
-          <li>
-            <button>embed adda</button>
-          </li>
-        </ul>
+    <div *ngIf="result">
+      <div class="post-settings-bar">
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="post-settings arrow-shape">
+          <ul>
+            <li>
+              <button routerLink="/edit-post/{{p.postId}}">edit post</button>
+            </li>
+            <li>
+              <button (click)="deletePost(p.postId)">delete post</button>
+            </li>
+            <li>
+              <button>embed adda</button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+
+
   </div>
   <!-- post title start -->
   <div class="post-content">

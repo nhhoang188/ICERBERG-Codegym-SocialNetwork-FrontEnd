@@ -1,10 +1,20 @@
-<div class="profile-thumb">
-  <a routerLink="/profile/{{user.id}}">
-    <figure class="profile-thumb-middle">
-      <img [src]="user.avatar" alt="profile picture">
-    </figure>
-  </a>
+<div id="profile-meta-data">
+  <div class="profile-thumb">
+    <a routerLink="/profile/{{user.id}}">
+      <figure class="profile-thumb-middle">
+        <img src="assets/images/logo/logo.png" alt="profile picture">
+      </figure>
+    </a>
+  </div>
+  <div class="posted-author">
+    <div id="place-link-profile">
+      <a style="color: #7d7d2f; size: 2px; font-weight: bold" routerLink="/profile/{{user.id}}">
+        {{user.fullname}}
+      </a>
+    </div>
+    <div id="place-date">
+      <span style="color: wheat; size: 1px"> at {{createDateCmt}}</span>
+    </div>
+  </div>
 </div>
-<div class="posted-author">
-  <a style="color: #0D0A0A; size: 2px; font-weight: bold" routerLink="/profile/{{user.id}}">{{user.fullname}}</a>  <span style="color: wheat; size: 1px"> at {{createDateCmt}}</span>
-</div>
+

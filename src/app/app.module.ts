@@ -38,6 +38,7 @@ import { UserAvatarComponent } from './home/time-line-post/user-avatar/user-avat
 import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-fullname.component';
 import { FriendYouknowComponent } from './home/time-line-post/friend-youknow/friend-youknow.component';
 import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/similar-friend/similar-friend.component';
+import { EditDetailCommentComponent } from './comment/edit-detail-comment/edit-detail-comment.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,10 @@ import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/sim
     SimilarFriendComponent,
     UserInfoComponentNoti,
     HeaderComponent,
-    LoveCommentComponent
+    LoveCommentComponent,
+    UserInfoComponent,
+    MyFriendComponent,
+    EditDetailCommentComponent
   ],
   imports: [
     BrowserModule,

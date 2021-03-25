@@ -1,0 +1,30 @@
+#edit-form {
+  display: flex;
+  width: 500px;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+#post-content, textarea {
+  width: 100%;
+  height: 250px;
+  background: #28A745;
+  border: 1px solid #3fcc8d;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-success {
+  width: 20%;
+  border: 1px solid #3fcc8d;
+  border-radius: 10px;
+}

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Comments} from "../model/Comments";
 
 // @ts-ignore
 @Injectable({
@@ -14,17 +15,29 @@ export class CommentService {
   constructor(private httpClient: HttpClient) {
   }
 
-  createComment(comment: Comment): Observable<Comment> {
-    return this.httpClient.post<Comment>(this.API_URL, comment);
+  createComment(comment: Comments): Observable<Comments> {
+    return this.httpClient.post<Comments>(this.API_URL, comment);
   }
 
 
   // làm theo yc của cúc..
-  findById(id: number): Observable<Comment> {
-    return this.httpClient.get<Comment>(this.API_URL + '/' + id);
+  findById(id: number): Observable<Comments> {
+    return this.httpClient.get<Comments>(this.API_URL + '/' + id);
   }
 
-  findAllCommentByPostId(postId: number): Observable<any>{
+  findAllCommentByPostId(postId: number): Observable<any> {
     return this.httpClient.get<any>(`${this.API_URL}/${postId}`);
+  }
+
+  deleteComment(commentId: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.API_URL}/${commentId}`);
+  }
+
+  updateComment(commentId: number, comment: Comments): Observable<number> {
+    return this.httpClient.put<number>(`${this.API_URL}/${commentId}`, comment);
+  }
+
+  findCommentByCommentId(postId: number, commentId: number): Observable<Comments> {
+    return this.httpClient.get<Comments>(`${this.API_URL}/${postId}/edit-comment/${commentId}`);
   }
 }

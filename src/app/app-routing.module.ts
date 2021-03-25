@@ -20,6 +20,7 @@ import {NotificationComponent} from './notification/notification.component';
 import {GuestPostComponent} from './post/guest-post/guest-post.component';
 import {FriendPostComponent} from './post/friend-post/friend-post.component';
 import {HeaderComponent} from './layout/header/header.component';
+import {EditDetailCommentComponent} from "./comment/edit-detail-comment/edit-detail-comment.component";
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'comment',
     component: CommentComponent
+  },
+  {
+    path: ':postId/edit-detail-comment/:commentId',
+    component: EditDetailCommentComponent
   }
 ];
 

@@ -1,0 +1,29 @@
+<div id="edit-form">
+  <form [formGroup]="formEditComment" (ngSubmit)="editComment()">
+    <div class="card">
+      <!-- post title start -->
+      <div class="post-title d-flex align-items-center">
+        <!-- profile picture end -->
+        <app-user-info [IdUserCmt]="comment.userId" [createDateCmt]="comment.createDate"></app-user-info>
+      </div>
+      <!-- post title start -->
+      <div class="post-content">
+        <textarea class="post-desc pb-0" formControlName="content" value="{{comment.content}}" cols="27"></textarea>
+        <div class="post-meta">
+          <button class="post-meta-like">
+            <i class="bi bi-heart-beat"></i>
+            <span>You and 206 people like this</span>
+            <strong>206</strong>
+          </button>
+        </div>
+      </div>
+      <div id="btn-save">
+        <button _ngcontent-gtw-c57="" type="submit" class="btn-success">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
