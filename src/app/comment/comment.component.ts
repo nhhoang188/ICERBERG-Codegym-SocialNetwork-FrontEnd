@@ -95,4 +95,17 @@ export class CommentComponent implements OnInit {
     )
   }
 
+  editComment() {
+
+  }
+
+  deleteComment(commentId: number) {
+    this.commentService.deleteComment(commentId).subscribe(
+      result => {
+        this.displayAllComment(this.postId);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 }

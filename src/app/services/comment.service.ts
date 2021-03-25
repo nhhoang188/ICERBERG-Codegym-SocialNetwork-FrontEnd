@@ -28,7 +28,7 @@ export class CommentService {
     return this.httpClient.get<any>(`${this.API_URL}/${postId}`);
   }
 
-  deleteComment(postId: number, comment: Comment): Observable<any> {
-    return this.httpClient.delete<any>(`${this.API_URL}/${postId}`);
+  deleteComment(commentId: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.API_URL}/${commentId}`);
   }
 }
