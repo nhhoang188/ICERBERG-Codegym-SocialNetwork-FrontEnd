@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {FormControl, FormGroup} from '@angular/forms';
+import {FriendrequestService} from "../../services/friendrequest.service";
 
 @Component({
   selector: 'app-my-post',
@@ -15,30 +16,71 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./my-post.component.css']
 })
 export class MyPostComponent implements OnInit {
+  @Input('fid') fid: any;
   user: User = {};
   listPost: any;
-  userId: any;
+  userId1: any;
+  userId2: any;
+  checkFriend: any;
+  checkSelf: any;
 
   constructor(private userSv: UserService,
               private postSv: PostService,
+              private friendSv: FriendrequestService,
               private route: Router,
               private postService: PostService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
-    this.userId = localStorage.getItem('ID');
+
     this.privacies = [
       {model: 'Public'},
       {model: 'Private'},
       {model: 'Friend only'}
     ];
-    this.getUser();
+
   }
 
   ngOnInit(): void {
     this.postStatusForm = new FormGroup({
       content: new FormControl(''),
       privacy: new FormControl('')
+    });
+    this.userId2 = this.fid;
+    this.userId1 = localStorage.getItem('ID');
+    this.userSv.getById(this.userId1).subscribe(value => {
+      this.user = value;
+      this.friendSv.getFriend(this.userId1, this.fid).subscribe(value => {
+        if (value == null) {
+          this.checkFriend = false;
+        } else {
+          this.checkFriend = value.stt;
+        }
+        this.getUser();
+      }, error => console.log(error))
+
+    });
+    this.checkMySelf();
+
+  }
+
+  checkMySelf() {
+    if (this.userId1 == this.fid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getPublicAndFriendOnlyPostByUserId() {
+    this.postSv.findPublicAndFriendOnlyPostByUserId(this.userId2).subscribe(value => {
+      this.listPost = value;
+    });
+  }
+
+  getPublicPostByUserId() {
+    this.postSv.findPublicPostByUserId(this.userId2).subscribe(value => {
+      this.listPost = value;
     });
   }
 
@@ -48,7 +90,7 @@ export class MyPostComponent implements OnInit {
         const id = value.get('id');
         this.userSv.getById(id).subscribe(value1 => {
           this.user = value1;
-          this.getPostByUserId();
+          this.getPost();
         });
       });
     } else {
@@ -60,6 +102,21 @@ export class MyPostComponent implements OnInit {
     this.postSv.findPostByUserId(this.user.id).subscribe(value => {
       this.listPost = value;
     });
+  }
+
+  getPost() {
+    if (this.userId1 == this.userId2) {
+      this.getPostByUserId();
+    }
+    if (this.checkFriend == true) {
+      this.getPublicAndFriendOnlyPostByUserId();
+
+    }
+    if (this.checkFriend == false) {
+      this.getPublicPostByUserId();
+    } else {
+      console.log("OK");
+    }
   }
 
   deletePost(id?: any) {
@@ -111,8 +168,8 @@ export class MyPostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post> {};
-    post.userId = this.userId;
+    let post: Post = <Post>{};
+    post.userId = this.userId1;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
     let pr = this.postStatusForm.get('privacy').value;

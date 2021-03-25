@@ -10,6 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
+  @Input('check1') check1 = true;
   formComment = new FormGroup(
     {content: new FormControl('')}
   );

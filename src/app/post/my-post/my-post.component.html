@@ -85,7 +85,7 @@
       <span class="post-time">{{p.createDate}}</span>
     </div>
 
-    <div class="post-settings-bar">
+    <div class="post-settings-bar" *ngIf="checkMySelf() == true">
       <span></span>
       <span></span>
       <span></span>
@@ -116,6 +116,6 @@
         </a>
       </figure>
     </div>
-      <app-comment [postId]="p.postId" ></app-comment>
+      <app-comment *ngIf="checkFriend == true || checkMySelf() == true" ></app-comment>
   </div>
 </div>

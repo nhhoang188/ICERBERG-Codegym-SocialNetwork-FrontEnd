@@ -2,7 +2,7 @@
   <div class="post-meta">
     <app-love [id_post]="postId"></app-love>
     <ul class="comment-share-meta">
-      <li> <span> {{count}} comment</span>
+      <li><span> {{count}} comment</span>
         <button class="post-comment" (click)="displayAllComment(postId)">
           <i class="bi bi-chat-bubble"></i>
         </button>
@@ -10,7 +10,7 @@
     </ul>
   </div>
   <!-- form bình luận 1 status -->
-  <form class="share-text-box" [formGroup]="formComment" (ngSubmit)="createComment()">
+  <form class="share-text-box" *ngIf="check1" [formGroup]="formComment" (ngSubmit)="createComment()">
                 <textarea class="share-text-field" placeholder="leave a comment"
                           id="cmt" formControlName="content"></textarea>
 
@@ -21,7 +21,7 @@
   <!--    list comment all -->
   <div id="list-comment">
     <div id="display-comment-all" *ngFor="let cm of comments">
-        <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate" ></app-user-info>
+      <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate"></app-user-info>
       <div class="content" id="content-all">
         <p>{{cm.content}}</p>
       </div>
