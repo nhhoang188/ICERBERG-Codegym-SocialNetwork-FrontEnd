@@ -27,6 +27,7 @@ export class CommentComponent implements OnInit {
   count = 0;
   // @ts-ignore
   result: boolean;
+  check2=false
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -41,14 +42,12 @@ export class CommentComponent implements OnInit {
       // @ts-ignore
       let currentId: any = result.params.id;
       this.result = this.checkId(this.unknownId, currentId);
-
-      console.log(currentId);
-      console.log(this.unknownId);
-      console.log(this.result);
     }, error => {
       console.log(error);
     });
+    this.displayAllComment(this.postId);
   }
+
 
 
   creatCommentForm() {
@@ -76,16 +75,17 @@ export class CommentComponent implements OnInit {
 
         console.log('result', result)
         if (result != null) {
+          this.getAll(this.postId);
           this.displayAllComment(this.postId);
           if (JSON.stringify(result) == JSON.stringify(this.data)) {
 
-            this.status = 'KO CHO COMMENT';
+            this.status = 'Enter your word';
             this.check = false;
           } else {
             this.check = true;
           }
         } else {
-          this.status = 'KO CHO COMMENT';
+          this.status = 'you have not permission';
           this.check = false;
         }
         this.formComment.reset();
@@ -99,8 +99,20 @@ export class CommentComponent implements OnInit {
   displayAllComment(postId: number) {
     this.commentService.findAllCommentByPostId(postId).subscribe(
       result => {
+        // this.comments = result;
+        // this.count = this.comments.length;
+
+        this.count = result.length;
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
+  getAll(postId: number){
+    this.commentService.findAllCommentByPostId(postId).subscribe(
+      result => {
+        this.check2=!this.check2
         this.comments = result;
-        this.count = this.comments.length;
       }, error => {
         console.log(error);
       }
