@@ -18,6 +18,7 @@ import {CommentComponent} from './comment/comment.component';
 import {NotificationComponent} from './notification/notification.component';
 import {GuestPostComponent} from './post/guest-post/guest-post.component';
 import {FriendPostComponent} from './post/friend-post/friend-post.component';
+import {HeaderComponent} from './layout/header/header.component';
 
 const routes: Routes = [
   {path: 'friend', component: FriendComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'love', component: LoveComponent, pathMatch: 'full'},
   {path: 'listfriend', component: ListfriendComponent, pathMatch: 'full'},
   {path: 'similar', component: FriendSimilarComponent, pathMatch: 'full'},
+  {path: 'search', component: HeaderComponent, pathMatch: 'full'},
   {
     path: 'create-post',
     component: CreatePostComponent

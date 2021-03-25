@@ -68,7 +68,9 @@ import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/sim
     UserAvatarComponent,
     UserFullnameComponent,
     FriendYouknowComponent,
-    SimilarFriendComponent
+    SimilarFriendComponent,
+    UserInfoComponentNoti,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

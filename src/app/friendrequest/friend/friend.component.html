@@ -7,7 +7,7 @@
       <a (click)="unfriend(reques_id)">Unfriend</a>
     </div>
   </div>
-  <button *ngIf="check1==2" class="dropbtn">Cancel Request</button>
+  <button *ngIf="check1==2" class="dropbtn" (click)="unfriend(reques_id)" style="background-color: red">Cancel Request</button>
   <button *ngIf="check1==3" class="dropbtn" (click)="accept(reques_id)">Confirm</button>
   <button *ngIf="check1==3" class="decline dropbtn" (click)="unfriend(reques_id)">Delete Request</button>
 </div>
