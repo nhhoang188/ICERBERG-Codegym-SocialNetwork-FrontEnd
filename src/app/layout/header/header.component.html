@@ -7,7 +7,7 @@
           <div class="header-top-navigation">
             <nav>
               <ul>
-                <li class="active"><a (click)="close()">home</a></li>
+                <li class="active"><a (click)="home()">home</a></li>
                 <li class="notification-trigger"><a class="msg-trigger-btn" href="/notification">notification</a>
                   <div class="message-dropdown" id="b">
                     <div class="dropdown-title">
@@ -115,7 +115,28 @@
             <div class="header-top-search">
               <div class="top-search-box">
                 <input type="text" [(ngModel)]="fullname" placeholder="Search" class="top-search-field" >
+
                 <button class="top-search-btn" (click)="searchAll(fullname)"><i class="flaticon-search"></i></button>
+
+
+
+
+<!--                <div class="dropdown">-->
+<!--                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="searchAll(fullname)"><i class="flaticon-search"></i></button>-->
+<!--                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+
+
+
+
+
+
+
               </div>
             </div>
 
@@ -126,6 +147,8 @@
       </div>
     </div>
   </div>
+
+
 
 
       <div class="col-12">
@@ -148,7 +171,8 @@
                 </div>
               </div>
             </div>
-            <a (click)="close()">X</a>
+
+            <button style="margin-top:30px;height:40px" class="btn" (click)="close()">Close</button>
           </div>
         </div>
       </div>

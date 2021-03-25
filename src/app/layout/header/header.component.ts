@@ -8,7 +8,7 @@ import {UserService} from '../../services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  check=true
+  check=false
   fullname: string=""
   users: any
   constructor(private userService : UserService) { }
@@ -24,7 +24,10 @@ export class HeaderComponent implements OnInit {
     },error => console.log(error))
   }
   close(){
-    this.check=false
+    this.check=!this.check
+  }
+  home(){
+    this.check=false;
   }
 
 
