@@ -31,6 +31,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { FriendPostComponent } from './post/friend-post/friend-post.component';
 import { GuestPostComponent } from './post/guest-post/guest-post.component';
 import {UserInfoComponentNoti} from './notification/user-info/user-info.component';
+import {HeaderComponent} from './layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {UserInfoComponentNoti} from './notification/user-info/user-info.componen
     NotificationComponent,
     FriendPostComponent,
     GuestPostComponent,
-    UserInfoComponentNoti
+    UserInfoComponentNoti,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

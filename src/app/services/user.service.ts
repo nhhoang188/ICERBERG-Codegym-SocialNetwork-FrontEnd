@@ -40,5 +40,8 @@ export class UserService {
   deleteUser(id: number): Observable<any> {
     return this.httpClient.delete<any>(API_URl + '/users' + `/${id}`);
   }
+  search(fullname: string): Observable<any>{
+    return this.httpClient.get<any>(API_URl + '/users/search?fullname='+fullname)
+}
 
 }

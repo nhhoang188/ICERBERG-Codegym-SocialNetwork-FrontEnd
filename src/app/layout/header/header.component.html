@@ -7,7 +7,7 @@
           <div class="header-top-navigation">
             <nav>
               <ul>
-                <li class="active"><a href="/home">home</a></li>
+                <li class="active"><a (click)="close()">home</a></li>
                 <li class="notification-trigger"><a class="msg-trigger-btn" href="/notification">notification</a>
                   <div class="message-dropdown" id="b">
                     <div class="dropdown-title">
@@ -110,18 +110,50 @@
         </div>
 
         <div class="col-md-5">
-          <div class="header-top-right d-flex align-items-center justify-content-end">
+          <div class="row header-top-right d-flex align-items-center justify-content-end">
             <!-- header top search start -->
             <div class="header-top-search">
-              <form class="top-search-box">
-                <input type="text" placeholder="Search" class="top-search-field">
-                <button class="top-search-btn"><i class="flaticon-search"></i></button>
-              </form>
+              <div class="top-search-box">
+                <input type="text" [(ngModel)]="fullname" placeholder="Search" class="top-search-field" >
+                <button class="top-search-btn" (click)="searchAll(fullname)"><i class="flaticon-search"></i></button>
+              </div>
             </div>
+
             <!-- header top search end -->
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
+
+      <div class="col-12">
+        <div class="content-box friends-zone" >
+          <div *ngIf="check" class="row " style="position: relative">
+            <br>
+
+            <div class="col-lg-3 col-sm-6 relative" *ngFor="let user of users">
+              <br>
+              <div class="friend-list-view">
+                <div class="profile-thumb">
+                  <a href="#">
+                    <figure class="profile-thumb-middle">
+                      <a routerLink="/profile/{{user.id}}"><img [src]="user.imgcover" alt="profile picture"></a>
+                    </figure>
+                  </a>
+                </div>
+                <div class="posted-author">
+                  <h6 class="author"><a routerLink="/profile/{{user.id}}">{{user.fullname}}</a></h6>
+                </div>
+              </div>
+            </div>
+            <a (click)="close()">X</a>
+          </div>
+        </div>
+      </div>
+
+
 </header>
+
+
