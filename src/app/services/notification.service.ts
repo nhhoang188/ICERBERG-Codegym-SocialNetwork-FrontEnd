@@ -16,4 +16,12 @@ export class NotificationService {
   getNotiByFriendRequest(id: any): Observable<FriendRequest> {
     return this.httpClient.get<FriendRequest>(this.API_URL + `/notifriend/` + `${id}`);
   }
+
+  getNotiByCmtOfMyPost(id: any): Observable<any> {
+    return this.httpClient.get<any>(this.API_URL + `/notipost/` + `${id}`);
+  }
+
+  getNotiByLoveOfMyPost(id: any): Observable<any> {
+    return this.httpClient.get<any>(this.API_URL + `/notilove/` + `${id}`);
+  }
 }

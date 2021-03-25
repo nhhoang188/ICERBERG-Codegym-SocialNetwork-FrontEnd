@@ -16,9 +16,33 @@
         <div class="unorder-list-info" >
           <h3 class="list-title"><a href="/profile/{{p.userSender.id}}"> {{p.userSender.fullname}} Send You Friend
             Request.</a></h3>
-          <p class="list-subtitle">5 min ago</p>
+          <p class="list-subtitle">1 min ago</p>
         </div>
+      </li>
+      <li class="unorder-list" *ngFor="let l of loveOfMyPostNotification">
+        <!-- profile picture end -->
+        <div class="profile-thumb">
+          <a>
+            <figure class="profile-thumb-small">
+              <img src="{{l.user.avatar}}" alt="profile picture">
+            </figure>
+          </a>
+        </div>
+        <!-- profile picture end -->
+
+        <div class="unorder-list-info" >
+          <h3 class="list-title"><a href="/profile/{{l.user.id}}"> {{l.user.fullname}} Love Your Post</a></h3>
+          <p class="list-subtitle">1 min ago</p>
+        </div>
+      </li>
+      <li class="unorder-list" *ngFor="let c of cmtOfMyPostNotification">
+        <!-- profile picture end -->
+          <app-user-info-noti [createDateCmt]="c.createDate" [IdUserCmt]="c.userId"></app-user-info-noti>
       </li>
     </ul>
   </div>
 </div>
+
+
+
+

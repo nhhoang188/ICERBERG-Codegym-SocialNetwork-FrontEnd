@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationService} from '../services/notification.service';
-import {FriendRequest} from '../model/FriendRequest';
 
 @Component({
   selector: 'app-notification',
@@ -10,11 +9,15 @@ import {FriendRequest} from '../model/FriendRequest';
 export class NotificationComponent implements OnInit {
 
   friendRequestNotification: any;
+  cmtOfMyPostNotification: any;
+  loveOfMyPostNotification: any;
   userCurrentId: any;
 
   constructor(private notiSv: NotificationService) {
     this.userCurrentId = localStorage.getItem('ID');
     this.getAllNotificationByFriendRequest();
+    this.getAllNotificationByCmtOfMyPost();
+    this.getAllNotificationByLoveOfMyPost();
   }
 
   ngOnInit(): void {
@@ -23,8 +26,18 @@ export class NotificationComponent implements OnInit {
   getAllNotificationByFriendRequest() {
     this.notiSv.getNotiByFriendRequest(this.userCurrentId).subscribe(value => {
       this.friendRequestNotification = value;
-      console.log(this.friendRequestNotification);
     });
   }
 
+  getAllNotificationByCmtOfMyPost() {
+    this.notiSv.getNotiByCmtOfMyPost(this.userCurrentId).subscribe(value => {
+      this.cmtOfMyPostNotification = value;
+    });
+  }
+
+  getAllNotificationByLoveOfMyPost() {
+    this.notiSv.getNotiByLoveOfMyPost(this.userCurrentId).subscribe(value => {
+      this.loveOfMyPostNotification = value;
+    });
+  }
 }
