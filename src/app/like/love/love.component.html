@@ -1,7 +1,8 @@
 <div class="container">
   <div><input type="hidden" [(ngModel)]="id_post" (ngModelChange)="checkLiked(id_post,id_user)"
               (ngModelChange)="countLike(id_post)"></div>
-  <div><input type="hidden" [(ngModel)]="id_user" (ngModelChange)="checkLiked(id_post,id_user)">
+  <div>
+    <input type="hidden" [(ngModel)]="id_user" (ngModelChange)="checkLiked(id_post,id_user)">
     <button class="like-button">
       <img *ngIf="!checkLike" class="heart" src="assets/images/icons/heart.png" alt="" (click)="like(id_post,id_user)">
       <img *ngIf="checkLike" class="heart-color" src="assets/images/icons/heart-color.png" alt=""

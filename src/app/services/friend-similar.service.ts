@@ -10,7 +10,7 @@ const API_URL=`${environment.apiUrl}/friendrequests`
 export class FriendSimilarService {
 
   constructor(private http: HttpClient) { }
-  getAllFriendSimilar(id1:number,id2:number):Observable<any>{
+  getAllFriendSimilar(id1:any,id2:any):Observable<any>{
     return this.http.get<any>(API_URL+'/listsimilarfriend/'+id1+'/'+id2);
   }
 

@@ -36,6 +36,7 @@ import { TimeLinePostComponent } from './home/time-line-post/time-line-post.comp
 import { UserAvatarComponent } from './home/time-line-post/user-avatar/user-avatar.component';
 import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-fullname.component';
 import { FriendYouknowComponent } from './home/time-line-post/friend-youknow/friend-youknow.component';
+import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/similar-friend/similar-friend.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { FriendYouknowComponent } from './home/time-line-post/friend-youknow/fri
     TimeLinePostComponent,
     UserAvatarComponent,
     UserFullnameComponent,
-    FriendYouknowComponent
+    FriendYouknowComponent,
+    SimilarFriendComponent
   ],
   imports: [
     BrowserModule,

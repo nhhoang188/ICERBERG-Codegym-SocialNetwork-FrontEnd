@@ -1,36 +1,23 @@
 
-<!--test-->
-<h1> LIST DANH Ban chung</h1>
-<div>My ID: <input type="text" [(ngModel)]="id_myUser" (ngModelChange)="getAll(id_myUser,id_myFriend)"></div>
-<div>MyFriend ID: <input type="text" [(ngModel)]="id_myFriend" (ngModelChange)="getAll(id_myUser,id_myFriend)"></div>
 
-
-<!--code list friend-->
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="content-box friends-zone" >
-        <div class="row " style="position: relative">
-
-          <div class="col-lg-3 col-sm-6 relative" *ngFor="let user of users">
-            {{user.id}}
-            <div class="friend-list-view">
-              <div class="profile-thumb">
-                <a href="#">
-                  <figure class="profile-thumb-middle">
-                    <img [src]="user.imgcover" alt="profile picture">
-                  </figure>
-                </a>
-              </div>
-              <div class="posted-author">
-                <h6 class="author"><a href="assets/profile.html">{{user.fullname}}</a></h6>
-                <p class="add-frnd">My Friend</p>
-              </div>
-            </div>
-          </div>
+<div class="card widget-item">
+  <h4 class="widget-title">Mutual Friend</h4>
+  <div class="widget-body">
+    <ul class="like-page-list-wrapper">
+      <li class="unorder-list" *ngFor="let user of users">
+        <div class="profile-thumb">
+          <a href="#">
+            <figure class="profile-thumb-small">
+              <img [src]="user.imgcover" alt="profile picture">
+            </figure>
+          </a>
         </div>
-      </div>
-    </div>
+        <!-- profile picture end -->
+
+        <div class="unorder-list-info">
+          <h3 class="list-title"><a routerLink="/profile/{{user.id}}">{{user.fullname}}</a></h3>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
-<!--end code-->

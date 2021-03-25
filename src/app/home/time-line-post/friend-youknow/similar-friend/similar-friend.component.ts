@@ -1,19 +1,18 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FriendSimilarService} from '../services/friend-similar.service';
+import {FriendSimilarService} from '../../../../services/friend-similar.service';
 
 @Component({
-  selector: 'app-friend-similar',
-  templateUrl: './friend-similar.component.html',
-  styleUrls: ['./friend-similar.component.css']
+  selector: 'app-similar-friend',
+  templateUrl: './similar-friend.component.html',
+  styleUrls: ['./similar-friend.component.css']
 })
-export class FriendSimilarComponent implements OnInit {
-
+export class SimilarFriendComponent implements OnInit {
   id_myUser: any;
   @Input() id_myFriend: any;
   users: any;
 
   constructor(private myService: FriendSimilarService) {
-    this.id_myUser = localStorage.getItem("ID");
+    this.id_myUser = localStorage.getItem('ID');
   }
 
   ngOnInit(): void {
@@ -25,5 +24,4 @@ export class FriendSimilarComponent implements OnInit {
       this.users = value;
     }, error => console.log(error));
   }
-
 }

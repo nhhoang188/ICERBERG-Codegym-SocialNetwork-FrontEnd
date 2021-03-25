@@ -15,7 +15,7 @@
 
         <div class="unorder-list-info">
           <h3 class="list-title"><a routerLink="/profile/{{l.id}}">{{l.fullname}}</a></h3>
-          <p class="list-subtitle"> mutual</p>
+          <app-similar-friend [id_myFriend]="l.id"></app-similar-friend>
         </div>
       </li>
     </ul>
