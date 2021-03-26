@@ -85,28 +85,24 @@
       <span class="post-time">{{p.createDate}}</span>
     </div>
 
-    <div *ngIf="result">
-      <div class="post-settings-bar">
-        <span></span>
-        <span></span>
-        <span></span>
-        <div class="post-settings arrow-shape">
-          <ul>
-            <li>
-              <button routerLink="/edit-post/{{p.postId}}">edit post</button>
-            </li>
-            <li>
-              <button (click)="deletePost(p.postId)">delete post</button>
-            </li>
-            <li>
-              <button>embed adda</button>
-            </li>
-          </ul>
-        </div>
+    <div class="post-settings-bar" *ngIf="checkMySelf() == true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <div class="post-settings arrow-shape">
+        <ul>
+          <li>
+            <button routerLink="/edit-post/{{p.postId}}">edit post</button>
+          </li>
+          <li>
+            <button (click)="deletePost(p.postId)">delete post</button>
+          </li>
+          <li>
+            <button>embed adda</button>
+          </li>
+        </ul>
       </div>
     </div>
-
-
   </div>
   <!-- post title start -->
   <div class="post-content">
@@ -120,6 +116,6 @@
         </a>
       </figure>
     </div>
-      <app-comment [postId]="p.postId" ></app-comment>
+      <app-comment [postId]="p.postId" *ngIf="checkFriend == true || checkMySelf() == true" ></app-comment>
   </div>
 </div>

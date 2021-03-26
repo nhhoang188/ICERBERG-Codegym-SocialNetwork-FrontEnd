@@ -1,5 +1,3 @@
-<p>comment works!</p>
-
 <div class="card">
   <div class="post-meta">
     <app-love [id_post]="postId"></app-love>
@@ -12,12 +10,13 @@
     </ul>
   </div>
   <!-- form bình luận 1 status -->
-  <form class="share-text-box" [formGroup]="formComment" (ngSubmit)="createComment()">
+  <form class="share-text-box" *ngIf="check1" [formGroup]="formComment" (ngSubmit)="createComment()">
                 <textarea class="share-text-field" placeholder="leave a comment"
                           id="cmt" formControlName="content"></textarea>
 
-    <button class="btn-share" type="submit">Comments</button>
+    <button class="btn-share" type="submit">Comment</button>
   </form>
+
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
   <div id="list-comment" *ngIf="check2">

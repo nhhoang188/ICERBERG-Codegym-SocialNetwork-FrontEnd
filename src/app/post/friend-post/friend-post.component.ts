@@ -23,12 +23,10 @@ export class FriendPostComponent implements OnInit {
               private activeRoute: ActivatedRoute,
               private route: Router) {
     this.userId1 = localStorage.getItem('ID');
-    console.log("id nguoi dung" + this.userId1);
     this.userSv.getById(this.userId1).subscribe(value => {
       this.user = value;
       this.activeRoute.paramMap.subscribe(value => {
         this.userId2 = value.get('userId');
-        console.log(this.userId2)
         this.friendSv.getFriend(this.userId1, this.userId2).subscribe(value => {
           if (value == null) {
             this.checkFriend = false;
