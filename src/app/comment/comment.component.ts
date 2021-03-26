@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommentService} from '../services/comment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Comments} from "../model/Comments";
+import {Comments} from '../model/Comments';
 
 
 @Component({
