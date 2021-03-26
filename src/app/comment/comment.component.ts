@@ -100,7 +100,7 @@ export class CommentComponent implements OnInit {
   displayAllComment(postId: number) {
     this.commentService.findAllCommentByPostId(postId).subscribe(
       result => {
-        // this.comments = result;
+         this.comments = result;
         // this.count = this.comments.length;
 
         this.count = result.length;
