@@ -82,7 +82,6 @@ export class FriendComponent implements OnInit {
           () => {
             this.checkFriends(this.id, this.id2);
             this.check1 = 2;
-            alert('thanh cong');
           }, () => alert('that bai'));
       }, error => {
         console.log(error);

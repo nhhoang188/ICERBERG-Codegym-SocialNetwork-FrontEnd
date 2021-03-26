@@ -5,18 +5,15 @@
   display: flex;
   flex-direction: column;
 }
-
 #profile-thumb {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 #avatar  {
   display: flex;
   width: 250px;
 }
-
 .content  {
   display: flex;
   margin-left: 45px;
@@ -24,7 +21,6 @@
   height: fit-content;
   justify-content: center;
 }
-
 .author {
   padding-right: 5px;
   border: 1px #f1f1f1;
@@ -36,4 +32,19 @@
   display: flex;
   justify-content: center;
 }
-
+#display-comment-all{
+  padding: 15px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#place-user-info{
+  display: flex;
+}
+#progress-bar{
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 auto;
+}

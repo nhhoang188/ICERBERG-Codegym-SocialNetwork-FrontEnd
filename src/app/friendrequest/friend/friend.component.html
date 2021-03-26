@@ -1,13 +1,47 @@
 <div class="container">
-  <button *ngIf="check1==0 && id!=id2" class="dropbtn" (click)="send()"> +Add Friend</button>
+
+  <button *ngIf="check1==0 && id!=id2" class="btn btn-outline-success" style="height: 35px; width: 100px;color: white" (click)="send()"> +Add Friend</button>
+<!--  <button *ngIf="check1==0 && id!=id2" type="button" class="btn btn-danger" style=" height: 40px; width: 150px;color: white"  data-toggle="modal" data-target="#myModal" (click)="send()"> + Add Friend</button>-->
 
   <div class="dropdown" *ngIf="check1==1">
-    <button class="dropbtn">Friends</button>
+    <button class="btn btn-danger" style=" height: 40px; width: 100px;color: white">Friend</button>
     <div class="dropdown-content">
-      <a (click)="unfriend(reques_id)">Unfriend</a>
+<!--      <a (click)="unfriend(reques_id)">Unfriend</a>-->
+      <a type="button" class="btn btn-danger " data-toggle="modal" data-target="#myModal">Unfrend</a>
     </div>
   </div>
-  <button *ngIf="check1==2" class="dropbtn" (click)="unfriend(reques_id)" style="background-color: red">Cancel Request</button>
-  <button *ngIf="check1==3" class="dropbtn" (click)="accept(reques_id)">Confirm</button>
-  <button *ngIf="check1==3" class="decline dropbtn" (click)="unfriend(reques_id)">Delete Request</button>
+<!--  <button *ngIf="check1==2" class="btn btn-danger" style="background-color: firebrick; height: 40px; width: 150px;color: white" (click)="unfriend(reques_id)">Cancel Request</button>-->
+  <button *ngIf="check1==2" type="button" class="btn btn-danger" style="background-color: firebrick; height: 40px; width: 150px;color: white"  data-toggle="modal" data-target="#myModal">Cancel Request</button>
+
+  <button *ngIf="check1==3" class="btn btn-outline-success" style="height: 40px; width: 90px;color: white" (click)="accept(reques_id)">Confirm</button>
+  <button *ngIf="check1==3" class="btn btn-danger ml-2" style="background-color: firebrick; height: 40px; width: 90px;color: white" (click)="unfriend(reques_id)">Inject</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm" style="width: 30%; margin-top: 20%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+          <div *ngIf="check1==1" style="text-align: center" class="mb-2">
+            <h4>Are you sure ?</h4>
+            <hr>
+            <button type="button" style="background-color: firebrick; height: 40px; width: 50px;color: white" class="btn btn-default mr-1" data-dismiss="modal">No</button>
+            <button type="button" style="height: 40px; width: 50px;color: white" class="btn btn-danger ml-1" data-dismiss="modal" (click)="unfriend(reques_id)">Yes</button>
+          </div>
+
+          <div *ngIf="check1==2" style="text-align: center" class="mb-2">
+            <h4>Are you sure ?</h4>
+            <hr>
+            <button type="button" style="background-color: firebrick; height: 40px; width: 50px;color: white" class="btn btn-default mr-1" data-dismiss="modal">No</button>
+            <button type="button" style="height: 40px; width: 50px;color: white" class="btn btn-danger ml-1" data-dismiss="modal" (click)="unfriend(reques_id)">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
