@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'similar', component: FriendSimilarComponent, pathMatch: 'full'},
   {path: 'search', component: HeaderComponent, pathMatch: 'full'},
   {path: 'lovecomment', component: LoveCommentComponent, pathMatch: 'full'},
-  {path: 'socket', component: SocketComponent, pathMatch: 'full'},
+  {path: 'message', component: SocketComponent, pathMatch: 'full'},
 
   {
     path: 'create-post',
