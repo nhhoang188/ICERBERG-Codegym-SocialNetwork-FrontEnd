@@ -39,6 +39,8 @@ import { UserFullnameComponent } from './home/time-line-post/user-fullname/user-
 import { FriendYouknowComponent } from './home/time-line-post/friend-youknow/friend-youknow.component';
 import { SimilarFriendComponent } from './home/time-line-post/friend-youknow/similar-friend/similar-friend.component';
 import { EditDetailCommentComponent } from './comment/edit-detail-comment/edit-detail-comment.component';
+import {ListUserComponent} from './admin/list-user/list-user.component';
+import { SocketComponent } from './socket/socket.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,10 @@ import { EditDetailCommentComponent } from './comment/edit-detail-comment/edit-d
     LoveCommentComponent,
     UserInfoComponent,
     MyFriendComponent,
-    EditDetailCommentComponent
+    EditDetailCommentComponent,
+    ListUserComponent,
+    LoveCommentComponent,
+    SocketComponent
   ],
   imports: [
     BrowserModule,

@@ -47,4 +47,10 @@ export class UserService {
   getUserYouKnow(id: any): Observable<User[]> {
     return this.httpClient.get<User[]>(API_URl + '/user/know/' + `${id}`);
   }
+  getAllFriends(username: any): Observable<any> {
+    return this.httpClient.get(API_URl+'/'+username+'/friend')
+  }
+  getUser(username: any): Observable<any> {
+    return this.httpClient.get(API_URl+'/name/'+username)
+  }
 }

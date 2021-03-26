@@ -13,6 +13,7 @@ import {MyWallComponent} from './profile/my-wall/my-wall.component';
 import {MyPostComponent} from './post/my-post/my-post.component';
 import {FriendSimilarComponent} from './friend-similar/friend-similar.component';
 import {LoveCommentComponent} from './like/love-comment/love-comment.component';
+import {SocketComponent} from './socket/socket.component';
 import {EditUserComponent} from './profile/edit-user/edit-user.component';
 import {MyFriendComponent} from './profile/my-friend/my-friend.component';
 import {CommentComponent} from './comment/comment.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'similar', component: FriendSimilarComponent, pathMatch: 'full'},
   {path: 'search', component: HeaderComponent, pathMatch: 'full'},
   {path: 'lovecomment', component: LoveCommentComponent, pathMatch: 'full'},
+  {path: 'socket', component: SocketComponent, pathMatch: 'full'},
 
   {
     path: 'create-post',
