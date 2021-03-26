@@ -38,7 +38,7 @@ export class MyPostComponent implements OnInit {
       {model: 'Private'},
       {model: 'Friend only'}
     ];
-    this.getUser();
+    // this.getUser();
   }
 
   ngOnInit(): void {
@@ -105,6 +105,7 @@ export class MyPostComponent implements OnInit {
   }
 
   getPost() {
+    console.log("allo");
     if (this.userId1 == this.userId2) {
       this.getPostByUserId();
     }

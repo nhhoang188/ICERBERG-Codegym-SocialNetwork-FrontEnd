@@ -7,7 +7,7 @@
           <div class="gallery-tem">
             <figure class="post-thumb">
               <a class="gallery-selector" routerLink="/post/">
-                <img src="{{l.image}}" alt="sweet memory">
+                <img *ngIf="l.image != null" src="{{l.image}}" alt="sweet memory">
               </a>
             </figure>
           </div>
