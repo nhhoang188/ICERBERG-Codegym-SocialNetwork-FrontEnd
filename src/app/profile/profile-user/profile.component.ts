@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
   userPublic: any;
   guest: any;
   listPost: any;
-
   constructor(private router: Router,
               private userSv: UserService,
               private activatedRoute: ActivatedRoute,
@@ -26,7 +25,9 @@ export class ProfileComponent implements OnInit {
       if (localStorage.getItem('USERNAME') != null) {
         this.userSv.getById(id).subscribe(value1 => {
           this.user = value1;
-          this.getPostByUserId();
+          this.postSv.findPostByUserId(this.user.id).subscribe(value => {
+            this.listPost = value;
+          });
         });
       } else {
         this.userSv.getByIdAndInfoPublic(id).subscribe(value1 => {
@@ -36,9 +37,4 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getPostByUserId() {
-    this.postSv.findPostByUserId(this.user.id).subscribe(value => {
-      this.listPost = value;
-    });
-  }
 }

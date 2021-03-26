@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {FormControl, FormGroup} from '@angular/forms';
+import {FriendrequestService} from "../../services/friendrequest.service";
 
 @Component({
   selector: 'app-my-post',
@@ -15,32 +16,23 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./my-post.component.css']
 })
 export class MyPostComponent implements OnInit {
+  @Input('fid') fid: any;
   user: User = {};
-  userCurrent: User = {};
   listPost: any;
-  userId: any;
-  idUser: any;
-  post: Post = {};
-  idPost: any;
-  idUserCurrent: any;
-  editForm = new FormGroup({
-    contents: new FormControl(''),
-    imagee: new FormControl(''),
-    privacy: new FormControl('')
-  });
+  userId1: any;
+  userId2: any;
+  checkFriend: any;
+  checkSelf: any;
 
   constructor(private userSv: UserService,
               private postSv: PostService,
+              private friendSv: FriendrequestService,
               private route: Router,
               private postService: PostService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
-    this.userId = localStorage.getItem('ID');
-    this.idUserCurrent = localStorage.getItem('ID');
-    this.userSv.getById(this.idUserCurrent).subscribe(value => {
-      this.userCurrent = value;
-    });
+
     this.privacies = [
       {model: 'Public'},
       {model: 'Private'},
@@ -54,29 +46,42 @@ export class MyPostComponent implements OnInit {
       content: new FormControl(''),
       privacy: new FormControl('')
     });
-    this.activatedRoute.paramMap.subscribe(result => {
-      this.idPost = result.get('id');
-      this.postService.findPostById(this.idPost).subscribe(
-        result => {
-          this.post = result;
-          this.idUser = this.post.userId;
-          this.userSv.getById(this.idUser).subscribe(value => {
-            this.user = value;
-          })
-          this.createEditForm(this.post);
-        }, error => {
-          console.log(error);
+    this.userId2 = this.fid;
+    this.userId1 = localStorage.getItem('ID');
+    this.userSv.getById(this.userId1).subscribe(value => {
+      this.user = value;
+      this.friendSv.getFriend(this.userId1, this.fid).subscribe(value => {
+        if (value == null) {
+          this.checkFriend = false;
+        } else {
+          this.checkFriend = value.stt;
         }
-      );
+        this.getUser();
+      }, error => console.log(error))
 
-    }, error => {
-      console.log(error);
+    });
+    this.checkMySelf();
+
+  }
+
+  checkMySelf() {
+    if (this.userId1 == this.fid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getPublicAndFriendOnlyPostByUserId() {
+    this.postSv.findPublicAndFriendOnlyPostByUserId(this.userId2).subscribe(value => {
+      this.listPost = value;
     });
   }
 
-  private createEditForm(post: any) {
-    this.editForm.get('contents')?.setValue(post.content);
-    this.editForm.get('privacy')?.setValue(post.privacy);
+  getPublicPostByUserId() {
+    this.postSv.findPublicPostByUserId(this.userId2).subscribe(value => {
+      this.listPost = value;
+    });
   }
 
   getUser() {
@@ -85,7 +90,7 @@ export class MyPostComponent implements OnInit {
         const id = value.get('id');
         this.userSv.getById(id).subscribe(value1 => {
           this.user = value1;
-          this.getPostByUserId();
+          this.getPost();
         });
       });
     } else {
@@ -99,23 +104,31 @@ export class MyPostComponent implements OnInit {
     });
   }
 
+  getPost() {
+    if (this.userId1 == this.userId2) {
+      this.getPostByUserId();
+    }
+    if (this.checkFriend == true) {
+      this.getPublicAndFriendOnlyPostByUserId();
+
+    }
+    if (this.checkFriend == false) {
+      this.getPublicPostByUserId();
+    } else {
+      console.log("OK");
+    }
+  }
+
   deletePost(id?: any) {
     this.postSv.deletePostById(id).subscribe(() => {
       alert('Delete Ok!');
       this.getPostByUserId();
     });
   }
-
-  deleteImage(){
-    this.post.content = this.editForm.get('contents')?.value;
-    this.postService.editImagePostStatus(this.idPost, this.post).subscribe(
-      result => {
-        console.log('success!');
-        this.route.navigate([`/profile/${this.idUserCurrent}`]);
-      }, error => {
-        console.log(error);
-      }
-    );
+  checkId(userCurrentId: any, userId: any): boolean {
+    if (userCurrentId != userId)
+      return false;
+    return true;
   }
 
 
@@ -142,23 +155,6 @@ export class MyPostComponent implements OnInit {
     });
   }
 
-  onSave() {
-    console.log("alo");
-    this.post.content = this.editForm.get('contents')?.value;
-    // if (this.post.image !== null)
-    this.post.image = this.fb;
-    this.post.privacy = this.editForm.get('privacy')?.value;
-    console.log(this.post);
-    this.postService.editStatusPost(this.idPost, this.post).subscribe(
-      result => {
-        console.log('success!');
-        this.route.navigate([`/profile/${this.idUserCurrent}`]);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
-
   async setIntervalProgress() {
     // this.timeOut = true;
     var loading = setInterval(() => {
@@ -177,8 +173,8 @@ export class MyPostComponent implements OnInit {
   }
 
   createPost(): Post {
-    let post: Post = <Post> {};
-    post.userId = this.userId;
+    let post: Post = <Post>{};
+    post.userId = this.userId1;
     post.content = this.postStatusForm.get('content').value;
     post.createDate = this.createDate();
     let pr = this.postStatusForm.get('privacy').value;

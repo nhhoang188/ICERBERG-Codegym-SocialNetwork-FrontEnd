@@ -14,8 +14,9 @@
                 <textarea class="share-text-field" placeholder="leave a comment"
                           id="cmt" formControlName="content"></textarea>
 
-    <button class="btn-share" type="submit">Comments</button>
+    <button class="btn-share" type="submit">Comment</button>
   </form>
+
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
   <div id="list-comment" *ngIf="check2">

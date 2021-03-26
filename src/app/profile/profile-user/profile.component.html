@@ -60,13 +60,13 @@
                       <h4 _ngcontent-qtc-c47="" class="widget-title">{{user.fullname}}</h4>
                       <div _ngcontent-qtc-c47="" class="widget-body">
                         <div _ngcontent-qtc-c47="" class="about-author">
-                          <p _ngcontent-qtc-c47="">{{user.description}}</p>
+                          <p _ngcontent-qtc-c47="">{{user.bio}}</p>
                           <ul _ngcontent-qtc-c47="" class="author-into-list">
                             <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" href="#">
                             <i _ngcontent-qtc-c47="" class="bi bi-home"></i>{{user.address}}</a>
                             </li>
                             <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="">
-                            <i _ngcontent-qtc-c47="" class="bi bi-heart-beat"></i>{{user.bio}}</a>
+                            <i _ngcontent-qtc-c47="" class="bi bi-heart-beat"></i>{{user.description}}</a>
                           </li>
                           </ul>
                         </div>
@@ -90,18 +90,23 @@
             <div class="content-box">
               <h5 class="content-title">photos</h5>
               <div class="content-body">
-                <div class="row mt--30" >
-                  <div class="col-sm-6 col-md-4" *ngFor="let l of listPost" >
+                <div class="row mt--30">
+                  <div class="col-sm-6 col-md-4"  *ngFor="let l of listPost">
                     <div class="photo-group">
-                      <div class="gallery-toggle" >
+                      <div class="gallery-toggle">
                         <div class="gallery-overlay">
                           <img src="{{l.image}}" alt="Photo Gallery">
                           <div class="view-icon"></div>
                         </div>
                         <div class="photo-gallery-caption">
-                          <a routerLink="/diachianh" class="photos-caption">{{l.content}}</a>
+                          <a href="/diachianh" class="photos-caption">{{l.content}}</a>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="load-more text-center">
+                      <button class="load-more-btn">load more</button>
                     </div>
                   </div>
                 </div>

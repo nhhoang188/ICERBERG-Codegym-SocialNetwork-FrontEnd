@@ -92,8 +92,7 @@
       <div class="post-settings arrow-shape">
         <ul>
           <li>
-            <button name="share" class="share-text-field" aria-disabled="true"
-                    data-toggle="modal" data-target="#textbox1" >edit post</button>
+            <button routerLink="/edit-post/{{p.postId}}">edit post</button>
           </li>
           <li>
             <button (click)="deletePost(p.postId)">delete post</button>
@@ -103,61 +102,6 @@
           </li>
         </ul>
       </div>
-
-      <div>
-        <div class="modal fade" id="textbox1" aria-labelledby="textbox">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <form class="share-text-box" (ngSubmit)="onSave()" [formGroup]="editForm">
-                <div class="modal-header">
-                  <h5 class="modal-title">Edit Your Status</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body custom-scroll">
-
-                  <div ng-app="myApp" ng-controller="myCtrl" class="row">
-                    <select ng-model="selectedPrivacy" formControlName="privacy" class="col-3 form-select form-select-sm mb-2 ml-3">
-                      <option  value="" disabled selected hidden>Public</option>
-                      <option *ngFor="let privacy of privacies" [value]="privacy.model">{{privacy.model}}</option>
-                    </select>
-                  </div>
-                  <div class="form-floating">
-                    <textarea class="form-control" formControlName="content" placeholder="Leave a comment here" id="floatingTextarea3" style="height: 100px"></textarea>
-                    <label for="floatingTextarea3">Comments</label>
-                  </div>
-                  <div *ngIf="fb!== null" class="mt-3 mb-3">
-                    <img src="{{fb}}" style="border-radius: 15px">
-                  </div>
-                  <div class="form-group col-12">
-                    <input type="file"
-                           id="file1"
-                           #userPhoto
-                           (change)="onFileSelected($event)"
-                           name="image"
-                           autocomplete="off" class="form-control"
-                    />
-                  </div>
-                  <div *ngIf="fb==null">
-                    <div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
-                      <div class="progress" [ngStyle]="{backgroundColor: progressColor,width: width + '%'}">
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <!--              <button class="btn-share" type="submit" [disabled]="timeOut">share</button>-->
-                  <div class="modal-footer">
-                    <button type="button" class="post-share-btn" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="post-share-btn" [disabled]="timeOut">Save</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
   <!-- post title start -->
@@ -172,6 +116,6 @@
         </a>
       </figure>
     </div>
-    <app-comment *ngIf="checkFriend == true || checkMySelf() == true" ></app-comment>
+      <app-comment [postId]="p.postId" *ngIf="checkFriend == true || checkMySelf() == true" ></app-comment>
   </div>
 </div>
