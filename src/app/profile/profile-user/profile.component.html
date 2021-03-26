@@ -30,7 +30,7 @@
                   <li></li>
                   <li></li>
                   <li><a  routerLink="/profile/{{user.id}}/about" data-toggle="tab" class="active">Something About Me</a></li>
-                  <li><a href="#two" data-toggle="tab">Photo</a></li>
+                  <li><a routerLink="#two" data-toggle="tab">Photo</a></li>
                   <li><a routerLink="/profile/{{user.id}}/friends" data-toggle="tab">Friend</a></li>
                 </ul>
               </div>
@@ -42,7 +42,7 @@
                 <div class="tab-pane fade active show" id="one">
                   <div class="work-zone">
                     <div class="author-desc-title d-flex">
-                      <h6 class="author"><a href="/newfeeds"></a></h6>
+                      <h6 class="author"><a routerLink="/newfeeds"></a></h6>
                       <div class="post-settings-bar">
                         <span></span>
                         <span></span>
@@ -62,7 +62,7 @@
                         <div _ngcontent-qtc-c47="" class="about-author">
                           <p _ngcontent-qtc-c47="">{{user.bio}}</p>
                           <ul _ngcontent-qtc-c47="" class="author-into-list">
-                            <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" href="#">
+                            <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="" routerLink="#">
                             <i _ngcontent-qtc-c47="" class="bi bi-home"></i>{{user.address}}</a>
                             </li>
                             <li _ngcontent-qtc-c47=""><a _ngcontent-qtc-c47="">
@@ -99,7 +99,7 @@
                           <div class="view-icon"></div>
                         </div>
                         <div class="photo-gallery-caption">
-                          <a href="/diachianh" class="photos-caption">{{l.content}}</a>
+                          <a routerLink="/diachianh" class="photos-caption">{{l.content}}</a>
                         </div>
                       </div>
                     </div>
@@ -136,7 +136,7 @@
           <div class="col-lg-3 col-md-3">
             <div class="profile-picture-box">
               <figure class="profile-picture">
-                <a href="/profile/{{guest.id}}">
+                <a routerLink="/profile/{{guest.id}}">
                   <img src="{{guest.avatar}}" alt="profile picture">
                 </a>
               </figure>
@@ -147,7 +147,7 @@
               <div class="main-menu-inner header-top-navigation">
                 <nav>
                   <ul class="main-menu">
-                    <li class="active"><a href="#">timeline</a></li>
+                    <li class="active"><a routerLink="#">timeline</a></li>
                   </ul>
                 </nav>
               </div>
@@ -189,7 +189,7 @@
             <div class="card widget-item">
               <div class="about-me">
                 <ul class="nav flex-column about-author-menu">
-                  <li><a href="#one" data-toggle="tab" class="active">Something About Me</a></li>
+                  <li><a routerLink="#one" data-toggle="tab" class="active">Something About Me</a></li>
                 </ul>
               </div>
             </div>
@@ -200,7 +200,7 @@
                 <div class="tab-pane fade active show" id="">
                   <div class="work-zone">
                     <div class="author-desc-title d-flex">
-                      <h6 class="author"><a href="/newfeeds">{{guest.username}}</a></h6>
+                      <h6 class="author"><a routerLink="/newfeeds">{{guest.username}}</a></h6>
                       <div class="post-settings-bar">
                         <span></span>
                         <span></span>

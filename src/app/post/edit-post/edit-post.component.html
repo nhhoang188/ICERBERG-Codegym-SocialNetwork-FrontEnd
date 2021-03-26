@@ -8,7 +8,7 @@
             <div class="post-title d-flex align-items-center">
               <!-- profile picture start -->
               <div class="profile-thumb">
-                <a href="#">
+                <a routerLink="#">
                   <figure class="profile-thumb-middle">
                     <img src="{{user.avatar}}" alt="profile picture">
                   </figure>
@@ -17,7 +17,7 @@
               <!-- profile picture end -->
 
               <div class="posted-author">
-                <h6 class="author"><a href="">{{user.fullname}}</a></h6>
+                <h6 class="author"><a routerLink="">{{user.fullname}}</a></h6>
                 <span class="post-time">{{post.createDate}}</span>
               </div>
 
@@ -76,7 +76,7 @@
               </label>
               <div class="post-thumb-gallery">
                 <figure class="post-thumb img-popup">
-                  <a href="{{post.image}}" *ngIf="post.image !==null ">
+                  <a routerLink="{{post.image}}" *ngIf="post.image !==null ">
                     <img *ngIf="fb == undefined" src="{{post.image}}" alt="post image" width="300px" height="300px">
                   </a>
                   <img *ngIf="fb !== undefined" src="{{fb}}" alt="post image" width="300px" height="300px">

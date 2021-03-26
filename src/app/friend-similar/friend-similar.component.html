@@ -6,7 +6,7 @@
     <ul class="like-page-list-wrapper">
       <li class="unorder-list" *ngFor="let user of users">
         <div class="profile-thumb">
-          <a href="#">
+          <a routerLink="/profile/{{user.id}}">
             <figure class="profile-thumb-small">
               <img [src]="user.imgcover" alt="profile picture">
             </figure>

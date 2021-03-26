@@ -55,11 +55,11 @@ background-repeat: no-repeat;background-size: cover;height: 760px;margin-top: 15
                       <div class="clearfix">
                         <div class="chat-message-me-frame clearfix p-2">
                           <div class="d-flex flex-row">
-                            <a href="#">
+                            <a routerLink="#">
                               <img class="rounded-circle" src="{{user.avatar}}" width="40">
                             </a>
                             <div class="d-flex flex-column justify-content-start ml-2" *ngIf="message">
-                              <a href="#">
+                              <a routerLink="#">
                                 <span class="d-block font-weight-bold name">{{message.sender.fullname}}</span>
                               </a>
                               <span class="date text-black-50 createPost">{{message.content}}</span>
@@ -72,11 +72,11 @@ background-repeat: no-repeat;background-size: cover;height: 760px;margin-top: 15
                       <div class="clearfix">
                         <div class="chat-message-friend-frame  p-2">
                           <div class="d-flex flex-row">
-                            <a href="#">
+                            <a routerLink="#">
                               <img class="rounded-circle" src="{{message.sender.avatar}}" width="40">
                             </a>
                             <div class="d-flex flex-column justify-content-start ml-2" *ngIf="message">
-                              <a href="#">
+                              <a routerLink="#">
                                 <span class="d-block font-weight-bold name">{{message.sender.fullname}}</span>
                               </a>
                               <span class="date text-black-50 createPost">{{message.content}}</span>
