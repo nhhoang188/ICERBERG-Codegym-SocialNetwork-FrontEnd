@@ -40,7 +40,7 @@ background-repeat: no-repeat;background-size: cover;height: 760px;margin-top: 15
                 <div class="chat-about">
                   <div class="chat-with" id="selectedUserId" *ngIf="friend">
                     <img alt="avatar" height="50px" [src]="friend.imgcover" width="55px"/>
-                    <a style="margin-left: 10px" routerLink="/profile/{{friend.id}}/about">{{friend.username}}</a>
+                    <a style="margin-left: 10px" routerLink="/profile/{{friend.id}}/about">{{friend.fullname}}</a>
 
                     <button type="button" style="color: red" id="closeChat" class="btn btn-danger" (click)="closeChat()">X</button>
                   </div>
@@ -56,11 +56,11 @@ background-repeat: no-repeat;background-size: cover;height: 760px;margin-top: 15
                         <div class="chat-message-me-frame clearfix p-2">
                           <div class="d-flex flex-row">
                             <a href="#">
-                              <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                              <img class="rounded-circle" src="{{user.avatar}}" width="40">
                             </a>
                             <div class="d-flex flex-column justify-content-start ml-2" *ngIf="message">
                               <a href="#">
-                                <span class="d-block font-weight-bold name">{{message.sender.username}}</span>
+                                <span class="d-block font-weight-bold name">{{message.sender.fullname}}</span>
                               </a>
                               <span class="date text-black-50 createPost">{{message.content}}</span>
                             </div>
@@ -73,11 +73,11 @@ background-repeat: no-repeat;background-size: cover;height: 760px;margin-top: 15
                         <div class="chat-message-friend-frame  p-2">
                           <div class="d-flex flex-row">
                             <a href="#">
-                              <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                              <img class="rounded-circle" src="{{message.sender.avatar}}" width="40">
                             </a>
                             <div class="d-flex flex-column justify-content-start ml-2" *ngIf="message">
                               <a href="#">
-                                <span class="d-block font-weight-bold name">{{message.sender.username}}</span>
+                                <span class="d-block font-weight-bold name">{{message.sender.fullname}}</span>
                               </a>
                               <span class="date text-black-50 createPost">{{message.content}}</span>
                             </div>
