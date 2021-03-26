@@ -10,38 +10,40 @@
     </ul>
   </div>
   <!-- form bình luận 1 status -->
-  <form class="share-text-box" [formGroup]="formComment" (ngSubmit)="createComment()">
+  <div>
+    <form class="share-text-box" [formGroup]="formComment" (ngSubmit)="createComment()">
                 <textarea class="share-text-field" placeholder="leave a comment"
                           id="cmt" formControlName="content"></textarea>
-
-    <button class="btn-share" type="submit">Comment</button>
-  </form>
-
+      <button class="btn-share" type="submit">Comment</button>
+    </form>
+  </div>
   <p *ngIf="!check">{{status}}</p>
   <!--    list comment all -->
   <div id="list-comment" *ngIf="check2">
     <div id="display-comment-all" *ngFor="let cm of comments">
-      <div class="post-settings-bar" *ngIf="cm.userId == unknownId">
-        <span></span>
-        <span></span>
-        <div class="post-settings arrow-shape">
-          <ul>
-            <li>
-              <a routerLink="../../{{cm.postId}}/edit-detail-comment/{{cm.commentId}}">edit</a>
-            </li>
-            <li>
-              <button type="button" (click)="deleteComment(cm.commentId)">delete</button>
-            </li>
-          </ul>
+      <div id="place-user-info">
+        <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate"></app-user-info>
+        <!--        dropdown-menu-->
+        <div *ngIf="result" id="progress-bar">
+          <div class="post-settings-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="post-settings arrow-shape">
+              <ul>
+                <li>
+                  <a routerLink="../../{{cm.postId}}/edit-detail-comment/{{cm.commentId}}">edit</a>
+                </li>
+                <li>
+                  <button type="button" (click)="deleteComment(cm.commentId)">delete</button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <app-user-info [IdUserCmt]="cm.userId" [createDateCmt]="cm.createDate"></app-user-info>
       <div class="content" id="content-all">
         <p>{{cm.content}}</p>
-
-        <!--        dropdown-menu-->
-
-
       </div>
     </div>
   </div>
