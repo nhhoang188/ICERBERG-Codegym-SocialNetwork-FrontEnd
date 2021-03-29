@@ -1,0 +1,186 @@
+<header>
+  <div class="header-top sticky bg-white d-none d-lg-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-5">
+          <!-- header top navigation start -->
+          <div class="header-top-navigation">
+            <nav>
+              <ul>
+                <li class="active"><a routerLink="/home">home</a></li>
+                <li class="notification-trigger"><a class="msg-trigger-btn" routerLink="/message">Message</a>
+                  <div class="message-dropdown" id="b">
+                    <div class="dropdown-title">
+                      <p class="recent-msg">Message</p>
+                      <button>
+                        <i class="flaticon-settings"></i>
+                      </button>
+                    </div>
+                    <ul class="dropdown-msg-list">
+                      <li class="msg-list-item d-flex justify-content-between">
+                        <!-- profile picture end -->
+                        <div class="profile-thumb">
+                          <figure class="profile-thumb-middle">
+                            <img src="../../../../assets/images/logo-iceberg.jpg" alt="profile picture">
+                          </figure>
+                        </div>
+                        <!-- profile picture end -->
+
+                        <!-- message content start -->
+                        <div class="msg-content notification-content">
+                          <a routerLink="profile.html">Robert Faul</a>,
+                          <a routerLink="profile.html">william jhon</a>
+                          <p>and 35 other people reacted to your photo</p>
+                        </div>
+                        <!-- message content end -->
+
+                        <!-- message time start -->
+                        <div class="msg-time">
+                          <p>25 Apr 2019</p>
+                        </div>
+                        <!-- message time end -->
+                      </li>
+                      <li class="msg-list-item d-flex justify-content-between">
+                        <!-- profile picture end -->
+                        <div class="profile-thumb">
+                          <figure class="profile-thumb-middle">
+                            <img src="images/profile/profile-small-4.jpg" alt="profile picture">
+                          </figure>
+                        </div>
+                        <!-- profile picture end -->
+
+                        <!-- message content start -->
+                        <div class="msg-content notification-content">
+                          <a routerLink="profile.html">Robert mushkil</a>,
+                          <a routerLink="profile.html">Terry jhon</a>
+                          <p>and 20 other people reacted to your photo</p>
+                        </div>
+                        <!-- message content end -->
+
+                        <!-- message time start -->
+                        <div class="msg-time">
+                          <p>20 May 2019</p>
+                        </div>
+                        <!-- message time end -->
+                      </li>
+                      <li class="msg-list-item d-flex justify-content-between">
+                        <!-- profile picture end -->
+                        <div class="profile-thumb">
+                          <figure class="profile-thumb-middle">
+                            <img src="images/profile/profile-small-6.jpg" alt="profile picture">
+                          </figure>
+                        </div>
+                        <!-- profile picture end -->
+
+                        <!-- message content start -->
+                        <div class="msg-content notification-content">
+                          <a routerLink="profile.html">Horijon Mbala</a>,
+                          <a routerLink="profile.html">Bashu jhon</a>
+                          <p>and 55 other people reacted to your post</p>
+                        </div>
+                        <!-- message content end -->
+
+                        <!-- message time start -->
+                        <div class="msg-time">
+                          <p>15 Jan 2019</p>
+                        </div>
+                        <!-- message time end -->
+                      </li>
+                    </ul>
+                    <div class="msg-dropdown-footer">
+                      <button>See all in messenger</button>
+                      <button>Mark All as Read</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- header top navigation start -->
+        </div>
+
+        <div class="col-md-2">
+          <!-- brand logo start -->
+          <div class="brand-logo text-center">
+            <a routerLink="/home">
+              <img src="../../../../assets/images/logo-iceberg%20-layout.jpg" alt="brand logo">
+            </a>
+          </div>
+          <!-- brand logo end -->
+        </div>
+
+        <div class="col-md-5">
+          <div class="row header-top-right d-flex align-items-center justify-content-end">
+            <!-- header top search start -->
+            <div class="header-top-search">
+              <div class="top-search-box">
+                <input type="text" [(ngModel)]="fullname" placeholder="Search" class="top-search-field" >
+
+                <button class="top-search-btn" (click)="searchAll(fullname)"><i class="flaticon-search"></i></button>
+
+
+
+
+<!--                <div class="dropdown">-->
+<!--                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="searchAll(fullname)"><i class="flaticon-search"></i></button>-->
+<!--                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                    <a class="dropdown-item" routerLink="#">Action</a>-->
+<!--                    <a class="dropdown-item" routerLink="#">Another action</a>-->
+<!--                    <a class="dropdown-item" routerLink="#">Something else here</a>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+
+            <!-- header top search end -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+      <div class="col-12">
+        <div class="content-box friends-zone" >
+          <div *ngIf="check" class="row " style="position: relative">
+            <br>
+
+            <div class="col-lg-3 col-sm-6 relative" *ngFor="let user of users">
+              <br>
+              <div class="friend-list-view">
+                <div class="profile-thumb">
+                  <a routerLink="#">
+                    <figure class="profile-thumb-middle">
+                      <a routerLink="/profile/{{user.id}}"><img [src]="user.imgcover" alt="profile picture"></a>
+                    </figure>
+                  </a>
+                </div>
+                <div class="posted-author">
+                  <h6 class="author"><a routerLink="/profile/{{user.id}}">{{user.fullname}}</a></h6>
+                </div>
+              </div>
+            </div>
+
+            <button style="margin-top:30px;height:40px" class="btn" (click)="close()">Close</button>
+          </div>
+        </div>
+      </div>
+
+
+</header>
+<div class="scroll-top not-visible">
+  <i class="bi bi-finger-index"></i>
+</div>
+
+
